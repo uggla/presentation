@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ansible a tool for Dev/Ops</title>
+
+		<meta name="description" content="Ansible a tool for Dev/Ops">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		
+		<style type="text/css">
+			.iwantitatleft { text-align: left; }
+			.reveal ul { font-size: 0.9em; text-align: left; }
+			.lots_of_items ul { font-size: 0.7em; text-align: left; }
+			.lots_of_items h3 { font-size: 0.7em; }
+			.lots_of_items h4 { font-size: 0.6em; }
+			.lots_of_items code { font-size: 0.7em; }
+			.reveal pre code { max-height: 540px; }
+			.left_pic { position: relative; float: left; width:50%; top: 30px; }
+			.left_text { position: relative; float: left; width:50%; }
+			.right_text { width:50%; text-align: left; float: right; }
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Ansible</h1>
+					<h3>A tool for Dev/Ops</h3>
+					<img src="images/Ansible_logo.png" alt="ansible_logo" width="40%">
+				</section>
+
+				<section>
+					<h2>Session objectives</h2>
+					<div class="iwantitatleft">			
+					<ul>
+					<li>Objectives</li>
+					<ul>
+					<li>Present Ansible, a popular tool used in Dev/Ops context</li>
+					<li>The needs to automate tasks across distributed systems<br>Typical needs</li>
+					<li>Ansible use cases for managing Openstack</li>
+					</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>What is Ansible</h2>
+					<img src="images/what.png" alt="what is ansible" width="30%">				
+				</section>
+
+				<section>
+					<h2>What is Ansible</h2>
+					<ul>
+					<li>Ansible is a free software platform for configuring and managing computers.</li>
+					<li>The platform was created by Michael DeHaan, he is the Cobbler author as well.</li>
+					</ul>				
+				</section>
+
+
+				<section>
+					<h2>The need for automation</h2>
+					<img src="images/gears.jpeg" alt="gears" width="50%">				
+				</section>
+
+				<section class="lots_of_items">
+					<h2>Typical needs</h2>
+					<div class="iwantitatleft">
+					<ul>
+					<li>As a developer/tester: during dev and test phase.</li>
+					<ul>
+					<li>Safely Do repetitive configurations tasks on a set of VMs implementing a multi-tier cluster</li>
+					<li>Provision ssh public keys of team members on N freshly deployed nodes during dev phase</li>
+					<li>Automate a documented complex installation sequence – BTW why writing such a document ? etc</li>
+					</ul></ul>
+					<ul>
+					<li>As a Sysadmin/Sysops</li>
+					<ul>
+					<li>Automate remote scripting of many day to day tasks</li>
+					<li>Check and maintain configuration on systems, can be coupled with a revision management tool</li>
+					</ul></ul>
+					<ul>
+					<li>As a Service Delivery team: efficiency</li>
+					<ul>
+					<li>Efficient deployment of complex solutions with easily injecting customers or deal specific configuration parameters</li>
+					<li>Avoid restarting from start when you hit an error</li>
+					<li>Do it faster and cheaper and at scale</li>
+					</ul></ul>
+					<ul><li>As &lt;anyone&gt;</li>
+					<ul>
+					<li>Be efficient in front of the explosion of the # of entities (servers, VMs, ...) to ‘manage’</li>
+					</ul></ul>
+					</div>
+				</section>
+
+				<section class="lots_of_items">
+					<h2>The Available Tools</h2>
+					<h3>And key properties</h3>
+					<div class="iwantitatleft">
+					<ul>
+					<li>The ‘old ways’ we all experimented: is gone</li>
+					<ul>
+					<li>Document the pre-requisites, document the sequence of actions.<br>
+					Keeping the doc up to date and tested is time consuming. Doc is subject to interpretation, ...</li>
+					<li>Shell scripting<br>
+					Handling errors correctly is hard. Designing them to avoid restart from scratch is even harder</li>
+					</ul></ul>
+					<ul>
+					<li>The current way: Configuration management and automation frameworks.</li>
+					<ul>
+					<li>Puppet, Chef, Salt, <a href="http://www.ansible.com/" >Ansible</a></li>
+					<li>All promote <strong>idempotency</strong></li>
+					</ul></ul>
+					<ul>
+					<li>Ansible addresses most of the issues at low cost</li>
+					<ul>
+					<li>Easy to learn and debug</li>
+					<li>Open source software (with commercial support available)</li>
+					<li>Leaves no “fingerprints” or residue on target systems</li>
+					<li>Predictable execution / Repeatable / Idempotent Mostly / Parallel operations</li>
+					</ul></ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Ansible basics and key concepts</h2>
+					<img src="images/concept.jpg" alt="concepts" width="50%">
+				</section>
+
+				<section class="lots_of_items">
+					<h2>Ansible Architecture and working model</h2>
+					
+					<div class="left_pic">
+					<img src="images/archi.png" alt="archi" width="100%">
+					</div>
+					<div class="right_text">					
+					<ul><li>An ‘orchestration engine’
+					where Ansible SW is installed.</li>
+					<li>No agent required. leverage ssh as
+					default secure transport.</li>
+					<li>Execute playbooks.</li>
+					<li>Predictable – in order execution</li>
+					<li>Designed to work in push mode to
+					all target hosts in parallel.</li>
+					<li>hosts can be many things:</li>
+					<ul>
+					<li>Any Linux/*Nix systems</li>
+					<li>networking gears running sshd</li>
+					<li>Windows hosts by leverging
+					WinRM and PowerShell (hence
+					no ssh in that case)</li>
+					<li>And more...</li></ul></ul>
+					</div>
+				</section>
+				
+				<section class="lots_of_items">
+					<h2>The inventory</h2>
+					<h3>Where the hosts are registered</h3>
+					<div class="left_text">
+					<h4>About Inventories</h4>
+					<ul>
+					<li>Static inventory:</li>
+					<ul><li>A file containing a set of hosts and groups of hosts.<br>
+					Can also contain some host specific settings.</li>
+					<li>Common practice is to name groups per intended function.</li>
+					</ul></ul>
+					
+					<ul><li>Dynamic inventory – hosts and groups from external source
+					via inventory plugin.</li>
+										
+					<ul><li>From a CMDB</li>
+					<li>From a cloud provider (e.g: AWS EC2/Eucalyptus, Rackspace Cloud.
+					OpenStack nova, gce, digital ocean ...)</li>
+					<li>Useful when hosts names are hard to predict or when many hosts</li></ul></ul>
+					
+					<ul><li>More than one inventory and mix of static and dynamic
+					inventory sources is possible:</li>
+					<ul>
+					<li>One for development, one for staging, one for production</li>
+					<li>One for public cloud one for private cloud</li></ul></ul>
+					</div>
+					<div class="right_text">
+					<h4>Example of a simple static inventory – no DB needed</h4>
+					<pre><code data-trim contenteditable>
+# This is a comment					
+# localhost refers to the ansible control node
+localhost
+[webservers]
+www1.example.com
+www2.example.com
+www[10:50].example.com
+[dbservers]	
+db1.example.com				
+db[a:f].example.com
+10.0.1.9 ansible_ssh_port=2222 ansible_ssh_user=admin
+[LinuxVMs]
+localhost
+db1.example.com
+www21.example.com
+					</code></pre>
+					</div>
+				</section>
+								
+				<section class="lots_of_items">
+					<h2>Ansible Playbooks - the plays</h2>
+					<div class="left_text">
+					<h4>A list of plays to run on target hosts</h4>
+					<ul>
+					<li>Playbooks are yaml text files containing a list of plays and run via the ansible-playbook cli</li>
+					<li>Playbooks can be hierarchical and use structured directory and file layout.</li>
+					<li>A play maps a set of hosts with “what to execute” on them</li>
+					<ul>
+					<li>Has a name: descriptive text</li>
+					<li>Start with a section specifying the set of target hosts with the parameters to access them.</li>
+					<li>May contain variables declaration sections</li>
+					<li>Contains sections specifying “what to run” on them</ul></li>
+					<li>A play optionally ‘gather Facts’ and makes them available as
+					variables. Facts are all the information Ansible discovers
+					about a host.</li>
+					<li>Each play is run in sequence and may specify the account
+					(remote_user) to be used to connect to the remote hosts, if
+					sudo is needed, etc</li>
+					</div>
+					
+					<div class="left_text">
+				 	<h4>Playbook extract – the first section of a play</h4>
+				 	<pre><code data-trim contenteditable>
+- name: This is the PLAY1 title
+  hosts: webservers  # this can be host, groups or complex expr
+  gather_facts: True  # trigger facts discovery about targets
+  remote_user tester  # connect as 'tester' account
+  sudo: False         # whether to run as sudo or not
+  [...skipped part...] # what to run on the targets – skipped
+
+- name: This is the PLAY2 Title 
+  hosts: dbservers:!db1.example.com # exclude a host
+  gather_facts: False
+  remote_user: admin  # connect as 'admin' account
+  sudo: True
+  [...skipped part...] # what to run on the targets – skipped
+					</code></pre>
+					</div>				
+				</section>
+
+				<section class="lots_of_items">
+				<h2>Ansible Playbooks – the tasks</h2>
+				<div class="left_text">
+				<h4>What to run on target hosts</h4>
+				<ul>
+				<li>The tasks section describes the list of actions you want
+				to execute on the target hosts</li>
+				<li>The tasks are run in order, one at a time, against all the
+				target hosts in parallel, before moving to the next.</li>
+				<li>A task:</li>
+				<ul>				
+				<li>Has a name : descriptive text</li>
+				<li>Executes a module with specific parameters.</li>
+				<li>Reports status [ok, changed, failed, skipping] at runtime</li>
+				</ul>
+				<li>Handlers are tasks triggered at the end of the play if a
+				change was made</li>
+				<li>A <a href="http://docs.ansible.com/ansible/modules_by_category.html" >module</a> is a small program, generally idempotent and
+				that can be written in any language *.</li>
+				<li>There are modules for many things, see the module
+				index. You can write your own.</li>
+				<li>Variables and templates leverage jinja2 templating
+				engine</li>
+				</ul>
+				</div>	
+				<div class="right_text">
+				<h4>The ntp simple example</h4>
+				<pre><code data-trim contenteditable>
+- name: Setup ntp client
+  hosts: linuxVMs:!localhost # target hosts
+  remote_user: tester # connect as ‘tester’ account 
+  sudo: True # and need sudo capability
+  vars:
+    - time_sources: [ntp2.austin.hp.com, gpsclock0.sdd.hp.com, ntp1.eds.com]
+    - ntp_rpm: ntp
+  tasks:
+    - name: Install the required  time service package
+      yum: name={{ ntp_rpm }} state=installed
+
+    - name: Instantiate the ntp.conf from template file
+      template: src=ntp.conf.j2  dest=/etc/ntp.conf
+  notify: 
+    - restart time server daemon
+    - name: The os are we running on
+      debug: msg=“this is a {{ ansible_distribution }} {{ ansible_distribution_version }}”
+  handlers:
+    - name: restart time server daemon
+      service: name=ntpd state=restarted enabled=yes
+				</code></pre>				
+				</div>
+				</section>
+
+<section class="lots_of_items">
+				<h2>Ansible roles</h2>
+				<div class="left_text">
+				<h4>Parameterized tasks for sharing and reuse</h4>
+				<ul>
+				<li>Rapidly you will need to reuse some tasks, or abstract
+				some consecutive tasks and give it a name.</li>
+				<li>A role is materialized as a set of structured files and
+				may have:</li>
+				<ul>
+				<li>A set of defaults (aka default values)</li>
+				<li>A tasks list</li>
+				<li>handlers</li>
+				<li>Templates files</li>
+				<li>files</li>
+				<li>meta</li>
+				<li>vars</li>
+				</ul>
+				<li>This works like an clever include directive</li>
+				<li>Hint: browse the <a href="https://galaxy.ansible.com/explore#/" >Ansible Galaxy</a> roles repository and use
+				the ansible-galaxy cli to get them.</li>
+				<li>Openstack playbooks : <a href="https://github.com/openstack/openstack-ansible" >https://github.com/openstack/openstack-ansible</a></li>
+				</div>	
+				<div class="right_text">
+				<h4>The ntp simple example</h4>
+				<pre><code data-trim contenteditable>
+- name: Setup ntp client
+  hosts: linuxVMs
+  # target hosts
+  remote_user: tester # connect as ‘tester’ account
+  sudo: True  # and need sudo
+  vars:
+    - other_clocks: [ntp1aus2.hp.net, gpsclock0.sdd.hp.com, ntp1.eds.com]
+  roles:
+    - {role: ntpclient, time_sources: “{{ other_clocks }}”, }
+  tasks:
+    - name: The os are we running on
+      debug: msg=“this is a {{ansible_distribution}} {{ansible_distribution_version }}”
+
+---------------- the roles/ntplient sub directory content ------
+roles/ntpclient
+├── defaults
+│
+└── main.yml -> content is vars section on previous slide
+├── handlers
+│
+└── main.yml -> content is the handler section on previous slide
+├── tasks
+│
+└── main.yml -> content is the tasks section on previous slide
+└── templates
+└── ntp.conf.j2 -> for the role template files
+				</code></pre>				
+				</div>
+				</section>
+
+				<section >
+				<h2>Ansible - A lot more to discover</h2>
+				<h3>We just scratched the surface</h3>
+				<ul>
+				<li>Ansible conditionals</li>
+				<li>Ansible loops</li>
+				<li>Ansible-Vault</li>
+				<li>Facts</li>
+				<li>Jinja2 filters</li>
+				<li>...</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Simple live examples</h2>
+				<img src="images/demo.png" alt="demo" width="40%">
+				</section>
+
+				<section>
+				<h1>Thank you</h1>
+				<ul>
+				<li>Based on original presentation from : </li>
+				<ul>
+				<li>Philippe Eveque &lt;philippe.eveque@hp.com&gt;</li>
+				</ul>
+				<li>Adaptation to openstack by :</li>
+				<ul>
+				<li>Jérome Justet &lt;jerome.justet@hp.com&gt;</li>				
+				<li>René Ribaud &lt;rene.ribaud@hp.com&gt;</li>
+				</ul></ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1024,    
+
+
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+				
+				
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
