@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Docopt</title>
+
+		<meta name="description" content="Docopt">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		
+		<style type="text/css">
+			@font-face {
+   	   font-family: hpsimplified;
+         src: url("fonts/hps-me-w27-bold-ttf.ttf");
+			}
+			<!-- .reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; } -->
+			.reveal { font-family: hpsimplified;	}
+			.iwantitatleft { text-align: left; }
+			.reveal ul { font-size: 0.9em; text-align: left; }
+			.lots_of_items ul { font-size: 0.7em; text-align: left; }
+			.lots_of_items h3 { font-size: 0.7em; }
+			.lots_of_items h4 { font-size: 0.6em; }
+			.lots_of_items code { font-size: 0.7em; }
+			.reveal pre code { max-height: 540px; }
+			.left_pic { position: relative; float: left; width:50%; top: 30px; }
+			.left_text { position: relative; float: left; width:50%; }
+			.right_text { width:50%; text-align: left; float: right; }
+			.reveal h3 { color: #0096D6; text-transform: none; }
+			.reveal h2 { text-transform: none; }
+			.reveal a { color: #007DBA; }
+			.reveal h2 b { color: #0096D6; }
+			.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+			.reveal pre { width: 100%; font-size: 0.4em}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- <section data-background="images/hp_background.png"> -->
+				<section data-background="images/background2.png">
+					<h1>Docopt</h1>
+					<h3>A convenient way to parse your command line arguments</h3>
+					<!-- <p>Abstract : Docopt another way to parse your program command line arguments.
+						Arguments are mandatory for any command line tool, there are several ways to
+						manage them raw argv, getopt, argparse, docopt. In my case the latest one docopt
+						was pretty convenient and I will try to show you an example.
+					</p> -->
+				</section>
+
+				<section>
+					<h2>I have developed a super command line tool</h2>
+					<img src="images/script.jpg" alt="script" width="50%">
+					<h3>Now I need to get arguments and options from user command line</h3>
+				</section>
+
+				<section>
+					<h2>There are several possibilities</h2>
+					<div class="left_text">
+					<img src="images/options.jpg" alt="parsing_options" width="70%">
+					</div>
+					<div class="right_text">
+					<ul>
+						<li>Raw argv parsing</li>
+						<li>Getopt</li>
+						<li>Argparse</li>
+						<li><b>Docopt</b></li>
+					</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Raw argv parsing</h2>
+					<div class="left_text">
+						<img src="images/reinventing.png" alt="reinventing" width="70%">
+					</div>
+					<div class="right_text">
+					<code><pre>
+### CODE my_super_tool.py ###
+					</code></pre>
+					</div>
+					<h3>Do not use that !</h3>
+				</section>
+
+				<section>
+					<h2>Getopt</h2>
+					<h3>C-style parser for command line options</h3>
+					<div class="left_text">
+						<img src="images/oldstyle.jpg" alt="oldstyle" width="70%">
+					</div>
+					<div class="right_text">
+					<code><pre>
+### CODE oldstyle.py ###
+					</code></pre>
+					</div>
+					<h3>Old style parsing !</h3>
+				</section>
+
+				<section>
+					<h2>Argparse</h2>
+					<h3>Python build in module</h3>
+					<div class="left_text">
+						<img src="images/good_stuff.jpg" alt="goodstuff" width="70%">
+					</div>
+					<div class="right_text">
+					<code><pre>
+### CODE argparse_sample.py ###
+					</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>Argparse</h2>
+					<h3>Usage automatically created</h3>
+					<div class="left_text">
+						<img src="images/usage.gif" alt="usage" width="70%">
+					</div>
+					<div class="right_text">
+					<pre>
+$ python argparse_sample.py -h
+usage: argparse_sample.py [-h] [-v] square
+
+positional arguments:
+  square           display the square of a given number
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -v, --verbosity  increase output verbosity
+					</pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>Argparse</h2>
+					<h3>Super powerful but...</h3>
+					<div class="left_text">
+						<img src="images/cpf.jpg" alt="cpasfaux" width="70%">
+					</div>
+					<div class="right_text">
+						<ul>
+							<li>"Complex"</li>
+							<li>Focus on code and not usage</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Docopt</h2>
+					<h3>Write the usage first !</h3>
+					<div class="left_text">
+						<img src="images/yoda.jpg" alt="yoda" width="70%">
+					</div>
+					<div class="right_text">
+						<ul>
+							<li>Usage within program docstring</li>
+							<li>Unix usage style</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Docopt</h2>
+					<h3>Example</h3>
+					<code><pre>
+### CODE docopt_sample.py ###
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Docopt</h2>
+					<h3>More complex example...</h3>
+					<code><pre>
+### CODE docopt_sample2.py ###
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Docopt</h2>
+					<h3>And output...</h3>
+					<code><pre>
+### CODE docopt_sample2_output.txt ###
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Docopt</h2>
+					<h3>Weaknesses</h3>
+					<div class="left_text">
+						<img src="images/weakness.jpg" alt="weakness" width="70%">
+					</div>
+					<div class="right_text">
+						<ul>
+							<li>Need an external module</li>
+							<li>Sphinx documentation</li>
+							<li>Less accurate than argparse</li>
+							<li>PEP compliance (E501)</li>
+
+					</ul>
+				</div>
+			</section>
+
+				<section>
+				<h1>Thank you !</h1>
+				<ul>				
+				<li>René Ribaud &lt;rene.ribaud@hpe.com&gt;</li>
+				</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1024,
+
+
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
