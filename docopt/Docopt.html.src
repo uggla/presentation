@@ -77,7 +77,7 @@
 				</section>
 
 				<section>
-					<h2>I have developed a super command line tool</h2>
+					<h2>I have developed a super script</h2>
 					<img src="images/script.jpg" alt="script" width="50%">
 					<h3>Now I need to get arguments and options from user command line</h3>
 				</section>
@@ -93,6 +93,7 @@
 						<li>Getopt</li>
 						<li>Argparse</li>
 						<li><b>Docopt</b></li>
+						<li>...</li>
 					</ul>
 					</div>
 				</section>
