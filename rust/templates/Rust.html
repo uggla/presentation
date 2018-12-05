@@ -30,78 +30,127 @@
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
+			<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 
 		<style type="text/css">
-			.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
-			.iwantitatleft { text-align: left; }
-			.reveal ul { font-size: 0.9em; text-align: left; }
-			.lots_of_items ul { font-size: 0.7em; text-align: left; }
-			.lots_of_items h3 { font-size: 0.7em; }
-			.lots_of_items h4 { font-size: 0.6em; }
-			.lots_of_items code { font-size: 0.7em; }
-			.reveal pre code { max-height: 100%; }
-			.left_pic { position: relative; float: left; width:50%; top: 30px; }
-			.left_text { position: relative; float: left; width:50%; }
-			.right_text { width:50%; text-align: left; float: right; }
-      /*
-			.reveal h3 { color: #0096D6; text-transform: none;}
-			.reveal h2 { text-transform: none;}
-			.reveal a { color: #007DBA; }
-			.reveal h2 b { color: #0096D6; }
-			.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
-      */
-      .reveal pre { width: 100%; font-size:18px; }
-      .reveal section img { border: none; box-shadow: none; }
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.7em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.7em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.7em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 30px; }
+		.right_pic { position: relative; float: right; width:50%; top: 30px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+		/*
+		.reveal h3 { color: #0096D6; text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:18px; }
+		.reveal section img { border: none; box-shadow: none; }
 		</style>
 	</head>
 
 	<body>
-
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-        <!--<section data-background="images/ferris_anim.gif">-->
-        <section>
+				<!--<section data-background="images/ferris_anim.gif">-->
+				<section>
 					<h1>RUST</h1>
-					<img class="noborder" src="images/rust-logo.png" alt="rust-logo" width="30%">
+					<img src="images/rust-logo.png" alt="rust-logo" width="30%">
 					<h3>Be pinched by a cRUSTacean to prevent programming errors !</h3>
 				</section>
-				
+
 				<section>
-					<h2>Session Agenda</h2>
-					<div class="iwantitatleft">
-					<ul>
-					<li>Light out management</li>
-					<li>Intelligent Platform Management Interface</li>
-					<li>The need for automation / scalability</li>
-					<li>Redfish</li>
-					<li>Python Redfish</li>
-					</ul>
+					<h2>2 words about me</h2>
+					<div class="left_text">
+						Insert bio here
+					</div>
+					<div class="left_pic">
+						<img src="images/me.png" alt="me" width="30%">
 					</div>
 				</section>
 
-        <section>
-					<h2>Immutability</h2>
-          <pre>
-          <code>
-{% include '_immutability.rs' %}
-          </code>
-          </pre>
-        </section>
-        <section>
-          <pre>
-{% include '_immutability.output.html' %}
-        </pre>
-        </section>
+				<section>
+					<h2>What is RUST ?</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>New systems programming language</li>
+							<li>Multiparadigm language (imperative, functional, object oriented (not fully))</li>
+							<li>By Mozilla and the Community</li>
+							<li>First stable release May 15th, 2015</li>
+							<li>Rust 2018, a major new edition release end December 2018</li>
+						</ul>
+					</div>
+				</section>
 
 				<section>
-					<h2>Lights-out management</h2>
+					<h2>Why RUST is exciting to me ?</h2>
+					<img src="images/exciting.png" alt="me" width="30%">
+				</section>
+
+				<section>
+					<h2>Alternative to C/C++ and also higher-level languages</h2>
+				</section>
+
+				<section>
+					<h2>Promises</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Focus on safety</li>
+							<li>Especially safe concurrency</li>
+							<li>Fast, really fast !</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>And a cute mascot !</h2>
+					<img src="images/mascot.png" alt="me" width="30%">
+				</section>
+
+				<section>
+					<h2>Session Agenda</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Light out management</li>
+							<li>Intelligent Platform Management Interface</li>
+							<li>The need for automation / scalability</li>
+							<li>Redfish</li>
+							<li>Python Redfish</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Immutability</h2>
+					<pre>
+					<code>
+{% include '_immutability.rs' %}
+					</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Rust compiler refuse to build</h2>
+					<pre>
+{% include '_immutability.output.html' %}
+					</pre>
+				</section>
+
+				<section>
+					<h2>Why rust is interesting ?</h2>
 					<h3>Remote device</h3>
 					<ul>
-					<span class="fragment"><li>Monitoring</li></span> <span class="fragment"><li>Management</li></span></p>
+						<span class="fragment"><li>Monitoring</li></span> <span class="fragment"><li>Management</li></span></p>
 					</ul>
 				</section>
 
@@ -122,43 +171,43 @@
 					<h3>How is this done ?</h3>
 					<img src="images/remote_mgmt_card.jpg" alt="redfish_logo" width="40%">
 				</section>
-				
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Main management possibilities</h3>
 					<img src="images/remote_mgmt_actions.jpg" alt="remote management actions" width="25%">
 				</section>
-				
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Example temperature monitoring</h3>
 					<img src="images/remote_mgmt_monitoring_temp.jpg" alt="monitoring temperature" width="100%">
-				</section>				
-				
+				</section>    
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Proprietary solutions</h3>
 					<div class="left_pic">
-					<img src="images/proprietary.jpeg" alt="redfish_logo" width="80%">
+						<img src="images/proprietary.jpeg" alt="redfish_logo" width="80%">
 					</div>
-					<div class="right_text">					
-					<ul>
-					<li>AMI MegaRAC</li></span>
-					<li>Cisco CIMC</li></span>
-					<li>Dell DRAC</li></span>
-					<li>HP ilo</li></span>					
-					<li>IBM Remote Supervisor Adapter</li></span>					
-					<li>Oracle ILOM</li></span>
-					</ul>
+					<div class="right_text">     
+						<ul>
+							<li>AMI MegaRAC</li></span>
+							<li>Cisco CIMC</li></span>
+							<li>Dell DRAC</li></span>
+							<li>HP ilo</li></span>     
+							<li>IBM Remote Supervisor Adapter</li></span>     
+							<li>Oracle ILOM</li></span>
+						</ul>
 					</div>
-				</section>				
-				
+				</section>    
+
 				<section>
 					<h2><b>I</b>ntelligent <b>P</b>latform <b>M</b>anagement <b>I</b>nterface</h2>
 					<h3>A step to unify light out management</h3>
 					<ul>
-					<li>Currently the only way to manage heterogeneous hardware</li>
-					<li>Available from client tools thanks to <a href="http://ipmiutil.sourceforge.net/">IPMIutil</a> tool</li>
+						<li>Currently the only way to manage heterogeneous hardware</li>
+						<li>Available from client tools thanks to <a href="http://ipmiutil.sourceforge.net/">IPMIutil</a> tool</li>
 					</ul>
 				</section>
 
@@ -166,44 +215,44 @@
 					<h2><b>I</b>ntelligent <b>P</b>latform <b>M</b>anagement <b>I</b>nterface</h2>
 					<h3>But with some constraints</h3>
 					<ul>
-					<li>Low level specifications</li>	
-					<li>Hard to use for end users</li>
-					<li>Not all light out features supported and hard to extend</li>
-					<li>Security concerns</li>
-					<li>Complex to manage on high integrated servers</li>					
+						<li>Low level specifications</li> 
+						<li>Hard to use for end users</li>
+						<li>Not all light out features supported and hard to extend</li>
+						<li>Security concerns</li>
+						<li>Complex to manage on high integrated servers</li>     
 					</ul>
 				</section>
 
 
 				<section>
 					<h2>The need for automation / scalability</h2>
-					<img src="images/gears.jpeg" alt="gears" width="50%" width="100%">				
+					<img src="images/gears.jpeg" alt="gears" width="50%" width="100%">    
 				</section>
 
 				<section>
 					<h2>The need for automation / scalability</h2>
 					<ul>
-					<li>Scale out servers architecture with commodity servers</li>
-					<li>Repetitive configuration</li>					
-					<li>End user friendly</li>
-					<li>Available from anywhere, with any platform</li>
-					<li>Security</li>
-					<li><b>S</b>oftware <b>D</b>efined <b>I</b>nfrastructure market trend</li>
+						<li>Scale out servers architecture with commodity servers</li>
+						<li>Repetitive configuration</li>     
+						<li>End user friendly</li>
+						<li>Available from anywhere, with any platform</li>
+						<li>Security</li>
+						<li><b>S</b>oftware <b>D</b>efined <b>I</b>nfrastructure market trend</li>
 					</ul>
 				</section>
 
-				
+
 				<section>
 					<h2>Here comes Redfish !</h2>
-					<img src="images/dmtf-redfish-logo.png" alt="redfish logo">				
+					<img src="images/dmtf-redfish-logo.png" alt="redfish logo">    
 				</section>
 
 				<section>
 					<h2>What is Redfish</h2>
 					<h3>A powerful and user friendly IPMI alternative</h3>
 					<ul>
-					<li><b>Standard</b> proposed by the <b>D</b>istributed <b>M</b>anagement <b>T</b>ask <b>F</b>orce</li>
-					<li>Initially promoted by Dell, Emerson, HP and Intel</li>		
+						<li><b>Standard</b> proposed by the <b>D</b>istributed <b>M</b>anagement <b>T</b>ask <b>F</b>orce</li>
+						<li>Initially promoted by Dell, Emerson, HP and Intel</li>  
 					</ul>
 				</section>
 
@@ -212,11 +261,11 @@
 					<h2>Redfish v1.0 (3<span class="day">rd</span> Aug 2015)</h2>
 					<h3>Content</h3>
 					<ul>
-					<li>Light out management using a Rest API specification</li>
-					<li>JSON / Odata based schemas to describe resources</li>
-					<li>A mockup</li>
-					<li>Documentation, white papers, FAQ</li>					
-					<li>Available online at <a href="https://www.dmtf.org/standards/redfish">https://www.dmtf.org/standards/redfish</a></li>
+						<li>Light out management using a Rest API specification</li>
+						<li>JSON / Odata based schemas to describe resources</li>
+						<li>A mockup</li>
+						<li>Documentation, white papers, FAQ</li>     
+						<li>Available online at <a href="https://www.dmtf.org/standards/redfish">https://www.dmtf.org/standards/redfish</a></li>
 					</ul>
 				</section>
 
@@ -224,17 +273,17 @@
 				<section>
 					<h2>Redfish real life examples</h2>
 					<ul>
-					<li>Using simple http get</li>
-					<ul>					
-					<li>Grab Bios version</li>
-					<li>Get server model and cpu models</li>
-					</ul>
-					<li>Using simple http post</li>
-					<ul>					
-					<li>Set a bios parameter using a simple http post</li>
-					<li>Reset server</li>
-					<li>Change next boot to the network</li>
-					</ul>					
+						<li>Using simple http get</li>
+						<ul>     
+							<li>Grab Bios version</li>
+							<li>Get server model and cpu models</li>
+						</ul>
+						<li>Using simple http post</li>
+						<ul>     
+							<li>Set a bios parameter using a simple http post</li>
+							<li>Reset server</li>
+							<li>Change next boot to the network</li>
+						</ul>     
 					</ul>
 					<h3>all of this, whatever the platform</h3>
 				</section>
@@ -244,8 +293,8 @@
 					<h2>HP Redfish 1.0 hardware support</h2>
 					<h3>This is available now !</h3>
 					<ul>
-					<li>Ilo v4</li>
-					<li>Firmware 2.30</li>
+						<li>Ilo v4</li>
+						<li>Firmware 2.30</li>
 					</ul>
 				</section>
 
@@ -255,9 +304,9 @@
 					<img src="images/python-logo-generic.svg" alt="python logo" />
 					<h3>A python library to manage Redfish</h3>
 					<ul>
-					<li>Open source project</li>
-					<li>Initiated by a small group of people (Bruno, Devenanda, René, Sammer, Vincent)</li>
-					<li>Available at <a href="https://github.com/uggla/python-redfish" >https://github.com/uggla/python-redfish</a></li>
+						<li>Open source project</li>
+						<li>Initiated by a small group of people (Bruno, Devenanda, René, Sammer, Vincent)</li>
+						<li>Available at <a href="https://github.com/uggla/python-redfish" >https://github.com/uggla/python-redfish</a></li>
 					</ul>
 				</section>
 
@@ -266,8 +315,8 @@
 					<h2>Python Redfish</h2>
 					<h3>Initial goals</h3>
 					<ul>
-					<li>Provide a library to easily add Redfish support into applications</li>
-					<li>Provide a Redfish client tool based on the library</li>
+						<li>Provide a library to easily add Redfish support into applications</li>
+						<li>Provide a Redfish client tool based on the library</li>
 					</ul>
 				</section>
 
@@ -276,9 +325,9 @@
 					<h2>Python Redfish</h2>
 					<h3>Ultimate goals</h3>
 					<ul>
-					<li>Integration into Openstack Ironic</li>
-					<li>Integration into CMDB tools (cf <a href="https://github.com/uggla/alexandria" >Alexandria</a> project)</li>
-					<li>World domination ! :)</li>
+						<li>Integration into Openstack Ironic</li>
+						<li>Integration into CMDB tools (cf <a href="https://github.com/uggla/alexandria" >Alexandria</a> project)</li>
+						<li>World domination ! :)</li>
 					</ul>
 					<br/>
 					<img src="images/day-of-the-tentacle.png" alt="world domination" width="25%"/>
@@ -290,8 +339,8 @@
 					<img src="images/under-construction.png" alt="under construction" width="30%"/>
 					<h3>Status</h3>
 					<ul>
-					<li>Project in infancy</li>
-					<li>Core library development ready</li>
+						<li>Project in infancy</li>
+						<li>Core library development ready</li>
 					</ul>
 				</section>
 
@@ -300,10 +349,10 @@
 					<h2>Python Redfish</h2>
 					<h3>Status</h3>
 					<ul>
-					<li>First power management features implemented</li>
-					<li>Bios management features implemented</li>
-					<li>Code samples</li>
-					<li>Client development in progress</li>
+						<li>First power management features implemented</li>
+						<li>Bios management features implemented</li>
+						<li>Code samples</li>
+						<li>Client development in progress</li>
 				</section>
 
 
@@ -311,9 +360,9 @@
 					<h2>Python Redfish</h2>
 					<h3>Status</h3>
 					<ul>
-					<li>Docker file producing a ready to use container with Redfish mockup.</li>
-					<li>python-redfish dependencies rpm available into Mageia and Fedora</li>
-					<li>This presentation</li>
+						<li>Docker file producing a ready to use container with Redfish mockup.</li>
+						<li>python-redfish dependencies rpm available into Mageia and Fedora</li>
+						<li>This presentation</li>
 					</ul>
 					<h3>Contributors welcomed</h3>
 				</section>
@@ -323,21 +372,21 @@
 					<h2>Python Redfish</h2>
 					<h3>Tested on</h3>
 					<ul>
-					<li>Redfish 1.0 mockup / proliant</li>
-					<li>Redfish 0.9.5 mockup / proliant / moonshot</li>
+						<li>Redfish 1.0 mockup / proliant</li>
+						<li>Redfish 0.9.5 mockup / proliant / moonshot</li>
 					</ul>
 				</section>
 
-				
+
 				<section>
 					<h2>Python Redfish</h2>
 					<h3>External dependencies</h3>
-					<img src="images/requests.png" alt="requests" height="200px"/>					
+					<img src="images/requests.png" alt="requests" height="200px"/>     
 					<img src="images/tortilla.jpg" alt="tortilla" height="200px"/>
 					<br/>
 					<ul>
-					<li><a href="http://docs.python-requests.org/en/latest/">Requests</a></li>
-					<li><a href="https://pypi.python.org/pypi/tortilla">tortilla</a> (thx Damien)</li>
+						<li><a href="http://docs.python-requests.org/en/latest/">Requests</a></li>
+						<li><a href="https://pypi.python.org/pypi/tortilla">tortilla</a> (thx Damien)</li>
 					</ul>
 				</section>
 
@@ -346,10 +395,10 @@
 					<h2>Python Redfish</h2>
 					<h3>Library usage example</h3>
 					<ul>
-					<li>Import<pre><code>import redfish</code></pre></li>
-					<li>Create a redfish object<pre><code>remote_mgmt = redfish.connect(URL, USER_NAME, PASSWORD, verify_cert=False)</code></pre></li>
-					<li>Retrieve API version<pre><code>remote_mgmt.get_api_version()</code></pre></li>
-					<li>Retrieve power status<pre><code>remote_mgmt.Systems.systems_list[0].get_power()</code></pre></li>
+						<li>Import<pre><code>import redfish</code></pre></li>
+							<li>Create a redfish object<pre><code>remote_mgmt = redfish.connect(URL, USER_NAME, PASSWORD, verify_cert=False)</code></pre></li>
+								<li>Retrieve API version<pre><code>remote_mgmt.get_api_version()</code></pre></li>
+									<li>Retrieve power status<pre><code>remote_mgmt.Systems.systems_list[0].get_power()</code></pre></li>
 					</ul>
 				</section>
 
@@ -358,18 +407,18 @@
 					<h2>Python Redfish</h2>
 					<h3>Library usage example</h3>
 					<ul>
-					<li>Get bios parameter<pre><code>remote_mgmt.Systems.systems_list[0].bios.get_parameter("AdminPhone")</code></pre></li>
-					<li>Set bios parameter<pre><code>remote_mgmt.Systems.systems_list[0].bios.set_parameter("AdminPhone","xxx")</code></pre></li>
-					<li>Reboot system<pre><code>remote_mgmt.Systems.systems_list[0].reset_system()</code></pre></li>
+						<li>Get bios parameter<pre><code>remote_mgmt.Systems.systems_list[0].bios.get_parameter("AdminPhone")</code></pre></li>
+							<li>Set bios parameter<pre><code>remote_mgmt.Systems.systems_list[0].bios.set_parameter("AdminPhone","xxx")</code></pre></li>
+								<li>Reboot system<pre><code>remote_mgmt.Systems.systems_list[0].reset_system()</code></pre></li>
 					</ul>
 				</section>
 
 
 				<section>
-				<h1>Thank you</h1>
-				<ul>				
-				<li>René Ribaud &lt;rene.ribaud@hp.com&gt;</li>
-				</ul>
+					<h1>Thank you</h1>
+					<ul>    
+						<li>René Ribaud &lt;rene.ribaud@hp.com&gt;</li>
+					</ul>
 				</section>
 
 			</div>
@@ -388,15 +437,15 @@
 				progress: true,
 				history: true,
 				center: false,
-        width: 960,
-      	height: 700,
+				width: 960,
+				height: 700,
 
-	      // Factor of the display size that should remain empty around the content
-       	margin: 0.1,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
 
-      	// Bounds for smallest/largest possible scale to apply to content
-       	minScale: 0.2,
-      	maxScale: 1.5,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
 
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
