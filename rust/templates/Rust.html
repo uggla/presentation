@@ -46,9 +46,10 @@
 		.right_pic { position: relative; float: right; width:50%; top: 30px; }
 		.left_text { position: relative; float: left; width:50%; text-align: left; }
 		.right_text { width:50%; text-align: left; float: right; text-align: left; }
-		/*
-		.reveal h3 { color: #0096D6; text-transform: none;}
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
 		.reveal h2 { text-transform: none;}
+		/*
 		.reveal a { color: #007DBA; }
 		.reveal h2 b { color: #0096D6; }
 		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
@@ -67,16 +68,42 @@
 				<section>
 					<h1>RUST</h1>
 					<img src="images/rust-logo.png" alt="rust-logo" width="30%">
-					<h3>Be pinched by a cRUSTacean to prevent programming errors !</h3>
+          <h3>Be pinched by a c<span style="color: #e43717";>RUST</span>acean to prevent programming errors !</h3>
 				</section>
 
 				<section>
 					<h2>2 words about me</h2>
 					<div class="left_text">
-						Insert bio here
+            <pre class="bio">
+$ cat ~/.bash_profile
+NAME="René Ribaud"
+AGE=43
+
+source ./1998.sh
+
+PROFESSION="Unices system and storage" \
+"administrator , since 2003"
+
+HISTORY="Lots (too many) infrastructure" \
+"implementation projects" \
+
+"Discover Linux & FLOSS between" \
+"1995 / 2000" \
+
+"First step in the cloud around 2011" \
+", pre-sales solution architect" \
+"2014 (Cloud, DevOps)" \
+
+"I’m an Ops !"
+
+COMPANY="CGI 20th November 2017"
+
+JOB="Information system architect" \
+"specialized around DevOps technologies"
+            </pre>
 					</div>
 					<div class="left_pic">
-						<img src="images/me.png" alt="me" width="30%">
+						<img src="images/me.png" alt="me" width="100%">
 					</div>
 				</section>
 
@@ -85,21 +112,44 @@
 					<div class="iwantitatleft">
 						<ul>
 							<li>New systems programming language</li>
-							<li>Multiparadigm language (imperative, functional, object oriented (not fully))</li>
+							<li>Multi paradigm language (imperative, functional, object oriented (not fully))</li>
 							<li>By Mozilla and the Community</li>
+							<li>Dual license MIT and Apache v2.0</li>
 							<li>First stable release May 15th, 2015</li>
-							<li>Rust 2018, a major new edition release end December 2018</li>
+							<li>Rust 2018 (v1.31), a major new edition released December 6th, 2018</li>
 						</ul>
 					</div>
 				</section>
 
 				<section>
-					<h2>Why RUST is exciting to me ?</h2>
-					<img src="images/exciting.png" alt="me" width="30%">
+					<h2>Goal ?</h2>
+					<h3>Provide an alternative to C/C++ and also higher-level languages</h3>
 				</section>
 
 				<section>
-					<h2>Alternative to C/C++ and also higher-level languages</h2>
+					<h2>Why this Ops guy speaks about a programming language ?</h2>
+					<img src="images/sysadmin.png" alt="sysadmin" width="60%">
+				</section>
+
+				<section>
+					<h2>Immunized to coder disease 1</h2>
+					<h3>My language is the best ! </h3>
+					<h3>And my code is also the best !</h3>
+					<img src="images/disease1.jpg" alt="disease1" width="25%">
+					<h4>This is part of my job to know languages and especially how to build projects using them</h4>
+				</section>
+
+				<section>
+					<h2>Immunized to coder disease 2</h2>
+					<h3>I don't make mistakes, only bad coders are making ones</h3>
+					<img src="images/disease2.jpg" alt="disease2" width="40%">
+					<h4>Really, how do you explain all major projects security issues ?</h4>
+				</section>
+
+				<section>
+					<h2>Why RUST is exciting to me ?</h2>
+					<h3>And probably why you should look at it ?</h3>
+					<img src="images/exciting.jpg" alt="exciting" width="30%">
 				</section>
 
 				<section>
@@ -111,22 +161,43 @@
 							<li>Fast, really fast !</li>
 						</ul>
 					</div>
+					<h2>But also</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Compiled language, few runtime dependencies</li>
+							<li>Produce binaries, that could be static with musl</li>
+							<li>State of mind, hard at compile time, but safe at runtime</li>
+							<li>Somewhere challenging !</li>
+						</ul>
+					</div>
 				</section>
 
 				<section>
 					<h2>And a cute mascot !</h2>
-					<img src="images/mascot.png" alt="me" width="30%">
+					<img src="images/mascot.png" alt="me" width="50%">
 				</section>
 
 				<section>
-					<h2>Session Agenda</h2>
+					<h2>How it looks like</h2>
+					<pre>
+					<code>
+{% include '_example.rs' %}
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Language features</h2>
 					<div class="iwantitatleft">
 						<ul>
-							<li>Light out management</li>
-							<li>Intelligent Platform Management Interface</li>
-							<li>The need for automation / scalability</li>
-							<li>Redfish</li>
-							<li>Python Redfish</li>
+              <li>Static type system with local type inference</li>
+              <li>Explicit mutability</li>
+              <li>Zero-cost abstractions</li>
+              <li>Runtime-independent concurrency safety</li>
+              <li>Errors are values</li>
+              <li>No null</li>
+              <li>Static automatic memory management</li>
+              <li>No garbage collection</li>
 						</ul>
 					</div>
 				</section>
@@ -139,10 +210,19 @@
 					</code>
 					</pre>
 				</section>
+
 				<section>
 					<h2>Rust compiler refuse to build</h2>
 					<pre>
 {% include '_immutability.output.html' %}
+					</pre>
+				</section>
+				<section>
+					<h2>Borrow</h2>
+					<pre>
+					<code>
+{% include '_borrow.rs' %}
+					</code>
 					</pre>
 				</section>
 
