@@ -1,11 +1,13 @@
-<font color="#FF5555"><b>error[E0594]</b></font><b>: cannot assign to field `mybike.speed` of immutable binding</b>
- <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:9:1
-  <font color="#5555FF"><b>|</b></font>
-<font color="#5555FF"><b>8</b></font> <font color="#5555FF"><b>| </b></font>let mybike = Bike { speed: 25, distance: 1508, brend: &quot;Liteville&quot;.to_string()};
-  <font color="#5555FF"><b>| </b></font>    <font color="#5555FF"><b>------</b></font> <font color="#5555FF"><b>help: make this binding mutable: `mut mybike`</b></font>
-<font color="#5555FF"><b>9</b></font> <font color="#5555FF"><b>| </b></font>mybike.speed=30;
-  <font color="#5555FF"><b>| </b></font><font color="#FF5555"><b>^^^^^^^^^^^^^^^</b></font> <font color="#FF5555"><b>cannot mutably borrow field of immutable binding</b></font>
-
-<font color="#FF5555"><b>error</b></font><b>: aborting due to previous error</b>
-
-<b>For more information about this error, try `rustc --explain E0594`.</b>
+<font color="#FF5555"><b>error[E0594]</b></font><b>: cannot assign to field `mybike.speed` of immutable binding</b>                                                                           
+  <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:14:5                                                                                                                             
+   <font color="#5555FF"><b>|</b></font>                                                                                                                                               
+<font color="#5555FF"><b>8</b></font>  <font color="#5555FF"><b>| </b></font>    let mybike = Bike {                                                                                                                       
+   <font color="#5555FF"><b>| </b></font>        <font color="#5555FF"><b>------</b></font> <font color="#5555FF"><b>help: make this binding mutable: `mut mybike`</b></font>                                                                                  
+<font color="#5555FF"><b>...</b></font>                                                                                                                                                
+<font color="#5555FF"><b>14</b></font> <font color="#5555FF"><b>| </b></font>    mybike.speed = 30; //Reassign !!!                                                                                                         
+   <font color="#5555FF"><b>| </b></font>    <font color="#FF5555"><b>^^^^^^^^^^^^^^^^^</b></font> <font color="#FF5555"><b>cannot mutably borrow field of immutable binding</b></font>                                                                        
+                                                                                                                                                   
+<font color="#FF5555"><b>error</b></font><b>: aborting due to previous error</b>                                                                                                              
+                                                                                                                                                   
+<b>For more information about this error, try `rustc --explain E0594`.</b>                                                                                
+<font color="#FF5555"><b>error:</b></font> Could not compile `immutability`.
