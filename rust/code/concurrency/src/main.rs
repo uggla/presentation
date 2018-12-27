@@ -12,14 +12,13 @@ fn run(files: Vec<String>) -> HashMap<String, String> {
     for file in files {
         let hasmap = Arc::clone(&hasmap);
         let handle = thread::spawn(move || {
-            println!("hi number {} from the spawned thread!", file);
+            println!("Processing file: {}", file);
             let mut filehandle = File::open(&file).expect("Cannot open file !");
             let mut contents = String::new();
             filehandle
                 .read_to_string(&mut contents)
                 .expect("Cannot read file !");
             contents.pop(); // Remove \n
-            println!("Content: {}", contents);
             hasmap.lock().unwrap().insert(file, contents); // Lock and insert into the HashMap
             thread::sleep(Duration::from_millis(10)); // Sleep thread for fun
         });
@@ -44,6 +43,6 @@ fn main() {
     let map = run(files);
 
     for (key, value) in map.iter() {
-        println!("{}, {}", key, value);
+        println!("File: '{}', Contents: '{}'", key, value);
     }
 }
