@@ -1,0 +1,8 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["Uggla <uggla@free.fr>"]
+edition = "2018"
+
+[dependencies]
+flate2 = "1.0.0"
