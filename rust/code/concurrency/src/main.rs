@@ -6,13 +6,14 @@ use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
 
-fn run(files: Vec<String>) -> HashMap<String, String> {
+fn run<T: AsRef<str> + ToString>(files: &[T]) -> HashMap<String, String> {
+    let files: Vec<String> = files.iter().map(|s| s.to_string()).collect(); // Convert
     let hasmap = Arc::new(Mutex::new(HashMap::new()));
     let mut handles = vec![];
     for file in files {
         let hasmap = Arc::clone(&hasmap);
         let handle = thread::spawn(move || {
-            println!("Processing file: {}", file);
+            println!("Processing file: {}", &file);
             let mut filehandle = File::open(&file).expect("Cannot open file !");
             let mut contents = String::new();
             filehandle
@@ -34,13 +35,14 @@ fn run(files: Vec<String>) -> HashMap<String, String> {
 
 fn main() {
     println!("Read file contents:");
+    // let files = vec!["1.txt", "2.txt", "3.txt"];
     let files = vec![
         "1.txt".to_string(),
         "2.txt".to_string(),
         "3.txt".to_string(),
     ];
 
-    let map = run(files);
+    let map = run(&files);
 
     for (key, value) in map.iter() {
         println!("File: '{}', Contents: '{}'", key, value);
