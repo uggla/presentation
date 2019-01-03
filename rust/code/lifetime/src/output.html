@@ -1,0 +1,20 @@
+<font color="#FF5555"><b>error[E0597]</b></font><b>: `age` does not live long enough</b>
+  <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:15:15
+   <font color="#5555FF"><b>|</b></font>
+<font color="#5555FF"><b>15</b></font> <font color="#5555FF"><b>| </b></font>        age: &amp;age,
+   <font color="#5555FF"><b>| </b></font>              <font color="#FF5555"><b>^^^</b></font> <font color="#FF5555"><b>borrowed value does not live long enough</b></font>
+<font color="#5555FF"><b>...</b></font>
+<font color="#5555FF"><b>18</b></font> <font color="#5555FF"><b>| </b></font>}
+   <font color="#5555FF"><b>| -</b></font> <font color="#5555FF"><b>borrowed value only lives until here</b></font>
+   <font color="#5555FF"><b>|</b></font>
+<font color="#55FF55"><b>note</b></font><b>: borrowed value must be valid for the lifetime &apos;a as defined on the function
+  body at 9:1...</b>
+  <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:9:1
+   <font color="#5555FF"><b>|</b></font>
+<font color="#5555FF"><b>9</b></font>  <font color="#5555FF"><b>| </b></font>fn return_reference&lt;&apos;a&gt;() -&gt; Person&lt;&apos;a&gt; {
+   <font color="#5555FF"><b>| </b></font><font color="#55FF55"><b>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b></font>
+
+<font color="#FF5555"><b>error</b></font><b>: aborting due to previous error</b>
+
+<b>For more information about this error, try `rustc --explain E0597`.</b>
+

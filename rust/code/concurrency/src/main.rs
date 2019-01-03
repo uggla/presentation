@@ -27,7 +27,7 @@ fn run<T: AsRef<str> + ToString>(files: &[T]) -> HashMap<String, String> {
     }
 
     for handle in handles {
-        handle.join().unwrap();
+        handle.join().expect("Something wrong happened !!!");
     }
 
     Arc::try_unwrap(hasmap).unwrap().into_inner().unwrap()

@@ -1,0 +1,12 @@
+<font color="#FF5555"><b>error[E0596]</b></font><b>: cannot borrow immutable borrowed content `*some_string` as mutable</b>                                                                                             
+ <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:9:5                                                                                                                                                         
+  <font color="#5555FF"><b>|</b></font>                                                                                                                                                                          
+<font color="#5555FF"><b>8</b></font> <font color="#5555FF"><b>| </b></font>fn change(some_string: &amp;String) {                                                                                                                                        
+  <font color="#5555FF"><b>| </b></font>                       <font color="#5555FF"><b>-------</b></font> <font color="#5555FF"><b>use `&amp;mut String` here to make mutable</b></font>                                                                                                    
+<font color="#5555FF"><b>9</b></font> <font color="#5555FF"><b>| </b></font>    some_string.push_str(&quot;, RUST ! 🦀&quot;);                                                                                                                                 
+  <font color="#5555FF"><b>| </b></font>    <font color="#FF5555"><b>^^^^^^^^^^^</b></font> <font color="#FF5555"><b>cannot borrow as mutable</b></font>                                                                                                                                 
+                                                                                                                                                                             
+<font color="#FF5555"><b>error</b></font><b>: aborting due to previous error</b>                                                                                                                                        
+                                                                                                                                                                             
+<b>For more information about this error, try `rustc --explain E0596`.</b>                                                                                                          
+<font color="#FF5555"><b>error:</b></font> Could not compile `borrow_mut`.

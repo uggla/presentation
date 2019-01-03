@@ -1,0 +1,10 @@
+<font color="#FF5555"><b>error[E0382]</b></font><b>: use of moved value: `s`</b>                                                                                                                                        
+ <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:5:13                                                                                                                                                        
+  <font color="#5555FF"><b>|</b></font>                                                                                                                                                                          
+<font color="#5555FF"><b>4</b></font> <font color="#5555FF"><b>| </b></font>    display(s);                                                                                                                                                          
+  <font color="#5555FF"><b>| </b></font>            <font color="#5555FF"><b>-</b></font> <font color="#5555FF"><b>value moved here</b></font>                                                                                                                                           
+<font color="#5555FF"><b>5</b></font> <font color="#5555FF"><b>| </b></font>    display(s); // Already owned !                                                                                                                                       
+  <font color="#5555FF"><b>| </b></font>            <font color="#FF5555"><b>^</b></font> <font color="#FF5555"><b>value used here after move</b></font>                                                                                                                                 
+  <font color="#5555FF"><b>|</b></font>                                                                                                                                                                          
+  <font color="#5555FF"><b>= </b></font><b>note</b>: move occurs because `s` has type `std::string::String`,
+  which does not implement the `Copy` trait
