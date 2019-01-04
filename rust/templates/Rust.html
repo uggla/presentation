@@ -162,6 +162,9 @@ JOB="Information system architect" \
 							<li>Fast, really fast !</li>
 						</ul>
 					</div>
+					<img src="images/boom.gif" alt="boom" width="50%">
+				</section>
+				<section>
 					<h2>But also</h2>
 					<div class="iwantitatleft">
 						<ul>
@@ -185,12 +188,12 @@ JOB="Information system architect" \
               <li>Look also at fd, exa, lsd...</li>
 						</ul>
 					</div>
-					<img src="images/rip.png" alt="me" width="28%">
+					<img src="images/rip.png" alt="rip" width="28%">
 				</section>
 
 				<section>
 					<h2>And a cute mascot !</h2>
-					<img src="images/mascot.png" alt="me" width="50%">
+					<img src="images/mascot.png" alt="mascot" width="50%">
 				</section>
 
 				<section>
@@ -220,7 +223,7 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Safety is achieved by mainly 3 concepts</h2>
-					<img src="images/safety.jpg" alt="me" width="70%">
+					<img src="images/safety.jpg" alt="safety" width="70%">
 				</section>
 
 				<section>
@@ -233,7 +236,7 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Rust compiler refuse to build</h2>
+					<h2>Mutability error</h2>
 					<pre>
 {% include '_immutability.output.html' %}
 					</pre>
@@ -251,7 +254,7 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Ownership</h2>
 					<pre>
 					<code>
 {% include '_owned.rs' %}
@@ -260,7 +263,7 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Ownership error</h2>
 					<pre>
 {% include '_owned.output.html' %}
 					</pre>
@@ -279,7 +282,7 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Borrowing</h2>
 					<pre>
 					<code>
 {% include '_borrow.rs' %}
@@ -291,7 +294,7 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Borrowing mutable</h2>
 					<pre>
 					<code>
 {% include '_borrow_mut.rs' %}
@@ -300,14 +303,14 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Borrowing mutable error</h2>
 					<pre>
 {% include '_borrow_mut.output.html' %}
 					</pre>
 				</section>
 
         <section>
-					<h2>Ownership & Borrowing</h2>
+					<h2>Borrowing mutable fixed</h2>
 					<pre>
 					<code>
 {% include '_borrow_mutok.rs' %}
@@ -328,7 +331,7 @@ JOB="Information system architect" \
 				</section>
 
         <section>
-					<h2>References validity checks</h2>
+					<h2>References validity checks error</h2>
 					<pre>
 {% include '_lifetime.output.html' %}
 					</pre>
@@ -336,14 +339,20 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Concurrency without fear</h2>
-					<img src="images/concurrency_failure.png" alt="me" width="75%">
+					<img src="images/chainsaw.jpg" alt="concurrency failure" width="45%">
 				</section>
 
 				<section>
 					<h2>Concurrency without fear</h2>
+					<img src="images/concurrency_failure.png" alt="concurrency failure" width="75%">
+				</section>
+
+				<section>
+					<h2>Concurrency without fear error</h2>
 					<pre>
 {% include '_concurrency_failure.output.html' %}
 					</pre>
+          <h3>Rust type system allows no data races</h3>
 				</section>
 
 				<section>
@@ -356,12 +365,12 @@ JOB="Information system architect" \
 							<li>Define behavior from various types with trait bounds</li>
 						</ul>
 					</div>
-					<img src="images/delaunay.jpg" alt="me" width="30%">
+					<img src="images/delaunay.jpg" alt="delaunay" width="30%">
 				</section>
 
 				<section>
 					<h2>Unsafe Rust</h2>
-					<img src="images/unsafe.png" alt="me" width="75%">
+					<img src="images/unsafe.png" alt="unsafe" width="75%">
 					<div class="iwantitatleft">
 						<ul>
 							<li>Allow to disengage some safety features</li>
@@ -373,8 +382,8 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>A modern language</h2>
-					<img src="images/quality.png" alt="me" width="40%">
 					<h3>with builtin code quality standards</h3>
+					<img src="images/quality.png" alt="quality" width="20%">
 					<div class="iwantitatleft">
 						<ul>
 							<li>Documentation embedded into code</li>
@@ -425,7 +434,7 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Area of use</h2>
-					<img src="images/area.png" alt="me" width="30%">
+					<img src="images/area.png" alt="area" width="30%">
 					<div class="iwantitatleft">
 						<ul>
               <li>Command line tools</li>
@@ -439,11 +448,13 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Who is using Rust ?</h2>
-					<img src="images/area.png" alt="me" width="30%">
+					<img src="images/companies.gif" alt="companies" width="50%">
 					<div class="iwantitatleft">
 						<ul>
+              <li>Mozilla, servo project</li>
               <li>RedHat, stratis project</li>
               <li>Dropbox</li>
+              <li>Telenor</li>
               <li>Chef</li>
 						</ul>
 					</div>
@@ -454,15 +465,15 @@ JOB="Information system architect" \
 					<div class="iwantitatleft">
 						<ul>
               <li>Ready at dawn</li>
-					    <img src="images/rad.png" alt="me" width="50%">
-              <li>Chucklefish that published Stardew Valley and Starbound, is using Rust in their new projects Wargroove and Witchbrook to get safe concurrency and portability.</li>
+					    <img src="images/rad.png" alt="rad" width="50%">
+              <li>Chucklefish that published Stardew Valley and Starbound, is using Rust in their new projects Wargroove and Witchbrook to get safe concurrency and portability</li>
 						</ul>
 					</div>
 				</section>
 
 				<section>
 					<h2>Who is using Rust ?</h2>
-					<img src="images/area.png" alt="me" width="30%">
+					<img src="images/flag.gif" alt="flag" width="30%">
 					<div class="iwantitatleft">
 						<ul>
               <li>Clevercloud, (Geoffroy Couprie)</li>
@@ -476,15 +487,74 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Why rust is interesting ?</h2>
+					<h2>Governance and community</h2>
+					<h3>Rust is pragmatic</h3>
+					<div class="iwantitatleft">
+						<ul>
+              <li>All features are driven by needs of real software</li>
+              <li>The language is evolved with user feedback</li>
+              <li>Consciously chooses familiar constructs</li>
+              <li>Picks good ideas from others</li>
+              <li>Doesn’t want to be the primary language at all cost</li>
+						</ul>
+					</div>
+				</section>
 
-          <h3>Governance & community</h3>
-          <h3>Help</h3>
+				<section>
+					<h2>Governance and community</h2>
+					<h3>Beloved language and community</h3>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Voted "Most loved language" on Stackoverflow 2018, 2017, 2016</li>
+              <li>Only 1/100 of survey respondents have issues with the Rust community</li>
+              <li>Newcomers from all directions</li>
+						</ul>
+					</div>
+					<img src="images/love.gif" alt="flag" width="30%">
+          <h4>https://insights.stackoverflow.com/survey/2018/#most-loved-dreaded-and-wanted</h4>
+				</section>
 
+				<section>
+					<h2>Governance and community</h2>
+					<h3>Crates growth</h3>
+					<img src="images/crates.png" alt="flag" width="30%">
+					<h4>https://8-p.info/visualizing-crates-io/</h4>
+				</section>
+
+				<section>
+					<h2>Governance and community</h2>
+					<h3>Help from the community</h3>
+					<img src="images/happy.gif" alt="flag" width="30%">
+					<div class="iwantitatleft">
+						<ul>
+              <li>IRC and Discord channels</li>
+              <li>User forum</li>
+              <li>Youtube channel</li>
+              <li>Meetups</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Governance and community</h2>
+					<h3>Beloved language and community</h3>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Experience from Mozilla to drive open projects</li>
+              <li>All major decisions, go to an open Request For Comments process</li>
+              <li>Release every 6 weeks</li>
+              <li>Medium time to merged PR for changes: 6 days!</li>
+              <li>Unstable features available only on nightly builds</li>
+              <li>Features released to stable build when fully completed</li>
+              <li>More then 4/5 of contributions to the Rust language come from outside Mozilla</li>
+              <li>The compiler has more then 2000 contributors</li>
+						</ul>
+					</div>
 				</section>
 
 				<section>
 					<h1>Thank you</h1>
+					<img src="images/thanks.gif" alt="flag" width="50%">
 					<ul>
 						<li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
 					</ul>
