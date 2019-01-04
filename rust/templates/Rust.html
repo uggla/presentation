@@ -336,34 +336,150 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Concurrency without fear</h2>
-					<pre>
-					<code>
-{% include '_concurrency.rs' %}
-					</code>
-					</pre>
+					<img src="images/concurrency_failure.png" alt="me" width="75%">
 				</section>
 
 				<section>
 					<h2>Concurrency without fear</h2>
 					<pre>
-					<code>
-{% include '_concurrency.output.html' %}
-					</code>
+{% include '_concurrency_failure.output.html' %}
 					</pre>
 				</section>
 
 				<section>
-					<h2>Why rust is interesting ?</h2>
-					<h3>Concurrency</h3>
-          <h3>High level abstraction</h3>
-          <h3>Unsafe</h3>
-          <h3>Language buildin</h3>docs embedded in code, unit tests, integration tests
-          <h3>Language tools</h3>
-          <h3>Interesting crates</h3>
-          <h3>Who is using</h3> RH stratis, Snips, Dropbox, Clevercloud, Chef, Ready at down
-          <h3>Cross capabilities</h3>
+					<h2>High level abstraction</h2>
+					<h3>Generics and Traits</h3>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Define shared behavior</li>
+							<li>Define behavior based on types</li>
+							<li>Define behavior from various types with trait bounds</li>
+						</ul>
+					</div>
+					<img src="images/delaunay.jpg" alt="me" width="30%">
+				</section>
 
-          <h3>Governance</h3>
+				<section>
+					<h2>Unsafe Rust</h2>
+					<img src="images/unsafe.png" alt="me" width="75%">
+					<div class="iwantitatleft">
+						<ul>
+							<li>Allow to disengage some safety features</li>
+							<li>Use at your own risk !</li>
+							<li>Crates using unsafe code can be audited with cargo-geiger</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>A modern language</h2>
+					<img src="images/quality.png" alt="me" width="40%">
+					<h3>with builtin code quality standards</h3>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Documentation embedded into code</li>
+							<li>Unit tests</li>
+							<li>Integration tests</li>
+							<li>Great documentation (books and std lib)</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>A modern language</h2>
+					<h3>with tools to be quickly productive</h3>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Environment setup and update <b>rustup</b></li>
+              <li>Package (crates) management <b>cargo</b> + plugin</li>
+              <li>Code formatting <b>rustfmt</b></li>
+              <li>Compiler <b>rustc</b></li>
+              <ul>
+                <li>Efficient error messages</li>
+                <li>Potential solution</b></li>
+              </ul>
+              <li>Linter <b>clippy</b></li>
+              <li>Code completion<b>racer</b></li>
+              <li>Help transition to 2018 edition <b>rustfix</b></li>
+              <li>Editor integration (IntelliJ, Vs code, Vim, Emacs...)</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Interesting crates</h2>
+					<h3>That extend the std lib</h3>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Date and time management <b>chrono</b></li>
+              <li>Parallel iteration <b>rayon</b></li>
+              <li>Http client <b>reqwest</b></li>
+              <li>Command line parsing <b>clap</b>, <b>docopt</b></li>
+              <li>Logging <b>log</b></li>
+              <li>Serialization <b>serde</b></li>
+              <li>Regular expressions <b>regex</b></li>
+              <li>...</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Area of use</h2>
+					<img src="images/area.png" alt="me" width="30%">
+					<div class="iwantitatleft">
+						<ul>
+              <li>Command line tools</li>
+              <li>Web and network services</li>
+              <li>Embedded device, IOT</li>
+              <li>WebAssembly</li>
+              <li>Games</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Who is using Rust ?</h2>
+					<img src="images/area.png" alt="me" width="30%">
+					<div class="iwantitatleft">
+						<ul>
+              <li>RedHat, stratis project</li>
+              <li>Dropbox</li>
+              <li>Chef</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Who is using Rust ?</h2>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Ready at dawn</li>
+					    <img src="images/rad.png" alt="me" width="50%">
+              <li>Chucklefish that published Stardew Valley and Starbound, is using Rust in their new projects Wargroove and Witchbrook to get safe concurrency and portability.</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Who is using Rust ?</h2>
+					<img src="images/area.png" alt="me" width="30%">
+					<div class="iwantitatleft">
+						<ul>
+              <li>Clevercloud, (Geoffroy Couprie)</li>
+              <ul>
+                <li>nom, parser</li>
+                <li>Sozu, reverse proxy</li>
+              </ul>
+              <li>Snips</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Why rust is interesting ?</h2>
+
+          <h3>Governance & community</h3>
+          <h3>Help</h3>
 
 				</section>
 

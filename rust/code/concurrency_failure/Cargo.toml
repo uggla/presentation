@@ -5,3 +5,4 @@ authors = ["Uggla <uggla@free.fr>"]
 edition = "2018"
 
 [dependencies]
+rayon = "1.0.3"

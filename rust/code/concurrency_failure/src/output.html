@@ -1,0 +1,17 @@
+<font color="#FF5555"><b>error[E0596]</b></font><b>: cannot borrow `words` as mutable, as it is a captured variable 
+  in a `Fn` closure</b>                                                                               
+  <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:19:54                                                                                                                                                      
+   <font color="#5555FF"><b>|</b></font>                                                                                                                                                                         
+<font color="#5555FF"><b>19</b></font> <font color="#5555FF"><b>| </b></font>        .for_each(|arg| tally_words(arg.to_string(), &amp;mut words).unwrap());                                                                                             
+   <font color="#5555FF"><b>| </b></font>                                                     <font color="#FF5555"><b>^^^^^^^^^^</b></font> <font color="#FF5555"><b>cannot borrow
+       as mutable</b></font>                                                                                
+   <font color="#5555FF"><b>|</b></font>                                                                                                                                                                         
+<font color="#55FFFF"><b>help</b></font>: consider changing this to accept closures that implement `FnMut`                                                                                                       
+  <font color="#5555FF"><b>--&gt; </b></font>src/main.rs:19:19                                                                                                                                                      
+   <font color="#5555FF"><b>|</b></font>                                                                                                                                                                         
+<font color="#5555FF"><b>19</b></font> <font color="#5555FF"><b>| </b></font>        .for_each(|arg| tally_words(arg.to_string(), &amp;mut words).unwrap());                                                                                             
+   <font color="#5555FF"><b>| </b></font>                  <font color="#55FFFF"><b>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b></font>                                                                                               
+                                                                                                                                                                             
+<font color="#FF5555"><b>error</b></font><b>: aborting due to previous error</b>                                                                                                                                        
+                                                                                                                                                                             
+<b>For more information about this error, try `rustc --explain E0596`.</b>
