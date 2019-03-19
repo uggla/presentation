@@ -46,6 +46,7 @@
 		.right_pic { position: relative; float: right; width:50%; top: 30px; }
 		.left_text { position: relative; float: left; width:50%; text-align: left; }
 		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
 		.reveal h4 { text-transform: none;}
 		.reveal h3 { text-transform: none;}
 		.reveal h2 { text-transform: none;}
@@ -72,7 +73,7 @@
 				</section>
 
 				<section>
-					<h2>2 words about me</h2>
+					<h2>2 words about us</h2>
 					<div class="left_text">
             <pre class="bio">
 $ cat ~/.bash_profile
@@ -105,7 +106,32 @@ JOB="Information system architect" \
 					<div class="left_pic">
 						<img src="images/me.png" alt="me" width="100%">
 					</div>
-				</section>
+        </section>
+
+        <section>
+            <h2>2 words about us</h2>
+            <div class="left_text">
+              <h3>François Best</h3>
+              <p>Freelance Developer</p>
+              <ul class="skill-list">
+                <li>Embedded/Realtime C/C++ background</li>
+                <li>Seduced by the Dark Side of the Web</li>
+                <li>Current interests:
+                  <ul>
+                    <li>Rust (of course)</li>
+                    <li>Security / Cryptography</li>
+                    <li>Decentralisation</li>
+                    <li>Personal data protection <br>& de-GAFAMing</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="left_pic">
+              <img src="images/francois.best.svg" alt="Francois Best" width="250px" height="250px">
+              <p>Github: <a href="https://github.com/franky47">@franky47</a> | <a href="https://github.com/franky47">@47ng</a></p>
+              <p>Web: <a href="https://francoisbest.com">francoisbest.com</a></p>
+            </div>
+          </section>
 
 				<section>
 					<h2>What is RUST ?</h2>
@@ -127,12 +153,12 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Why this Ops guy speaks about a programming language ?</h2>
+					<h2>Why is this Ops guy speaking about a programming language ?</h2>
 					<img src="images/sysadmin.png" alt="sysadmin" width="60%">
 				</section>
 
 				<section>
-					<h2>Immunized to coder disease 1</h2>
+					<h2>Immune to coder disease 1</h2>
 					<h3>My language is the best ! </h3>
 					<h3>And my code is also the best !</h3>
 					<img src="images/disease1.jpg" alt="disease1" width="25%">
@@ -140,7 +166,7 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Immunized to coder disease 2</h2>
+					<h2>Immune to coder disease 2</h2>
 					<h3>I don't make mistakes, only bad coders are making ones</h3>
 					<img src="images/disease2.jpg" alt="disease2" width="40%">
 					<h4>Really, how do you explain all major projects security issues ?</h4>
@@ -148,8 +174,8 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Why RUST is exciting to me ?</h2>
-					<h3>And probably why you should look at it ?</h3>
+					<h2>Why is RUST exciting to me ?</h2>
+					<h3>And probably why should you look at it ?</h3>
 					<img src="images/exciting.jpg" alt="exciting" width="30%">
 				</section>
 
@@ -157,7 +183,7 @@ JOB="Information system architect" \
 					<h2>Promises</h2>
 					<div class="iwantitatleft">
 						<ul>
-              <li>Focus on safety--> avoid errors and help finding them !</li>
+              <li>Focus on safety -> avoids errors and helps finding them !</li>
 							<li>Especially safe concurrency</li>
 							<li>Fast, really fast !</li>
 						</ul>
@@ -169,7 +195,7 @@ JOB="Information system architect" \
 					<div class="iwantitatleft">
 						<ul>
 							<li>Compiled language, few runtime dependencies</li>
-							<li>Produce binaries, that could be static with musl</li>
+							<li>Produces binaries, that could be static with musl</li>
 							<li>Can interact easily with other languages via ABI and bindings (Python, C/C++, JS...)</li>
 							<li>State of mind, hard at compile time, but safe at runtime</li>
 							<li>Somewhere challenging !</li>
@@ -197,7 +223,7 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>How it looks like</h2>
+					<h2>What it looks like</h2>
 					<pre>
 					<code>
 {% include '_example.rs' %}
@@ -248,7 +274,7 @@ JOB="Information system architect" \
 						<ul>
               <li>Every piece of data is uniquely owned</li>
               <li>Ownership can be passed</li>
-              <li>When owned data reaches the end of a scope, it is destructed</li>
+              <li>When owned data reaches the end of a scope, it is destroyed</li>
 						</ul>
 					</div>
 				</section>
@@ -392,7 +418,7 @@ JOB="Information system architect" \
 						<ul>
 							<li>Allow to disengage some safety features</li>
 							<li>Use at your own risk !</li>
-							<li>Crates using unsafe code can be audited with cargo-geiger</li>
+							<li>Crates using unsafe code can be audited with <code>cargo-geiger</code></li>
 						</ul>
 					</div>
 				</section>
@@ -430,7 +456,25 @@ JOB="Information system architect" \
               <li>Editor integration (IntelliJ, Vs code, Vim, Emacs...)</li>
 						</ul>
 					</div>
-				</section>
+        </section>
+
+        <section>
+          <h2>Opinionated for productivity</h2>
+          <h3>Avoiding bikeshedding</h3>
+          <div class="iwantitatleft">
+              <ul>
+                <li>Crates have a defined filesystem structure</li>
+                <li>Modules & exports based on file location (like Python)</li>
+                <li>But with control over public / private exports (like ES6)</li>
+                <li>Batteries included, but replaceable</li>
+                <ul>
+                  <li>Procedural macros for DSLs (eg: JSON, CSS...)</li>
+                  <li>Custom compile-time extensions with build scripts</li>
+                  <li>Cargo extensions with <code>cargo-foo</code> binary crates</li>
+                </ul>
+              </ul>
+            </div>
+        </section>
 
 				<section>
 					<h2>Interesting crates</h2>
@@ -439,8 +483,8 @@ JOB="Information system architect" \
 						<ul>
               <li>Date and time management <b>chrono</b></li>
               <li>Parallel iteration <b>rayon</b></li>
-              <li>Http client <b>reqwest</b></li>
-              <li>Command line parsing <b>clap</b>, <b>docopt</b></li>
+              <li>HTTP client <b>reqwest</b></li>
+              <li>Command line parsing <b>clap</b>, <b>docopt</b>, <b>structopt</b></li>
               <li>Logging <b>log</b></li>
               <li>Serialization <b>serde</b></li>
               <li>Regular expressions <b>regex</b></li>
@@ -499,6 +543,7 @@ JOB="Information system architect" \
                 <li>Sozu, reverse proxy</li>
               </ul>
               <li>Snips</li>
+              <li>ANSSI: <a href="https://github.com/ANSSI-FR/rust-guide">RFC for secure application design in Rust</a></li>
 						</ul>
 					</div>
 				</section>
@@ -533,7 +578,7 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Governance and community</h2>
-					<h3>Crates growth</h3>
+          <h3><a href="https://crates.io">Crates.io</a> growth</h3>
 					<img src="images/crates.png" alt="crates" width="75%">
 					<h4>https://8-p.info/visualizing-crates-io/</h4>
 				</section>
@@ -561,6 +606,7 @@ JOB="Information system architect" \
               <li>Experience from Mozilla to drive open projects</li>
               <li>All major decisions, go to an open Request For Comments process</li>
               <li>Release every 6 weeks</li>
+              <li>3 channels: <b>stable</b>, <b>beta</b> and <b>nightly</b></li>
               <li>Medium time to merged PR for changes: 6 days!</li>
               <li>More then 4/5 of contributions to the Rust language come from outside Mozilla</li>
               <li>The compiler has more then 2000 contributors</li>
@@ -572,7 +618,8 @@ JOB="Information system architect" \
 					<h1>Thank you</h1>
 					<img src="images/thanks.gif" alt="flag" width="50%">
 					<ul>
-						<li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
+            <li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
+            <li>François Best &lt;contact@francoisbest.com&gt;</li>
 					</ul>
 				</section>
 
