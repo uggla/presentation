@@ -113,7 +113,7 @@ JOB="Information system architect" \
 				<section>
 					<h2>The beginning of the story</h2>
 					<h3>It starts from Yann's call</h3>
-					<img src="images/fire_moss.png" alt="fire_moss" width="80%">
+					<img src="images/fire_moss.png" alt="fire_moss" width="70%">
 				</section>
 
 				<section>
@@ -144,6 +144,7 @@ JOB="Information system architect" \
 							<li>But engine updated</li>
 							<li>Engine can not start with the old DB</li>
 							<li>Package downgrade looks tricky due to dependencies</li>
+							<li>Not sure about backups... 👍</li>
 						</ul>
 					</div>
           <div class="right_pic">
@@ -152,17 +153,17 @@ JOB="Information system architect" \
 				</section>
 
 				<section>
-					<h2>Docker to the rescue !</h2>
+          <h2>Docker to the rescue ! 🐳</h2>
 					<div class="left_text">
 						<ul>
-              <li>Install docker</li>
+              <li>Install Docker</li>
               <li>Get previous Postgres image thanks to <b>Docker hub history</b></li>
 							<li>Start the old DB with Docker</li>
-							<li>Dump the DB using Docker</li>
+							<li>Dump the DB using Docker and pg_dump</li>
 							<li>Wipe the old DB</li>
 							<li>Restart the new engine</li>
 							<li>Import the dump</li>
-							<li>Problem fixed</li>
+							<li>Problem fixed 🤘</li>
 						</ul>
 					</div>
           <div class="right_pic">
@@ -172,14 +173,19 @@ JOB="Information system architect" \
 
 				<section>
 					<h2>Images history</h2>
+					<h3>Other use cases</h3>
 					<div class="left_text">
 						<ul>
-              <li>Rust compiler messages</li>
-              <li>Seurity</b></li>
+              <li>Get previous Rust (language 🦀) tooling</li>
+              <li>Investigate security issues (shellshock)</li>
+              <li>Use python3 on RHEL7 not configured with supplemental repository</li>
 						</ul>
+            <br/>
+            <br/>
+            Docker images history brings value, it allows to play with old software revisions  with minimal system intrusion
 					</div>
           <div class="right_pic">
-            <img src="images/fix.png" alt="fix" width="70%">
+            <img src="images/joy.jpg" alt="fix" width="50%">
           </div>
 				</section>
 
