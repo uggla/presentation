@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Docker 6th Anniversary !</title>
+
+		<meta name="description" content="Docker 6th Anniversary !">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+			<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.7em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.7em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.7em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 0px; }
+		.right_pic { position: relative; float: right; width:50%; top: 0px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; top: 10px; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; top: 10px; }
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		/*
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:18px; }
+		.reveal section img { border: none; box-shadow: none; }
+    .reveal div .left_text { font-size: 30px; }
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!--<section data-background="images/ferris_anim.gif">-->
+				<section>
+					<h1>Docker</h1>
+					<h2>6th Anniversary !</h2>
+					<img src="images/docker6years.png" alt="docker6years" width="100%">
+          <h3>My small humble use cases</h3>
+				</section>
+
+				<section>
+					<h2>2 words about me</h2>
+					<div class="left_text">
+            <pre class="bio">
+$ cat ~/.bash_profile
+NAME="René Ribaud"
+AGE=43
+
+source ./1998.sh
+
+PROFESSION="Unices system and storage" \
+"administrator , since 2003"
+
+HISTORY="Lots (too many) infrastructure" \
+"implementation projects" \
+
+"Discover Linux & FLOSS between" \
+"1995 / 2000" \
+
+"First step in the cloud around 2011" \
+", pre-sales solution architect" \
+"2014 (Cloud, DevOps)" \
+
+"I’m an Ops !"
+
+COMPANY="CGI 20th November 2017"
+
+JOB="Information system architect" \
+"specialized around DevOps technologies"
+            </pre>
+					</div>
+					<div class="left_pic">
+						<img src="images/me.png" alt="me" width="100%">
+					</div>
+        </section>
+
+				<section>
+					<h2>The beginning of the story</h2>
+					<h3>It starts from Yann's call</h3>
+					<img src="images/fire_moss.png" alt="fire_moss" width="80%">
+				</section>
+
+				<section>
+					<h2>The battlefield</h2>
+					<img src="images/env.png" alt="env" width="75%">
+				</section>
+
+				<section>
+					<h2>Crime scene investigation</h2>
+					<div class="left_text">
+						<ul>
+              <li>Who: Nuxeo is dead !</li>
+							<li>Murder weapon: Postgres</li>
+							<li>Evidence: Debian update</li>
+						</ul>
+					</div>
+          <div class="right_pic">
+            <img src="images/csi.jpg" alt="csi" width="75%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Postgres stuck</h2>
+					<div class="left_text">
+						<ul>
+              <li>Postgres update failure</li>
+              <li>Postgres migration DB failed</li>
+							<li>But engine updated</li>
+							<li>Engine can not start with the old DB</li>
+							<li>Package downgrade looks tricky due to dependencies</li>
+						</ul>
+					</div>
+          <div class="right_pic">
+            <img src="images/prisoner.jpg" alt="prisoner" width="70%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Docker to the rescue !</h2>
+					<div class="left_text">
+						<ul>
+              <li>Install docker</li>
+              <li>Get previous Postgres image thanks to <b>Docker hub history</b></li>
+							<li>Start the old DB with Docker</li>
+							<li>Dump the DB using Docker</li>
+							<li>Wipe the old DB</li>
+							<li>Restart the new engine</li>
+							<li>Import the dump</li>
+							<li>Problem fixed</li>
+						</ul>
+					</div>
+          <div class="right_pic">
+            <img src="images/fix.png" alt="fix" width="70%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Images history</h2>
+					<div class="left_text">
+						<ul>
+              <li>Rust compiler messages</li>
+              <li>Seurity</b></li>
+						</ul>
+					</div>
+          <div class="right_pic">
+            <img src="images/fix.png" alt="fix" width="70%">
+          </div>
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+					<img src="images/swarmnado.gif" alt="swarmnado" width="30%">
+          <br/>
+					<ul>
+            <li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				width: 960,
+				height: 700,
+
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
