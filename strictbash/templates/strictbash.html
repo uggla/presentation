@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Bash is not a second zone citizen programming language</title>
+
+		<meta name="description" content="Bash is not a second zone citizen programming language">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+			<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.7em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.7em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.7em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 30px; }
+		.right_pic { position: relative; float: right; width:50%; top: 30px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+		.left_pic2 { position: relative; float: left; width:50%; top: 0px; }
+		.right_pic2 { position: relative; float: right; width:50%; top: 0px; }
+		.left_text2 { position: relative; float: left; width:50%; text-align: left; top: 15px; }
+		.right_text2 { width:50%; text-align: left; float: right; text-align: left; top: 15px;}
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		/*
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:18px; }
+		.reveal section img { border: none; box-shadow: none; }
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Bash</h1>
+          <h3>is not a second zone citizen programming language</h3>
+					<img src="images/bash.png" alt="bash-logo" width="30%">
+				</section>
+
+				<section>
+					<h2>2 words about me</h2>
+					<div class="left_text">
+            <pre class="bio">
+{% include '_bio.html' %}
+            </pre>
+					</div>
+					<div class="left_pic">
+						<img src="images/me.png" alt="me" width="100%">
+					</div>
+        </section>
+
+        <section>
+          <h2>What is Bash ?</h2>
+          <div class="left_text2">
+            <ul>
+              <li>A command line interpreter</li>
+              <li>A Turing complete language</li>
+              <li>Default shell for most Linux distributions</li>
+              <li>A 30 years old free software project</li>
+            </ul>
+          </div>
+          <div class="left_pic2">
+            <img src="images/Bash_screenshot.png" alt="bash_screenshot" width="75%">
+          </div>
+          <h4><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">https://en.wikipedia.org/wiki/Bash_(Unix_shell)</a></h4>
+        </section>
+
+				<section>
+					<h2>Bash ⚠️ 💥</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Bash does not respect Posix completely and have bashism</li>
+							<li>Bashism extends functionalities</li>
+							<li>Debian is aliasing sh to Dash !</li>
+							<li>Shell scripts must use Unix file format</li>
+						</ul>
+					</div>
+				</section>
+
+        <section>
+          <h3>Why should Bash usage not be underestimate ?</h3>
+          <div class="iwantitatleft">
+            <ul>
+              <li>Bash is everywhere !</li>
+              <ul>
+                <li>In application startup scripts</li>
+                <li>In Docker images (entrypoint)</li>
+                <li>In CI/CD</li>
+                <li>...</li>
+              </ul>
+              <li>Bash is running critical stuffs !</li>
+              <ul>
+                <li>Managing the system</li>
+                <li>Monitoring / backups</li>
+                <li>Packaging artifacts</li>
+                <li>Checking file integrity and signature</li>
+                <li>...</li>
+              </ul>
+            </ul>
+          </div>
+          So why are bash scripts not written with the same discipline as other languages ?
+        </section>
+
+				<section>
+					<h2>Pitfall #1</h2>
+					<pre>
+					<code>
+{% include '_pitfall1.sh' %}
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Pitfall #2</h2>
+					<pre>
+					<code>
+{% include '_pitfall2.sh' %}
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>How to prevent such pitfalls ?</h2>
+					<img src="images/pitfall.jpg" alt="pitfall" width="75%">
+				</section>
+
+				<section>
+					<h2>Bash strict mode</h2>
+					<pre>
+					<code>
+{% include '_strictmode.sh' %}
+					</code>
+					</pre>
+          <div class="lots_of_items">
+          <ul>
+            <li><span style="color: #e43717";>Shebang</span> to not hardcode bash path and use the one specified in PATH</li>
+            <li><span style="color: #e43717";>-e</span> immediately exit if any command has a non-zero exit</li>
+            <li><span style="color: #e43717";>-u</span> requires variables to be defined</li>
+            <li><span style="color: #e43717";>-o pipefail</span> if any command in a pipeline fails, that return code will be used as the return code of the whole pipeline</li>
+            <li><span style="color: #e43717";>IFS</span> Internal Filed Separator set to tab and carriage return</li>
+          </ul>
+          </div>
+          <h4><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">http://redsymbol.net/articles/unofficial-bash-strict-mode/</a></h4>
+				</section>
+
+				<section>
+					<h2>Shell style guide from Google</h2>
+					<img src="images/googleguide.png" alt="googleguide" width="100%">
+          <h4><a href="https://google.github.io/styleguide/shell.xml"></a>https://google.github.io/styleguide/shell.xml</h4>
+				</section>
+
+				<section>
+					<h2>When to use shell or not</h2>
+					<img>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+				</section>
+
+				<section>
+					<h2>Use [[ ]]</h2>
+					<pre>
+					<code>
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Always use functions and a main for complex scripts</h2>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Static type system with local type inference</li>
+              <li>Explicit mutability</li>
+              <li>Zero-cost abstractions</li>
+              <li>Runtime-independent concurrency safety</li>
+              <li>Errors are values</li>
+              <li>No null</li>
+              <li>Static automatic memory management</li>
+              <li>No garbage collection</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Function naming</h2>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Static type system with local type inference</li>
+              <li>Explicit mutability</li>
+              <li>Zero-cost abstractions</li>
+              <li>Runtime-independent concurrency safety</li>
+              <li>Errors are values</li>
+              <li>No null</li>
+              <li>Static automatic memory management</li>
+              <li>No garbage collection</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Linter, Shell check</h2>
+					<img src="images/exciting.jpg" alt="exciting" width="30%">
+				</section>
+
+				<section>
+					<h2>Formatter</h2>
+					<div class="iwantitatleft">
+						<ul>
+              <li>Focus on safety -> avoids errors and helps finding them !</li>
+							<li>Especially safe concurrency</li>
+							<li>Fast, really fast !</li>
+						</ul>
+					</div>
+					<img src="images/boom.gif" alt="boom" width="50%">
+				</section>
+
+				<section>
+					<h2>Unit test with Bats</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Compiled language, few runtime dependencies</li>
+							<li>Produces binaries, that could be static with musl</li>
+							<li>Can interact easily with other languages via ABI and bindings (Python, C/C++, JS...)</li>
+							<li>State of mind, hard at compile time, but safe at runtime</li>
+							<li>Somewhere challenging !</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Test sandbox with Vagrant or Docker</h2>
+					<h3>An application written in Rust</h3>
+					<div class="iwantitatleft">
+						<ul>
+							<li>A grep enhanced</li>
+							<li>Compatible with standard grep</li>
+              <li><b>Search speed is really impressive</b></li>
+              <li>Look also at fd, exa, lsd...</li>
+						</ul>
+					</div>
+					<img src="images/rip.png" alt="rip" width="28%">
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+					<img src="images/thanks.gif" alt="flag" width="50%">
+					<ul>
+            <li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				width: 960,
+				height: 700,
+
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
