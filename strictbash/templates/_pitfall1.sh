@@ -18,4 +18,4 @@ SRC=$2
 DST=$3
 
 echo "Synchronize $SRC to $RSERVER..."
-rsync -avx --progress /"$SRC" "$RSERVER":/"$DST"
+rsync -avx --progress --delete /"$SRC" "$RSERVER":/"$DST"

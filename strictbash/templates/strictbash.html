@@ -116,7 +116,7 @@
 				</section>
 
         <section>
-          <h3>Why should Bash usage not be underestimate ?</h3>
+          <h3>Why should Bash usage not be underestimated ?</h3>
           <div class="iwantitatleft">
             <ul>
               <li>Bash is everywhere !</li>
@@ -160,6 +160,7 @@
 				<section>
 					<h2>How to prevent such pitfalls ?</h2>
 					<img src="images/pitfall.jpg" alt="pitfall" width="75%">
+					<h2>How to make shell scripts more reliable ?</h2>
 				</section>
 
 				<section>
@@ -184,101 +185,142 @@
 				<section>
 					<h2>Shell style guide from Google</h2>
 					<img src="images/googleguide.png" alt="googleguide" width="100%">
-          <h4><a href="https://google.github.io/styleguide/shell.xml"></a>https://google.github.io/styleguide/shell.xml</h4>
+          <h4><a href="https://google.github.io/styleguide/shell.xml">https://google.github.io/styleguide/shell.xml</a></h4>
 				</section>
 
-				<section>
-					<h2>When to use shell or not</h2>
-					<img>
-            <li></li>
-            <li></li>
-            <li></li>
+        <section>
+          <h2>When to not use a shell script</h2>
+          <img src="images/batman-slap-robin.png" alt="batman-slap-robin" width="75%">
+          <ul>
+            <li>Performance needs</li>
+            <li><b>Complex data structures</b></li>
           </ul>
-				</section>
+        </section>
 
 				<section>
 					<h2>Use [[ ]]</h2>
+          <div class="iwantitatleft">
+            <ul>
+              <li>Replace and enhanced test</li>
+              <li>Bash builtin (not a spawn process)</li>
+              <li>Allow regexp using <b>=~</b></li>
+            </ul>
+          </div>
 					<pre>
 					<code>
+if [[ ! -f bin/bfg-1.13.0.jar ]]; then
 					</code>
 					</pre>
-				</section>
-
-				<section>
-					<h2>Always use functions and a main for complex scripts</h2>
-					<div class="iwantitatleft">
-						<ul>
-              <li>Static type system with local type inference</li>
-              <li>Explicit mutability</li>
-              <li>Zero-cost abstractions</li>
-              <li>Runtime-independent concurrency safety</li>
-              <li>Errors are values</li>
-              <li>No null</li>
-              <li>Static automatic memory management</li>
-              <li>No garbage collection</li>
-						</ul>
-					</div>
+					<pre>
+					<code>
+[[ "$output" =~ "DiG" ]]
+					</code>
+					</pre>
 				</section>
 
 				<section>
 					<h2>Function naming</h2>
 					<div class="iwantitatleft">
 						<ul>
-              <li>Static type system with local type inference</li>
-              <li>Explicit mutability</li>
-              <li>Zero-cost abstractions</li>
-              <li>Runtime-independent concurrency safety</li>
-              <li>Errors are values</li>
-              <li>No null</li>
-              <li>Static automatic memory management</li>
-              <li>No garbage collection</li>
+              <li>Use explicit naming to "auto document" code</li>
+              <li>Snake case is recommended</li>
+              <li>Do not use the function keyword</li>
 						</ul>
 					</div>
+					<img src="images/NamingConventions.png" alt="NamingConventions" width="75%">
 				</section>
 
 				<section>
-					<h2>Linter, Shell check</h2>
-					<img src="images/exciting.jpg" alt="exciting" width="30%">
+					<h3>Always use functions and a main for complex scripts</h3>
+					<pre>
+					<code>
+{% include '_main.sh' %}
+					</code>
+					</pre>
 				</section>
 
 				<section>
-					<h2>Formatter</h2>
+					<h2>Productivity tools</h2>
+					<img src="images/productivity_tools.png" alt="productivity_tools" width="75%">
+				</section>
+
+				<section>
+					<h2>Linter: Shellcheck</h2>
+					<h3>A shell script static analysis tool</h3>
+					<img src="images/shellcheck.png" alt="shellcheck" width="75%">
+						<ul>
+              <li>Really, really help writing shells ! 💎 🤩</li>
+							<li>Can be plugged into editors</li>
+						</ul>
+          <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></h4>
+				</section>
+
+				<section>
+					<h2>Formatter: shfmt</h2>
 					<div class="iwantitatleft">
 						<ul>
-              <li>Focus on safety -> avoids errors and helps finding them !</li>
-							<li>Especially safe concurrency</li>
-							<li>Fast, really fast !</li>
+							<li>Format code no headache ! 🔨</li>
+							<li>Can be configured to respect Google guide using '-i 2 -ci'</li>
+							<li>Can be plugged into editors</li>
 						</ul>
 					</div>
-					<img src="images/boom.gif" alt="boom" width="50%">
+					<img src="images/formatter.jpg" alt="formatter" width="50%">
+          <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/mvdan/sh#shfmt</a></h4>
 				</section>
 
-				<section>
-					<h2>Unit test with Bats</h2>
-					<div class="iwantitatleft">
-						<ul>
-							<li>Compiled language, few runtime dependencies</li>
-							<li>Produces binaries, that could be static with musl</li>
-							<li>Can interact easily with other languages via ABI and bindings (Python, C/C++, JS...)</li>
-							<li>State of mind, hard at compile time, but safe at runtime</li>
-							<li>Somewhere challenging !</li>
-						</ul>
-					</div>
-				</section>
+        <section>
+          <h2>Unit test: Bats</h2>
+          <h3>Bash Automated Testing System</h3>
+          <div class="left_text2">
+            <ul>
+              <li>TAP compliant testing framework (Jenkins plugin)</li>
+              <li>Run and skip helper function to control test execution</li>
+              <li>Setup, teardown helper functions to manage pre and post test scripts</li>
+            </ul>
+          </div>
+          <div class="left_pic2">
+            <img src="images/strip1.jpg" alt="formatter" width="85%">
+          </div>
+          <h4><a href="https://github.com/sstephenson/bats#bats-bash-automated-testing-system">https://github.com/sstephenson/bats#bats-bash-automated-testing-system</a></h4>
+        </section>
+
+        <section>
+          <h2>Bats</h2>
+          <h3>Examples</h3>
+					<pre>
+					<code>
+{% include '_tests.bats' %}
+					</code>
+					</pre>
+        </section>
+
+        <section>
+          <h2>Test sandbox: Vagrant or Docker</h2>
+          <div class="left_text2">
+            <ul>
+              <li>Bash can be tested against a fresh minimal installation</li>
+              <li>Help reproduce cases</li>
+              <li>CI/CD with Travis CI + Docker for open source projects</li>
+            </ul>
+          </div>
+          <div class="left_pic2">
+            <img src="images/vagrant.png" alt="formatter" width="25%">
+            <br/>
+            <img src="images/docker.png" alt="formatter" width="35%">
+          </div>
+        </section>
 
 				<section>
-					<h2>Test sandbox with Vagrant or Docker</h2>
-					<h3>An application written in Rust</h3>
+					<h2>The million dollar Guides !</h2>
 					<div class="iwantitatleft">
 						<ul>
-							<li>A grep enhanced</li>
-							<li>Compatible with standard grep</li>
-              <li><b>Search speed is really impressive</b></li>
-              <li>Look also at fd, exa, lsd...</li>
+							<li><a href="http://tldp.org/LDP/abs/html">Advanced Bash-Scripting Guide</a></li>
+							<li><a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a></li>
 						</ul>
 					</div>
-					<img src="images/rip.png" alt="rip" width="28%">
+            <img src="images/million_dollar.jpg" alt="million_dollar" width="85%">
 				</section>
+
 
 				<section>
 					<h1>Thank you</h1>
