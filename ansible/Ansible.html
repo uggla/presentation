@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Ansible a tool for Dev/Ops</title>
+		<title>Ansible a tool for DevOps</title>
 
-		<meta name="description" content="Ansible a tool for Dev/Ops">
+		<meta name="description" content="Ansible a tool for DevOps">
 		<meta name="author" content="René Ribaud" >
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/league.css" id="theme">
+		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -34,16 +34,29 @@
 		<![endif]-->
 		
 		<style type="text/css">
-			.iwantitatleft { text-align: left; }
-			.reveal ul { font-size: 0.9em; text-align: left; }
-			.lots_of_items ul { font-size: 0.7em; text-align: left; }
-			.lots_of_items h3 { font-size: 0.7em; }
-			.lots_of_items h4 { font-size: 0.6em; }
-			.lots_of_items code { font-size: 0.7em; }
-			.reveal pre code { max-height: 540px; }
-			.left_pic { position: relative; float: left; width:50%; top: 30px; }
-			.left_text { position: relative; float: left; width:50%; }
-			.right_text { width:50%; text-align: left; float: right; }
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.6em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.6em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.6em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 30px; }
+		.right_pic { position: relative; float: right; width:50%; top: 30px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		/*
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:18px; }
+		.reveal section img { border: none; box-shadow: none; }
 		</style>
 	</head>
 
@@ -55,7 +68,7 @@
 			<div class="slides">
 				<section>
 					<h1>Ansible</h1>
-					<h3>A tool for Dev/Ops</h3>
+					<h3>A tool for DevOps</h3>
 					<img src="images/Ansible_logo.png" alt="ansible_logo" width="40%">
 				</section>
 
@@ -65,7 +78,7 @@
 					<ul>
 					<li>Objectives</li>
 					<ul>
-					<li>Present Ansible, a popular tool used in Dev/Ops context</li>
+					<li>Present Ansible, a popular tool used in DevOps context</li>
 					<li>The needs to automate tasks across distributed systems<br>Typical needs</li>
 					<li>Ansible use cases for managing Openstack</li>
 					</ul>
