@@ -25,14 +25,14 @@
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
+			<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-		
+
 		<style type="text/css">
 		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
 		.iwantitatleft { text-align: left; }
@@ -41,11 +41,19 @@
 		.lots_of_items h3 { font-size: 0.6em; }
 		.lots_of_items h4 { font-size: 0.6em; }
 		.lots_of_items code { font-size: 0.6em; }
+		.lots_of_items2 ul { font-size: 0.56em; text-align: left; }
+		.lots_of_items2 h3 { font-size: 0.6em; }
+		.lots_of_items2 h4 { font-size: 0.6em; }
+		.lots_of_items2 code { font-size: 0.6em; }
 		.reveal pre code { max-height: 100%; }
 		.left_pic { position: relative; float: left; width:50%; top: 30px; }
 		.right_pic { position: relative; float: right; width:50%; top: 30px; }
-		.left_text { position: relative; float: left; width:50%; text-align: left; }
-		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+		.left_text { position: relative; float: left; width:48%; text-align: left; }
+		.right_text { width:48%; text-align: left; float: right; text-align: left; }
+		.left_pic2 { position: relative; float: left; width:50%; top: 0px; }
+		.right_pic2 { position: relative; float: right; width:50%; top: 0px; }
+		.left_text2 { position: relative; float: left; width:50%; text-align: left; top: 15px; }
+		.right_text2 { width:50%; text-align: left; float: right; text-align: left; top: 15px;}
     .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
 		.reveal h4 { text-transform: none;}
 		.reveal h3 { text-transform: none;}
@@ -61,7 +69,6 @@
 	</head>
 
 	<body>
-
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -74,7 +81,7 @@
 
 				<section>
 					<h2>Session objectives</h2>
-					<div class="iwantitatleft">			
+					<div class="iwantitatleft">
 					<ul>
 					<li>Objectives</li>
 					<ul>
@@ -87,7 +94,7 @@
 
 				<section>
 					<h2>What is Ansible</h2>
-					<img src="images/what.png" alt="what is ansible" width="30%">				
+					<img src="images/what.png" alt="what is ansible" width="30%">
 				</section>
 
 				<section>
@@ -95,13 +102,13 @@
 					<ul>
 					<li>Ansible is a free software platform for configuring and managing computers.</li>
 					<li>The platform was created by Michael DeHaan, he is the Cobbler author as well.</li>
-					</ul>				
+					</ul>
 				</section>
 
 
 				<section>
 					<h2>The need for automation</h2>
-					<img src="images/gears.jpeg" alt="gears" width="50%">				
+					<img src="images/gears.jpeg" alt="gears" width="50%">
 				</section>
 
 				<section class="lots_of_items">
@@ -170,11 +177,11 @@
 
 				<section class="lots_of_items">
 					<h2>Ansible Architecture and working model</h2>
-					
+
 					<div class="left_pic">
 					<img src="images/archi.png" alt="archi" width="100%">
 					</div>
-					<div class="right_text">					
+					<div class="right_text">
 					<ul><li>An ‘orchestration engine’
 					where Ansible SW is installed.</li>
 					<li>No agent required. leverage ssh as
@@ -193,7 +200,7 @@
 					<li>And more...</li></ul></ul>
 					</div>
 				</section>
-				
+
 				<section class="lots_of_items">
 					<h2>The inventory</h2>
 					<h3>Where the hosts are registered</h3>
@@ -205,15 +212,15 @@
 					Can also contain some host specific settings.</li>
 					<li>Common practice is to name groups per intended function.</li>
 					</ul></ul>
-					
+
 					<ul><li>Dynamic inventory – hosts and groups from external source
 					via inventory plugin.</li>
-										
+
 					<ul><li>From a CMDB</li>
 					<li>From a cloud provider (e.g: AWS EC2/Eucalyptus, Rackspace Cloud.
 					OpenStack nova, gce, digital ocean ...)</li>
 					<li>Useful when hosts names are hard to predict or when many hosts</li></ul></ul>
-					
+
 					<ul><li>More than one inventory and mix of static and dynamic
 					inventory sources is possible:</li>
 					<ul>
@@ -223,15 +230,15 @@
 					<div class="right_text">
 					<h4>Example of a simple static inventory – no DB needed</h4>
 					<pre><code data-trim contenteditable>
-# This is a comment					
+# This is a comment
 # localhost refers to the ansible control node
 localhost
 [webservers]
 www1.example.com
 www2.example.com
 www[10:50].example.com
-[dbservers]	
-db1.example.com				
+[dbservers]
+db1.example.com
 db[a:f].example.com
 10.0.1.9 ansible_ssh_port=2222 ansible_ssh_user=admin
 [LinuxVMs]
@@ -241,8 +248,8 @@ www21.example.com
 					</code></pre>
 					</div>
 				</section>
-								
-				<section class="lots_of_items">
+
+				<section class="lots_of_items2">
 					<h2>Ansible Playbooks - the plays</h2>
 					<div class="left_text">
 					<h4>A list of plays to run on target hosts</h4>
@@ -262,8 +269,7 @@ www21.example.com
 					(remote_user) to be used to connect to the remote hosts, if
 					sudo is needed, etc</li>
 					</div>
-					
-					<div class="left_text">
+					<div class="right_text">
 				 	<h4>Playbook extract – the first section of a play</h4>
 				 	<pre><code data-trim contenteditable>
 - name: This is the PLAY1 title
@@ -273,17 +279,17 @@ www21.example.com
   sudo: False         # whether to run as sudo or not
   [...skipped part...] # what to run on the targets – skipped
 
-- name: This is the PLAY2 Title 
+- name: This is the PLAY2 Title
   hosts: dbservers:!db1.example.com # exclude a host
   gather_facts: False
   remote_user: admin  # connect as 'admin' account
   sudo: True
   [...skipped part...] # what to run on the targets – skipped
 					</code></pre>
-					</div>				
+					</div>
 				</section>
 
-				<section class="lots_of_items">
+				<section class="lots_of_items2">
 				<h2>Ansible Playbooks – the tasks</h2>
 				<div class="left_text">
 				<h4>What to run on target hosts</h4>
@@ -293,7 +299,7 @@ www21.example.com
 				<li>The tasks are run in order, one at a time, against all the
 				target hosts in parallel, before moving to the next.</li>
 				<li>A task:</li>
-				<ul>				
+				<ul>
 				<li>Has a name : descriptive text</li>
 				<li>Executes a module with specific parameters.</li>
 				<li>Reports status [ok, changed, failed, skipping] at runtime</li>
@@ -307,13 +313,13 @@ www21.example.com
 				<li>Variables and templates leverage jinja2 templating
 				engine</li>
 				</ul>
-				</div>	
+				</div>
 				<div class="right_text">
 				<h4>The ntp simple example</h4>
 				<pre><code data-trim contenteditable>
 - name: Setup ntp client
   hosts: linuxVMs:!localhost # target hosts
-  remote_user: tester # connect as ‘tester’ account 
+  remote_user: tester # connect as ‘tester’ account
   sudo: True # and need sudo capability
   vars:
     - time_sources: [ntp2.austin.hp.com, gpsclock0.sdd.hp.com, ntp1.eds.com]
@@ -324,14 +330,14 @@ www21.example.com
 
     - name: Instantiate the ntp.conf from template file
       template: src=ntp.conf.j2  dest=/etc/ntp.conf
-  notify: 
+  notify:
     - restart time server daemon
     - name: The os are we running on
       debug: msg=“this is a {{ ansible_distribution }} {{ ansible_distribution_version }}”
   handlers:
     - name: restart time server daemon
       service: name=ntpd state=restarted enabled=yes
-				</code></pre>				
+				</code></pre>
 				</div>
 				</section>
 
@@ -357,7 +363,7 @@ www21.example.com
 				<li>Hint: browse the <a href="https://galaxy.ansible.com/explore#/" >Ansible Galaxy</a> roles repository and use
 				the ansible-galaxy cli to get them.</li>
 				<li>Openstack playbooks : <a href="https://github.com/openstack/openstack-ansible" >https://github.com/openstack/openstack-ansible</a></li>
-				</div>	
+				</div>
 				<div class="right_text">
 				<h4>The ntp simple example</h4>
 				<pre><code data-trim contenteditable>
@@ -377,17 +383,15 @@ www21.example.com
 ---------------- the roles/ntplient sub directory content ------
 roles/ntpclient
 ├── defaults
-│
-└── main.yml -> content is vars section on previous slide
+├─── main.yml -> content is vars section on previous slide
 ├── handlers
-│
-└── main.yml -> content is the handler section on previous slide
+├─── main.yml -> content is the handler section on previous slide
 ├── tasks
-│
-└── main.yml -> content is the tasks section on previous slide
-└── templates
-└── ntp.conf.j2 -> for the role template files
-				</code></pre>				
+├─── main.yml -> content is the tasks section on previous slide
+├─── templates
+└─── ntp.conf.j2 -> for the role template files
+
+				</code></pre>
 				</div>
 				</section>
 
@@ -418,7 +422,7 @@ roles/ntpclient
 				</ul>
 				<li>Adaptation to openstack by :</li>
 				<ul>
-				<li>Jérome Justet &lt;jerome.justet@hp.com&gt;</li>				
+				<li>Jérome Justet &lt;jerome.justet@hp.com&gt;</li>
 				<li>René Ribaud &lt;rene.ribaud@hp.com&gt;</li>
 				</ul></ul>
 				</section>
@@ -438,14 +442,19 @@ roles/ntpclient
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
-				width: 1024,    
+				center: false,
+				width: 960,
+				height: 700,
 
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
 
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
 
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
-				
-				
+
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
