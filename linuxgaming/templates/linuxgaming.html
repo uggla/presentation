@@ -65,7 +65,9 @@
 		*/
 		.reveal pre { width: 100%; font-size:18px; }
 		.reveal section img { border: none; box-shadow: none; }
+    #table01 { width:100%; font-size: 0.5em;}
     #reddot01 { position:absolute; z-index:+1; top:350px; right:35px;}
+    #reddot02 { position:absolute; z-index:+1; top:260px; right:35px;}
 		</style>
 	</head>
 
@@ -74,22 +76,48 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Linux</h1>
-					<img src="images/teeworlds.jpg" alt="teeworlds.jpg" width="36%">
+        <section>
+          <h1>Linux</h1>
+          <img src="images/teeworlds.jpg" alt="teeworlds.jpg" width="36%">
           <h2>Gaming landscape</h2>
-				</section>
+        </section>
 
-				<section>
-					<h2>2 words about me</h2>
-					<div class="left_text">
+        <section>
+          <h2>2 words about me</h2>
+          <div class="left_text">
             <pre class="bio">
 {% include '_bio.html' %}
             </pre>
-					</div>
-					<div class="left_pic">
-						<img src="images/me.png" alt="me" width="100%">
-					</div>
+          </div>
+          <div class="left_pic">
+            <img src="images/me.png" alt="me" width="100%">
+          </div>
+        </section>
+
+        <section>
+          <h2>Presentation goal</h2>
+          <ul>
+            <li>More often games unavailability was the main reason preventing users to migrate to Linux</li>
+            <li>However in the last years the situation about Linux Gaming improved a lot we can now play a lot of titles using Linux</li>
+            <div class="left_text3">
+              <h3>Give attendees an overview of Linux gaming status and freedom of software bricks involved</h3>
+            </div>
+            <div class="left_pic3">
+              <img src="images/rocketleague.jpg" alt="rocketleague" width="100%">
+            </div>
+        </section>
+
+        <section>
+          <h2>Disclaimer about non free software used</h2>
+          <div class="left_text3">
+            <ul>
+              <li>The goal of this meetup is to use a maximum of free software but unfortunately we will have to make some trade off and also use some proprietary software to have a good experience</li>
+              <li>This is not ideal and not completely aligned with the spirit of this meetup but it may convinced people to discover and switch to Floss</li>
+            </ul>
+          </div>
+          <div class="left_pic3">
+            <img src="images/devilmaycry.jpg" alt="devilmaycry" width="100%">
+          </div>
         </section>
 
         <section>
@@ -97,8 +125,10 @@
           <div class="left_text3">
             <ul>
               <li>The stack is complex</li>
-              <li>It is evolving a lot</li>
-              <li>Next representation are simplified for better understanding</li>
+              <li>It is evolving quite fast</li>
+              <li>Next representations are simplified for <b>better understanding</b></li>
+              <li>This is not exhaustive</li>
+              <li>This is inaccurate and sometimes wrong</li>
             </ul>
           </div>
           <div class="left_pic3">
@@ -107,34 +137,122 @@
         </section>
 
 
-				<section>
-					<h2>Graphics stack overview</h2>
-						<img src="images/graphics_stack.svg" alt="graphics_stack" width="65%">
-				</section>
+        <section>
+          <h2>Linux graphics stack overview</h2>
+          <img src="images/graphics_stack.svg" alt="graphics_stack" width="65%">
+        </section>
 
         <section>
           <h2>Hardware</h2>
           <div class="left_text2">
-            <ul>
-              <li>A command line interpreter</li>
-              <li>A Turing complete language</li>
-              <li>Default shell for most Linux distributions</li>
-              <li>A 30 years old free software project</li>
-            </ul>
+            <table id="table01">
+              <tr>
+                <th>Manufacturer</th>
+                <th>Avail spec</th>
+                <th>HW type</th>
+              </tr>
+              <tr>
+                <td>Intel</td>
+                <td>yes except PowerVR</td>
+                <td>Desktop/Laptop</td>
+              </tr>
+              <tr>
+                <td>Nvidia</td>
+                <td>no except Tegra</td>
+                <td>Desktop/Laptop/Mobile</td/>
+              </tr>
+              <tr>
+                <td>Amd</td>
+                <td>yes</td>
+                <td>Desktop/Laptop</td>
+              </tr>
+              <tr>
+                <td>Broadcom</td>
+                <td>yes</td>
+                <td>Raspberry PI</td>
+              </tr>
+              <tr>
+                <td>Arm</td>
+                <td>no</td>
+                <td>Mobile (Mali)</td>
+              </tr>
+              <tr>
+                <td>Qualcomm</td>
+                <td>no</td>
+                <td>Mobile (Adreno)</td>
+              </tr>
+              <tr>
+                <td>Open Hardware</td>
+                <td>yes</td>
+                <td>Experimental, Dead ?</td>
+              </tr>
+            </table>
           </div>
           <div class="left_pic2">
-						<img src="images/graphics_stack.svg" alt="graphics_stack" width="100%">
-						<img id="reddot01" src="images/reddot.svg" alt="reddot" width="3%">
+            <img src="images/graphics_stack.svg" alt="graphics_stack" width="100%">
+            <img id="reddot01" src="images/reddot.svg" alt="reddot" width="3%">
           </div>
         </section>
 
-				<section>
-					<h1>Thank you</h1>
-					<img src="images/thanks.gif" alt="flag" width="50%">
-					<ul>
+        <section>
+          <h2>Kernel drivers</h2>
+          <div class="left_text2">
+            <table id="table01">
+              <tr>
+                <th>Manufacturer</th>
+                <th>Licence</th>
+                <th>Maintainer</th>
+              </tr>
+              <tr>
+                <td><b>Intel</b></td>
+                <td>Floss</td>
+                <td>Corporate</td>
+              </tr>
+              <tr>
+                <td><b>Amd</b></td>
+                <td>Floss (amdgpu)</td>
+                <td>Corporate</td>
+              </tr>
+              <tr>
+                <td><b>Broadcom</b></td>
+                <td>Floss</td>
+                <td>Community</td>
+              </tr>
+              <tr>
+                <td>Nvidia</td>
+                <td>Floss (nouveau)</td>
+                <td>Community (reverse eng)</td/>
+              </tr>
+              <tr>
+                <td>Nvidia</td>
+                <td>Proprietary (nvidia)</td>
+                <td>Corporate</td/>
+              </tr>
+              <tr>
+                <td>Arm</td>
+                <td>Floss</td>
+                <td>Community (reverse eng) + patched from employees</td>
+              </tr>
+              <tr>
+                <td>Qualcomm</td>
+                <td>Floss</td>
+                <td>Community (reverse eng)</td>
+              </tr>
+            </table>
+          </div>
+          <div class="left_pic2">
+            <img src="images/graphics_stack.svg" alt="graphics_stack" width="100%">
+            <img id="reddot02" src="images/reddot.svg" alt="reddot" width="3%">
+          </div>
+        </section>
+
+        <section>
+          <h1>Thank you</h1>
+          <img src="images/thanks.gif" alt="flag" width="50%">
+          <ul>
             <li>René Ribaud &lt;rene.ribaud@cgi.com&gt;</li>
-					</ul>
-				</section>
+          </ul>
+        </section>
 
 			</div>
 
