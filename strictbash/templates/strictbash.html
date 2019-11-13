@@ -202,6 +202,32 @@
           </ul>
         </section>
 
+        <section>
+          <h2>Declarations</h2>
+          <ul>
+            <li>Immutability</li>
+            <ul>
+              <li>Use <code>declare</code> -r or <code>readonly</code></li>
+              <li>Use uppercase for constants</li>
+            </ul>
+            <li>Variable scope</li>
+            <ul>
+              <li>Use <code>local</code> to restrict visible scope to a function</li>
+              <li><code>local</code> uses the same options as <code>declare</code></li>
+            </ul>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Trap signals</h2>
+          <h3>for proper exit</h3>
+					<pre>
+					<code>
+{% include '_trap.sh' %}
+					</code>
+					</pre>
+        </section>
+
 				<section>
 					<h2>Use [[ ]]</h2>
           <div class="iwantitatleft">
@@ -314,6 +340,21 @@ if [[ ! -f bin/bfg-1.13.0.jar ]]; then
             <img src="images/docker.png" alt="formatter" width="35%">
           </div>
         </section>
+
+				<section>
+					<h2>Ripgrep (rg)</h2>
+					<h3>An application written in Rust</h3>
+					<div class="iwantitatleft">
+						<ul>
+							<li>A grep enhanced</li>
+							<li>Compatible with standard grep</li>
+              <li><b>Search speed is really impressive</b></li>
+              <li>Look also at fd, exa, lsd...</li>
+						</ul>
+					</div>
+					<img src="images/rip.png" alt="rip" width="28%">
+				</section>
+
 
 				<section>
 					<h2>The million dollar Guides !</h2>
