@@ -6,6 +6,12 @@
   [[ "$output" =~ "usage: myscript" ]]
 }
 
+@test "Check option usage uppercase" {
+  run ./myscript.sh -H
+  [[ "$status" -eq 1 ]]
+  [[ "$output" =~ "usage: myscript" ]]
+}
+
 @test "Check no option" {
   run ./myscript.sh
   [[ "$status" -eq 1 ]]
