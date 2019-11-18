@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Synchornize fses
+# Synchronize fses
 # Use this script to migrate fs data to a remote server
 # Parameters:
 # $1: remote server
