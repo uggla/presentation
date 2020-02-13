@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Be kind with your (Dev)Ops</title>
+
+		<meta name="description" content="Be kind with your (Dev)Ops">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+			<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.7em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.7em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.7em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 30px; }
+		.right_pic { position: relative; float: right; width:50%; top: 30px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+		.left_pic2 { position: relative; float: left; width:50%; top: 0px; }
+		.right_pic2 { position: relative; float: right; width:50%; top: 0px; }
+		.left_text2 { position: relative; float: left; width:50%; text-align: left; top: 15px; }
+		.right_text2 { width:50%; text-align: left; float: right; text-align: left; top: 15px;}
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		/*
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:13px; }
+		.reveal section img { border: none; box-shadow: none; }
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section>
+					<h1>Be kind</h1>
+					<h2>with your (Dev)Ops</h2>
+					<img src="images/be_kind.png" alt="be_kind" width="70%">
+          <h3>February 2020</h3>
+				</section>
+
+				<section>
+					<h2>2 words about me</h2>
+					<div class="left_text">
+            <pre class="bio">
+{% include '_bio.html' %}
+            </pre>
+					</div>
+					<div class="left_pic">
+						<img src="images/me.png" alt="me" width="100%">
+					</div>
+        </section>
+
+        <section>
+          <h2>Goal of the presentation</h2>
+          <div class="lots_of_items">
+            <ul>
+              <li>Try to identify development best practices to make (Dev)Ops life better</li>
+              <p>Or less politically correct…</p>
+              <li>Prevent your (Dev)Ops to murder you with a crowbar or any painful tool</li>
+            </ul>
+          </div>
+          <div>
+          <img src="images/joker.jpg" alt="nomagic" width="70%">
+          </div>
+        </section>
+
+				<section>
+					<h2>Several realities</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Code in itself has no value if it is not run !</li>
+							<li>Customer is just wasting money when his service is down</li>
+							<li>It's even worse, he pays for fixing it !</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/reality.png" alt="realities" width="40%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Consequences</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>The faster service is recovered the less it costs</li>
+							<li>Pressure and stress to recover the service</li>
+							<li>Penalties</li>
+							<li>...</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/consequences.jpg" alt="consequencies" width="50%">
+          </div>
+				</section>
+
+        <section>
+          <h2>Quick survey</h2>
+          <h3>Who ?</h3>
+          <!-- <div class="lots_of_items"> -->
+          <div>
+            <ul>
+              <li class="fragment">did some operations ?</li>
+              <li class="fragment">was on duty ?</li>
+              <li class="fragment">more than one time ?</li>
+            </ul>
+          </div>
+          <div>
+            <img src="images/survey.jpg" alt="survey" width="30%">
+          </div>
+        </section>
+
+				<section>
+					<h2>Scenario</h2>
+          <div>
+          <img src="images/yoda.jpg" alt="yoda" width="45%">
+          </div>
+          <div class="lots_of_items">
+						<ul>
+							<li>Production is broken</li>
+							<li>It's 3 o'clock in the morning</li>
+							<li>You have no idea what is going wrong</li>
+							<li>You even don't know the application</li>
+							<li>You may not have the sources</li>
+							<li>You need to debug this mess to recover the service as fast as possible</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Hands on</h2>
+          <div>
+          <img src="images/dirty.jpg" alt="dirty" width="65%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Logs #1</h2>
+					<pre>
+					<code>
+{% include '_log.py' %}
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Logs #2</h2>
+          <div class="lots_of_items">
+            <ul>
+              <li>Always log your intention (prior operation)</li>
+              <li>Exceptions should always log an error or warning</li>
+              <li>Format log with consistency and with a timestamp (UTC)</li>
+              <li><a href="https://www.graylog.fr/gelf/">GELF</a> is a good format with libraries available (docker has a GELF driver)</li>
+              <!-- <ul> -->
+              <!--   <li>host (the creator of the message)</li> -->
+              <!--   <li>timestamp</li> -->
+              <!--   <li>version</li> -->
+              <!--   <li>long and short version of the message</li> -->
+              <!--   <li>other custom fields you can freely configure on your own</li> -->
+              <!-- </ul> -->
+            </ul>
+					</div>
+          <div>
+            <img src="images/darthvader.jpg" alt="darthvader" width="60%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Do not mask exceptions</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Do not use bare expect (python)</li>
+							<li>Do not use catch(Exception e) prefer exception type or manage type in the catch block (Java)</li>
+							<li>Provide maximum context of the exception</li>
+							<li>Manage the exception at that level (hotpoteto syndrome) </li>
+              <li>Ref, François Teychene: <a href="https://t.co/BbrdiYUHGc?amp=1">Design of the error</a></li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Sebulba.jpg" alt="Sebulba" width="35%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Logs</h2>
+          <div>
+          <img src="images/yoda.jpg" alt="sar" width="45%">
+          </div>
+          <div class="lots_of_items">
+						<ul>
+							<li>Production is broken</li>
+							<li>It's 3 o'clock in the morning</li>
+							<li>You have no idea what is going wrong</li>
+							<li>You even don't know the application</li>
+							<li>You may not have the sources</li>
+							<li>You need to debug this mess to recover the service as fast as possible</li>
+						</ul>
+					</div>
+				</section>
+        <!-- <section> -->
+        <!--   <h3>Why should Bash usage not be underestimated ?</h3> -->
+        <!--   <div class="iwantitatleft"> -->
+        <!--     <ul> -->
+        <!--       <li>Bash is everywhere !</li> -->
+        <!--       <ul> -->
+        <!--         <li>In application startup scripts</li> -->
+        <!--         <li>In Docker images (entrypoint)</li> -->
+        <!--         <li>In CI/CD</li> -->
+        <!--         <li>...</li> -->
+        <!--       </ul> -->
+        <!--       <li>Bash is running critical stuffs !</li> -->
+        <!--       <ul> -->
+        <!--         <li>Managing the system</li> -->
+        <!--         <li>Monitoring / backups</li> -->
+        <!--         <li>Packaging artifacts</li> -->
+        <!--         <li>Checking file integrity and signature</li> -->
+        <!--         <li>...</li> -->
+        <!--       </ul> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   So why are bash scripts not written with the same discipline as other languages ? -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Pitfall #1</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Pitfall #2</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>How to prevent such pitfalls ?</h2> -->
+					<!-- <img src="images/pitfall.jpg" alt="pitfall" width="75%"> -->
+					<!-- <h2>How to make shell scripts more reliable ?</h2> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Bash strict mode</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!--   <div class="lots_of_items"> -->
+        <!--   <ul> -->
+        <!--     <li><span style="color: #e43717";>Shebang</span> to not hardcode bash path and use the one specified in PATH</li> -->
+        <!--     <li><span style="color: #e43717";>-e</span> immediately exit if any command has a non-zero exit</li> -->
+        <!--     <li><span style="color: #e43717";>-u</span> requires variables to be defined</li> -->
+        <!--     <li><span style="color: #e43717";>-o pipefail</span> if any command in a pipeline fails, that return code will be used as the return code of the whole pipeline</li> -->
+        <!--     <li><span style="color: #e43717";>IFS</span> Internal Filed Separator set to tab and carriage return</li> -->
+        <!--   </ul> -->
+        <!--   </div> -->
+        <!--   <h4><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">http://redsymbol.net/articles/unofficial-bash-strict-mode/</a></h4> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Shell style guide from Google</h2> -->
+					<!-- <img src="images/googleguide.png" alt="googleguide" width="100%"> -->
+        <!--   <h4><a href="https://google.github.io/styleguide/shell.xml">https://google.github.io/styleguide/shell.xml</a></h4> -->
+				<!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>When to not use a shell script</h2> -->
+        <!--   <img src="images/batman-slap-robin.png" alt="batman-slap-robin" width="75%"> -->
+        <!--   <ul> -->
+        <!--     <li>Performance needs</li> -->
+        <!--     <li><b>Complex data structures</b></li> -->
+        <!--   </ul> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Declarations</h2> -->
+        <!--   <ul> -->
+        <!--     <li>Immutability</li> -->
+        <!--     <ul> -->
+        <!--       <li>Use <code>declare</code> -r or <code>readonly</code></li> -->
+        <!--       <li>Use uppercase for constants</li> -->
+        <!--     </ul> -->
+        <!--     <li>Variable scope</li> -->
+        <!--     <ul> -->
+        <!--       <li>Use <code>local</code> to restrict visible scope to a function</li> -->
+        <!--       <li><code>local</code> uses the same options as <code>declare</code></li> -->
+        <!--     </ul> -->
+        <!--   </ul> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Trap signals</h2> -->
+        <!--   <h3>for proper exit</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Use [[ ]]</h2> -->
+        <!--   <div class="iwantitatleft"> -->
+        <!--     <ul> -->
+        <!--       <li>Replace and enhanced test</li> -->
+        <!--       <li>Bash builtin (not a spawn process)</li> -->
+        <!--       <li>Allow regexp using <b>=~</b></li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+<!-- if [[ ! -f bin/bfg-1.13.0.jar ]]; then -->
+					<!-- </code> -->
+					<!-- </pre> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+<!-- [[ "$output" =~ "DiG" ]] -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Function naming</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+        <!--       <li>Use explicit naming to "auto document" code</li> -->
+        <!--       <li>Snake case is recommended</li> -->
+        <!--       <li>Do not use the function keyword</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/NamingConventions.png" alt="NamingConventions" width="75%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h3>Always use functions and a main for complex scripts</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Productivity tools</h2> -->
+					<!-- <img src="images/productivity_tools.png" alt="productivity_tools" width="75%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Linter: Shellcheck</h2> -->
+					<!-- <h3>A shell script static analysis tool</h3> -->
+					<!-- <img src="images/shellcheck.png" alt="shellcheck" width="75%"> -->
+						<!-- <ul> -->
+        <!--       <li>Really, really help writing shells ! 💎 🤩</li> -->
+							<!-- <li>Can be plugged into editors</li> -->
+						<!-- </ul> -->
+        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></h4> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Formatter: shfmt</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li>Format code no headache ! 🔨</li> -->
+							<!-- <li>Can be configured to respect Google guide using '-i 2 -ci'</li> -->
+							<!-- <li>Can be plugged into editors</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/formatter.jpg" alt="formatter" width="50%"> -->
+        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/mvdan/sh#shfmt</a></h4> -->
+				<!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Unit test: Bats</h2> -->
+        <!--   <h3>Bash Automated Testing System</h3> -->
+        <!--   <div class="left_text2"> -->
+        <!--     <ul> -->
+        <!--       <li>TAP compliant testing framework (Jenkins plugin)</li> -->
+        <!--       <li>Run and skip helper function to control test execution</li> -->
+        <!--       <li>Setup, teardown helper functions to manage pre and post test scripts</li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   <div class="left_pic2"> -->
+        <!--     <img src="images/strip1.jpg" alt="formatter" width="85%"> -->
+        <!--   </div> -->
+        <!--   <h4><a href="https://github.com/sstephenson/bats#bats-bash-automated-testing-system">https://github.com/sstephenson/bats#bats-bash-automated-testing-system</a></h4> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Bats</h2> -->
+        <!--   <h3>Examples</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Test sandbox: Vagrant or Docker</h2> -->
+        <!--   <div class="left_text2"> -->
+        <!--     <ul> -->
+        <!--       <li>Bash can be tested against a fresh minimal installation</li> -->
+        <!--       <li>Help reproduce cases</li> -->
+        <!--       <li>CI/CD with Travis CI + Docker for open source projects</li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   <div class="left_pic2"> -->
+        <!--     <img src="images/vagrant.png" alt="formatter" width="25%"> -->
+        <!--     <br/> -->
+        <!--     <img src="images/docker.png" alt="formatter" width="35%"> -->
+        <!--   </div> -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>GNU parallel</h2> -->
+					<!-- <h3>A tool to simplify executing job in parallel</h3> -->
+					<!-- <img src="images/parallel.png" alt="rip" width="28%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Ripgrep (rg)</h2> -->
+					<!-- <h3>An application written in Rust</h3> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li>A grep enhanced</li> -->
+							<!-- <li>Compatible with standard grep</li> -->
+        <!--       <li><b>Search speed is really impressive</b></li> -->
+        <!--       <li>Look also at fd, exa, lsd...</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/rip.png" alt="rip" width="28%"> -->
+				<!-- </section> -->
+
+
+				<!-- <section> -->
+					<!-- <h2>The million dollar Guides !</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li><a href="http://tldp.org/LDP/abs/html">Advanced Bash-Scripting Guide</a></li> -->
+							<!-- <li><a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a></li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+        <!--     <img src="images/million_dollar.jpg" alt="million_dollar" width="85%"> -->
+				<!-- </section> -->
+
+
+				<section>
+					<h1>Thank you</h1>
+					<img src="images/thanks.gif" alt="flag" width="47%">
+            <h3>René Ribaud &lt;rene.ribaud@cgi.com&gt;</h3>
+            <!-- <h4>🎬 Source: https://github.com/uggla/presentation/tree/agile2019/strictbash</h4> -->
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				width: 960,
+				height: 700,
+
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
