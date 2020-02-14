@@ -207,7 +207,7 @@
           <div class="lots_of_items">
 						<ul>
 							<li>Do not use bare expect (python)</li>
-							<li>Do not use catch(Exception e) prefer exception type or manage type in the catch block (Java)</li>
+							<li>Do not use catch(Exception e) prefer exception type or manage type in the catch block (java)</li>
 							<li>Provide maximum context of the exception</li>
 							<li>Manage the exception at that level (hotpoteto syndrome) </li>
               <li>Ref, François Teychene: <a href="https://t.co/BbrdiYUHGc?amp=1">Design of the error</a></li>
@@ -219,268 +219,189 @@
 				</section>
 
 				<section>
-					<h2>Logs</h2>
-          <div>
-          <img src="images/yoda.jpg" alt="sar" width="45%">
-          </div>
+					<h2>Jar manifest</h2>
+					<pre>
+					<code>
+          ENV DAL_APP_MAINCLASS="com.se.pim.dal.dataacquisition.DataAcquisitionApp"
+          java -Xmx4096m -Xms512m $YK_DEBUG_OPTION -cp "$DAL_DIR/conf/..." $DAL_APP_MAINCLASS
+					</code>
+					</pre>
           <div class="lots_of_items">
 						<ul>
-							<li>Production is broken</li>
-							<li>It's 3 o'clock in the morning</li>
-							<li>You have no idea what is going wrong</li>
-							<li>You even don't know the application</li>
-							<li>You may not have the sources</li>
-							<li>You need to debug this mess to recover the service as fast as possible</li>
+							<li>If you don't know the entry class, you are 🖕</li>
+							<li>Do not provide jar without manifest</li>
+							<li>Why there is not a defined standard entry point in Java ? It's for psychopath 🥴</li>
 						</ul>
 					</div>
+          <div>
+          <img src="images/emperor.webp" alt="emperor" width="40%">
+          </div>
 				</section>
-        <!-- <section> -->
-        <!--   <h3>Why should Bash usage not be underestimated ?</h3> -->
-        <!--   <div class="iwantitatleft"> -->
-        <!--     <ul> -->
-        <!--       <li>Bash is everywhere !</li> -->
-        <!--       <ul> -->
-        <!--         <li>In application startup scripts</li> -->
-        <!--         <li>In Docker images (entrypoint)</li> -->
-        <!--         <li>In CI/CD</li> -->
-        <!--         <li>...</li> -->
-        <!--       </ul> -->
-        <!--       <li>Bash is running critical stuffs !</li> -->
-        <!--       <ul> -->
-        <!--         <li>Managing the system</li> -->
-        <!--         <li>Monitoring / backups</li> -->
-        <!--         <li>Packaging artifacts</li> -->
-        <!--         <li>Checking file integrity and signature</li> -->
-        <!--         <li>...</li> -->
-        <!--       </ul> -->
-        <!--     </ul> -->
-        <!--   </div> -->
-        <!--   So why are bash scripts not written with the same discipline as other languages ? -->
-        <!-- </section> -->
 
-				<!-- <section> -->
-					<!-- <h2>Pitfall #1</h2> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-				<!-- </section> -->
+				<section>
+					<h2>Spawning processes</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Log the command that will be run</li>
+							<li>Check the error level of a spawning process 🔪🔫💀💀</li>
+							<li>Manage the exception if it fails</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/jaba.jpg" alt="jaba" width="60%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>Pitfall #2</h2> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-				<!-- </section> -->
+				<section>
+					<h2>Configuration files</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Try to have only one configuration file</li>
+							<li>Insert comments and examples about variables (env var, value units)</li>
+							<li>Set a log about the variable you want to read and throw an exception if not available (no null pointer exception is not fine !)</li>
+							<li>Provide an example template file specifying variables</li>
+							<li>Do not put configuration files in S3 that's a bad idea, KIS</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/grevious.jpg" alt="grevious" width="65%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>How to prevent such pitfalls ?</h2> -->
-					<!-- <img src="images/pitfall.jpg" alt="pitfall" width="75%"> -->
-					<!-- <h2>How to make shell scripts more reliable ?</h2> -->
-				<!-- </section> -->
+				<section>
+					<h2>Environment variables and parameters</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Check env variable or parameters at the beginning of the program</li>
+							<li>Do not run the program with environment or parameters unchecked and later explode at runtime 💣</li>
+							<li>Set a log about the variable you want to read and throw an exception if not available (no null pointer exception is not fine !)</li>
+							<li>Provide an example template or readme file specifying variables</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/doku.jpg" alt="doku" width="65%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>Bash strict mode</h2> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-        <!--   <div class="lots_of_items"> -->
-        <!--   <ul> -->
-        <!--     <li><span style="color: #e43717";>Shebang</span> to not hardcode bash path and use the one specified in PATH</li> -->
-        <!--     <li><span style="color: #e43717";>-e</span> immediately exit if any command has a non-zero exit</li> -->
-        <!--     <li><span style="color: #e43717";>-u</span> requires variables to be defined</li> -->
-        <!--     <li><span style="color: #e43717";>-o pipefail</span> if any command in a pipeline fails, that return code will be used as the return code of the whole pipeline</li> -->
-        <!--     <li><span style="color: #e43717";>IFS</span> Internal Filed Separator set to tab and carriage return</li> -->
-        <!--   </ul> -->
-        <!--   </div> -->
-        <!--   <h4><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">http://redsymbol.net/articles/unofficial-bash-strict-mode/</a></h4> -->
-				<!-- </section> -->
+				<section>
+          <h2>Sumup of 2 previous slide<h2>
+          <h3>  Check application initial state</h3>
+          <div class="lots_of_items">
+						<ul>
+							<li>Check that all you need is defined at the beginning of the program</li>
+							<li>Log info about what is required or info about configuration options (e.g: Endpoint: http://..., Use env variable DB_URL to overwrite endpoint)</li>
+              <li>Break and exit the program <b>with a system errorlevel</b> if something is undefined</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/darthmaul.jpg" alt="darthmaul" width="52%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>Shell style guide from Google</h2> -->
-					<!-- <img src="images/googleguide.png" alt="googleguide" width="100%"> -->
-        <!--   <h4><a href="https://google.github.io/styleguide/shell.xml">https://google.github.io/styleguide/shell.xml</a></h4> -->
-				<!-- </section> -->
+				<section>
+					<h2>System limits</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Always think that there is physical limits</li>
+							<li>Latency in network, localhost != 100km 🧟</li>
+							<li>File systems have max number of inodes</li>
+							<li>Without touching max number of inodes, small files are a mess !</li>
+							<li>Structure file repositories, do not drop millions of files in one directory 😱</li>
+							<li>Good practices: Everything should be limited in space and time (e.g. api calls, limit process memory and cpu...) 🧱</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Crumb.jpg" alt="Crumb" width="32%">
+          </div>
+				</section>
 
-        <!-- <section> -->
-        <!--   <h2>When to not use a shell script</h2> -->
-        <!--   <img src="images/batman-slap-robin.png" alt="batman-slap-robin" width="75%"> -->
-        <!--   <ul> -->
-        <!--     <li>Performance needs</li> -->
-        <!--     <li><b>Complex data structures</b></li> -->
-        <!--   </ul> -->
-        <!-- </section> -->
+				<section>
+          <h2>Application that run silently despite a major failure</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>If it is a service, rise periodic errors if something is not ok</li>
+							<li>Or exit the application</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Greedo.jpg" alt="Greedo" width="35%">
+          </div>
+				</section>
 
-        <!-- <section> -->
-        <!--   <h2>Declarations</h2> -->
-        <!--   <ul> -->
-        <!--     <li>Immutability</li> -->
-        <!--     <ul> -->
-        <!--       <li>Use <code>declare</code> -r or <code>readonly</code></li> -->
-        <!--       <li>Use uppercase for constants</li> -->
-        <!--     </ul> -->
-        <!--     <li>Variable scope</li> -->
-        <!--     <ul> -->
-        <!--       <li>Use <code>local</code> to restrict visible scope to a function</li> -->
-        <!--       <li><code>local</code> uses the same options as <code>declare</code></li> -->
-        <!--     </ul> -->
-        <!--   </ul> -->
-        <!-- </section> -->
+				<section>
+					<h2>Application that do not build</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Application must build out of the box within default/customer environment</li>
+							<li>That's a basic of Floss project, should be a basic as well for a customer application !</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Firmus.jpg" alt="Firmus" width="40%">
+          </div>
+				</section>
 
-        <!-- <section> -->
-        <!--   <h2>Trap signals</h2> -->
-        <!--   <h3>for proper exit</h3> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-        <!-- </section> -->
+				<section>
+					<h2>Unix standard tree not respected</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Respect Linux filesystem structure usage</li>
+              <li><a href="http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html">http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html</a></li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Ponda.jpg" alt="Ponda" width="45%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>Use [[ ]]</h2> -->
-        <!--   <div class="iwantitatleft"> -->
-        <!--     <ul> -->
-        <!--       <li>Replace and enhanced test</li> -->
-        <!--       <li>Bash builtin (not a spawn process)</li> -->
-        <!--       <li>Allow regexp using <b>=~</b></li> -->
-        <!--     </ul> -->
-        <!--   </div> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-<!-- if [[ ! -f bin/bfg-1.13.0.jar ]]; then -->
-					<!-- </code> -->
-					<!-- </pre> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-<!-- [[ "$output" =~ "DiG" ]] -->
-					<!-- </code> -->
-					<!-- </pre> -->
-				<!-- </section> -->
+				<section>
+					<h2>Script that cannot be run from anywhere</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Write Bash script that can be run from anywhere</li>
+						</ul>
+					</div>
+          <div class="left_text">
+					<pre>
+					<code>
+{% include '_update_module.sh' %}
+					</code>
+					</pre>
+					</div>
+          <div class="right_pic">
+          <img src="images/kylo.jpg" alt="kylo" width="100%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h2>Function naming</h2> -->
-					<!-- <div class="iwantitatleft"> -->
-						<!-- <ul> -->
-        <!--       <li>Use explicit naming to "auto document" code</li> -->
-        <!--       <li>Snake case is recommended</li> -->
-        <!--       <li>Do not use the function keyword</li> -->
-						<!-- </ul> -->
-					<!-- </div> -->
-					<!-- <img src="images/NamingConventions.png" alt="NamingConventions" width="75%"> -->
-				<!-- </section> -->
+				<section>
+					<h2>Overwrite system files / do not use distribution packages</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Avoid binaries not distributed with a package or docker image</li>
+							<li>But if you do it, at least place it under a /*/local directory</li>
+							<li>Do not overwrite binaries coming from the system (e.g. openssl) 🤒</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/Tarkin.jpg" alt="Tarkin" width="35%">
+          </div>
+				</section>
 
-				<!-- <section> -->
-					<!-- <h3>Always use functions and a main for complex scripts</h3> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-				<!-- </section> -->
-
-				<!-- <section> -->
-					<!-- <h2>Productivity tools</h2> -->
-					<!-- <img src="images/productivity_tools.png" alt="productivity_tools" width="75%"> -->
-				<!-- </section> -->
-
-				<!-- <section> -->
-					<!-- <h2>Linter: Shellcheck</h2> -->
-					<!-- <h3>A shell script static analysis tool</h3> -->
-					<!-- <img src="images/shellcheck.png" alt="shellcheck" width="75%"> -->
-						<!-- <ul> -->
-        <!--       <li>Really, really help writing shells ! 💎 🤩</li> -->
-							<!-- <li>Can be plugged into editors</li> -->
-						<!-- </ul> -->
-        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></h4> -->
-				<!-- </section> -->
-
-				<!-- <section> -->
-					<!-- <h2>Formatter: shfmt</h2> -->
-					<!-- <div class="iwantitatleft"> -->
-						<!-- <ul> -->
-							<!-- <li>Format code no headache ! 🔨</li> -->
-							<!-- <li>Can be configured to respect Google guide using '-i 2 -ci'</li> -->
-							<!-- <li>Can be plugged into editors</li> -->
-						<!-- </ul> -->
-					<!-- </div> -->
-					<!-- <img src="images/formatter.jpg" alt="formatter" width="50%"> -->
-        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/mvdan/sh#shfmt</a></h4> -->
-				<!-- </section> -->
-
-        <!-- <section> -->
-        <!--   <h2>Unit test: Bats</h2> -->
-        <!--   <h3>Bash Automated Testing System</h3> -->
-        <!--   <div class="left_text2"> -->
-        <!--     <ul> -->
-        <!--       <li>TAP compliant testing framework (Jenkins plugin)</li> -->
-        <!--       <li>Run and skip helper function to control test execution</li> -->
-        <!--       <li>Setup, teardown helper functions to manage pre and post test scripts</li> -->
-        <!--     </ul> -->
-        <!--   </div> -->
-        <!--   <div class="left_pic2"> -->
-        <!--     <img src="images/strip1.jpg" alt="formatter" width="85%"> -->
-        <!--   </div> -->
-        <!--   <h4><a href="https://github.com/sstephenson/bats#bats-bash-automated-testing-system">https://github.com/sstephenson/bats#bats-bash-automated-testing-system</a></h4> -->
-        <!-- </section> -->
-
-        <!-- <section> -->
-        <!--   <h2>Bats</h2> -->
-        <!--   <h3>Examples</h3> -->
-					<!-- <pre> -->
-					<!-- <code> -->
-					<!-- </code> -->
-					<!-- </pre> -->
-        <!-- </section> -->
-
-        <!-- <section> -->
-        <!--   <h2>Test sandbox: Vagrant or Docker</h2> -->
-        <!--   <div class="left_text2"> -->
-        <!--     <ul> -->
-        <!--       <li>Bash can be tested against a fresh minimal installation</li> -->
-        <!--       <li>Help reproduce cases</li> -->
-        <!--       <li>CI/CD with Travis CI + Docker for open source projects</li> -->
-        <!--     </ul> -->
-        <!--   </div> -->
-        <!--   <div class="left_pic2"> -->
-        <!--     <img src="images/vagrant.png" alt="formatter" width="25%"> -->
-        <!--     <br/> -->
-        <!--     <img src="images/docker.png" alt="formatter" width="35%"> -->
-        <!--   </div> -->
-        <!-- </section> -->
-
-				<!-- <section> -->
-					<!-- <h2>GNU parallel</h2> -->
-					<!-- <h3>A tool to simplify executing job in parallel</h3> -->
-					<!-- <img src="images/parallel.png" alt="rip" width="28%"> -->
-				<!-- </section> -->
-
-				<!-- <section> -->
-					<!-- <h2>Ripgrep (rg)</h2> -->
-					<!-- <h3>An application written in Rust</h3> -->
-					<!-- <div class="iwantitatleft"> -->
-						<!-- <ul> -->
-							<!-- <li>A grep enhanced</li> -->
-							<!-- <li>Compatible with standard grep</li> -->
-        <!--       <li><b>Search speed is really impressive</b></li> -->
-        <!--       <li>Look also at fd, exa, lsd...</li> -->
-						<!-- </ul> -->
-					<!-- </div> -->
-					<!-- <img src="images/rip.png" alt="rip" width="28%"> -->
-				<!-- </section> -->
-
-
-				<!-- <section> -->
-					<!-- <h2>The million dollar Guides !</h2> -->
-					<!-- <div class="iwantitatleft"> -->
-						<!-- <ul> -->
-							<!-- <li><a href="http://tldp.org/LDP/abs/html">Advanced Bash-Scripting Guide</a></li> -->
-							<!-- <li><a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a></li> -->
-						<!-- </ul> -->
-					<!-- </div> -->
-        <!--     <img src="images/million_dollar.jpg" alt="million_dollar" width="85%"> -->
-				<!-- </section> -->
-
+				<section>
+					<h2>Encoding issue / Time issue</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Use UTF-8 not the 🤮 Windows-125x code page</li>
+							<li>Convert using iconv</li>
+							<li>Use UTC time everywhere and only convert to local time in order to display it</li>
+							<li>Use standard ISO format to share date/time</li>
+              <li><code>date -Iseconds</code> iso-8601 --> 2020-02-14T02:25:14+01:00</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/boba.jpg" alt="boba" width="60%">
+          </div>
+				</section>
 
 				<section>
 					<h1>Thank you</h1>
