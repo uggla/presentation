@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Linux debugging tools</title>
+
+		<meta name="description" content="Linux debugging tools">
+		<meta name="author" content="René Ribaud" >
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+			<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
+		.iwantitatleft { text-align: left; }
+		.reveal ul { font-size: 0.9em; text-align: left; }
+		.lots_of_items ul { font-size: 0.7em; text-align: left; }
+		.lots_of_items h3 { font-size: 0.7em; }
+		.lots_of_items h4 { font-size: 0.6em; }
+		.lots_of_items code { font-size: 0.7em; }
+		.reveal pre code { max-height: 100%; }
+		.left_pic { position: relative; float: left; width:50%; top: 30px; }
+		.right_pic { position: relative; float: right; width:50%; top: 30px; }
+		.left_text { position: relative; float: left; width:50%; text-align: left; }
+		.right_text { width:50%; text-align: left; float: right; text-align: left; }
+		.left_pic2 { position: relative; float: left; width:50%; top: 0px; }
+		.right_pic2 { position: relative; float: right; width:50%; top: 0px; }
+		.left_text2 { position: relative; float: left; width:50%; text-align: left; top: 15px; }
+		.right_text2 { width:50%; text-align: left; float: right; text-align: left; top: 15px;}
+    .skill-list li { font-size: 1.5rem; margin-top: 1rem; }
+		.reveal h4 { text-transform: none;}
+		.reveal h3 { text-transform: none;}
+		.reveal h2 { text-transform: none;}
+		/*
+		.reveal a { color: #007DBA; }
+		.reveal h2 b { color: #0096D6; }
+		.reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+		*/
+		.reveal pre { width: 100%; font-size:18px; }
+		.reveal section img { border: none; box-shadow: none; }
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section>
+					<h1>Linux</h1>
+          <h3>debugging tools</h3>
+					<img src="images/debugging.jpg" alt="debugging" width="50%">
+          <h3>January 2020</h3>
+				</section>
+
+				<section>
+					<h2>2 words about me</h2>
+					<div class="left_text">
+            <pre class="bio">
+{% include '_bio.html' %}
+            </pre>
+					</div>
+					<div class="left_pic">
+						<img src="images/me.png" alt="me" width="100%">
+					</div>
+        </section>
+
+        <section>
+          <h2>Why this presentation</h2>
+          <div class="left_text2">
+            <p>Giving an overview of debugging tools on Linux, that could help to understand what is happening from the system point of view</p>
+          </div>
+          <div class="left_pic2">
+            <img src="images/debugging2.jpg" alt="debugging2" width="75%">
+          </div>
+        </section>
+
+        <section>
+          <h2>State of mind</h2>
+          <h3>For efficient debugging</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>Trust in yourself !</li>
+              <li>Be persistent, don't give up !</li>
+              <li>Always think that there is a logical reason, no magical tricks</li>
+              <li>Regularly take distance from the issue</li>
+              <li>Try to track your progress writing actions and results</li>
+            </ul>
+          </div>
+          <div>
+          <img src="images/nomagic.png" alt="nomagic" width="25%">
+          </div>
+        </section>
+
+				<section>
+					<h2>dstat</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Give an overview of main system settings every seconds</li>
+							<li>Allow to see live number of sockets, fs openfiles, so control limits</li>
+							<li>Extensible with plugins (battery, battery-remain, cpufreq, dbus...)</li>
+							<li>⚠️ Sometimes difficult to interpret metrics because of no metric definition</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/dstat.png" alt="dstat" width="92%">
+          </div>
+          <h4><a href="http://dag.wiee.rs/home-made/dstat">http://dag.wiee.rs/home-made/dstat</a></h4>
+				</section>
+
+				<section>
+					<h2>sar</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Similar to dstat</li>
+							<li>Metric history with sa1/sa2 into /var/log/sa</li>
+							<li>Available through package sysstat</li>
+							<li>sa1/sa2 executed by cron/systemd</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/sar.png" alt="sar" width="98%">
+          </div>
+          <h4><a href="http://sebastien.godard.pagesperso-orange.fr/">http://sebastien.godard.pagesperso-orange.fr/</a></h4>
+				</section>
+
+				<section>
+					<h2>lsof</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Allow to see which files (regular, socket...) are used by a process</li>
+							<li>Can find unlink files with `lsof +L1`</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/lsof.png" alt="lsof" width="98%">
+          </div>
+				</section>
+
+				<section>
+					<h2>netcat</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Allow to start a basic client / server over the network</li>
+							<li>This is useful to ensure a connection is not filtered</li>
+							<li>sshd could be an alternative</li>
+							<li>You can use netcat to raw query an http server</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/netcat.png" alt="sar" width="98%">
+          </div>
+				</section>
+
+				<section>
+					<h2>netstat / ss</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Show network connections</li>
+							<li>Show listening services, ports and process</li>
+						</ul>
+					</div>
+          <div>
+          <img src="images/netstat.png" alt="sar" width="98%">
+          </div>
+				</section>
+
+				<section>
+					<h2>Tcpdump / Wireshark</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Show network traffic</li>
+							<li>Bpf filters can be applied to specify traffic</li>
+							<li>Do not jump to tcpdump without checking network basics first</li>
+							<li>Draw a network schema</li>
+						</ul>
+					</div>
+          <!-- <div> -->
+          <!-- <img src="images/sar.png" alt="sar" width="98%"> -->
+          <!-- </div> -->
+          <!-- <h4><a href="http://sebastien.godard.pagesperso-orange.fr/">http://sebastien.godard.pagesperso-orange.fr/</a></h4> -->
+				</section>
+
+				<section>
+					<h2>ngrep</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Grep for network traffic</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>strace</h2>
+          <div class="lots_of_items">
+						<ul>
+							<li>Allow to spy on system calls</li>
+						</ul>
+					</div>
+          <!-- <div> -->
+          <!-- <img src="images/sar.png" alt="sar" width="98%"> -->
+          <!-- </div> -->
+				</section>
+
+        <!-- <section> -->
+        <!--   <h3>Why should Bash usage not be underestimated ?</h3> -->
+        <!--   <div class="iwantitatleft"> -->
+        <!--     <ul> -->
+        <!--       <li>Bash is everywhere !</li> -->
+        <!--       <ul> -->
+        <!--         <li>In application startup scripts</li> -->
+        <!--         <li>In Docker images (entrypoint)</li> -->
+        <!--         <li>In CI/CD</li> -->
+        <!--         <li>...</li> -->
+        <!--       </ul> -->
+        <!--       <li>Bash is running critical stuffs !</li> -->
+        <!--       <ul> -->
+        <!--         <li>Managing the system</li> -->
+        <!--         <li>Monitoring / backups</li> -->
+        <!--         <li>Packaging artifacts</li> -->
+        <!--         <li>Checking file integrity and signature</li> -->
+        <!--         <li>...</li> -->
+        <!--       </ul> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   So why are bash scripts not written with the same discipline as other languages ? -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Pitfall #1</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Pitfall #2</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>How to prevent such pitfalls ?</h2> -->
+					<!-- <img src="images/pitfall.jpg" alt="pitfall" width="75%"> -->
+					<!-- <h2>How to make shell scripts more reliable ?</h2> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Bash strict mode</h2> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!--   <div class="lots_of_items"> -->
+        <!--   <ul> -->
+        <!--     <li><span style="color: #e43717";>Shebang</span> to not hardcode bash path and use the one specified in PATH</li> -->
+        <!--     <li><span style="color: #e43717";>-e</span> immediately exit if any command has a non-zero exit</li> -->
+        <!--     <li><span style="color: #e43717";>-u</span> requires variables to be defined</li> -->
+        <!--     <li><span style="color: #e43717";>-o pipefail</span> if any command in a pipeline fails, that return code will be used as the return code of the whole pipeline</li> -->
+        <!--     <li><span style="color: #e43717";>IFS</span> Internal Filed Separator set to tab and carriage return</li> -->
+        <!--   </ul> -->
+        <!--   </div> -->
+        <!--   <h4><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">http://redsymbol.net/articles/unofficial-bash-strict-mode/</a></h4> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Shell style guide from Google</h2> -->
+					<!-- <img src="images/googleguide.png" alt="googleguide" width="100%"> -->
+        <!--   <h4><a href="https://google.github.io/styleguide/shell.xml">https://google.github.io/styleguide/shell.xml</a></h4> -->
+				<!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>When to not use a shell script</h2> -->
+        <!--   <img src="images/batman-slap-robin.png" alt="batman-slap-robin" width="75%"> -->
+        <!--   <ul> -->
+        <!--     <li>Performance needs</li> -->
+        <!--     <li><b>Complex data structures</b></li> -->
+        <!--   </ul> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Declarations</h2> -->
+        <!--   <ul> -->
+        <!--     <li>Immutability</li> -->
+        <!--     <ul> -->
+        <!--       <li>Use <code>declare</code> -r or <code>readonly</code></li> -->
+        <!--       <li>Use uppercase for constants</li> -->
+        <!--     </ul> -->
+        <!--     <li>Variable scope</li> -->
+        <!--     <ul> -->
+        <!--       <li>Use <code>local</code> to restrict visible scope to a function</li> -->
+        <!--       <li><code>local</code> uses the same options as <code>declare</code></li> -->
+        <!--     </ul> -->
+        <!--   </ul> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Trap signals</h2> -->
+        <!--   <h3>for proper exit</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Use [[ ]]</h2> -->
+        <!--   <div class="iwantitatleft"> -->
+        <!--     <ul> -->
+        <!--       <li>Replace and enhanced test</li> -->
+        <!--       <li>Bash builtin (not a spawn process)</li> -->
+        <!--       <li>Allow regexp using <b>=~</b></li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+<!-- if [[ ! -f bin/bfg-1.13.0.jar ]]; then -->
+					<!-- </code> -->
+					<!-- </pre> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+<!-- [[ "$output" =~ "DiG" ]] -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Function naming</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+        <!--       <li>Use explicit naming to "auto document" code</li> -->
+        <!--       <li>Snake case is recommended</li> -->
+        <!--       <li>Do not use the function keyword</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/NamingConventions.png" alt="NamingConventions" width="75%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h3>Always use functions and a main for complex scripts</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Productivity tools</h2> -->
+					<!-- <img src="images/productivity_tools.png" alt="productivity_tools" width="75%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Linter: Shellcheck</h2> -->
+					<!-- <h3>A shell script static analysis tool</h3> -->
+					<!-- <img src="images/shellcheck.png" alt="shellcheck" width="75%"> -->
+						<!-- <ul> -->
+        <!--       <li>Really, really help writing shells ! 💎 🤩</li> -->
+							<!-- <li>Can be plugged into editors</li> -->
+						<!-- </ul> -->
+        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></h4> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Formatter: shfmt</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li>Format code no headache ! 🔨</li> -->
+							<!-- <li>Can be configured to respect Google guide using '-i 2 -ci'</li> -->
+							<!-- <li>Can be plugged into editors</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/formatter.jpg" alt="formatter" width="50%"> -->
+        <!--   <h4><a href="https://github.com/koalaman/shellcheck">https://github.com/mvdan/sh#shfmt</a></h4> -->
+				<!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Unit test: Bats</h2> -->
+        <!--   <h3>Bash Automated Testing System</h3> -->
+        <!--   <div class="left_text2"> -->
+        <!--     <ul> -->
+        <!--       <li>TAP compliant testing framework (Jenkins plugin)</li> -->
+        <!--       <li>Run and skip helper function to control test execution</li> -->
+        <!--       <li>Setup, teardown helper functions to manage pre and post test scripts</li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   <div class="left_pic2"> -->
+        <!--     <img src="images/strip1.jpg" alt="formatter" width="85%"> -->
+        <!--   </div> -->
+        <!--   <h4><a href="https://github.com/sstephenson/bats#bats-bash-automated-testing-system">https://github.com/sstephenson/bats#bats-bash-automated-testing-system</a></h4> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Bats</h2> -->
+        <!--   <h3>Examples</h3> -->
+					<!-- <pre> -->
+					<!-- <code> -->
+					<!-- </code> -->
+					<!-- </pre> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+        <!--   <h2>Test sandbox: Vagrant or Docker</h2> -->
+        <!--   <div class="left_text2"> -->
+        <!--     <ul> -->
+        <!--       <li>Bash can be tested against a fresh minimal installation</li> -->
+        <!--       <li>Help reproduce cases</li> -->
+        <!--       <li>CI/CD with Travis CI + Docker for open source projects</li> -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   <div class="left_pic2"> -->
+        <!--     <img src="images/vagrant.png" alt="formatter" width="25%"> -->
+        <!--     <br/> -->
+        <!--     <img src="images/docker.png" alt="formatter" width="35%"> -->
+        <!--   </div> -->
+        <!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>GNU parallel</h2> -->
+					<!-- <h3>A tool to simplify executing job in parallel</h3> -->
+					<!-- <img src="images/parallel.png" alt="rip" width="28%"> -->
+				<!-- </section> -->
+
+				<!-- <section> -->
+					<!-- <h2>Ripgrep (rg)</h2> -->
+					<!-- <h3>An application written in Rust</h3> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li>A grep enhanced</li> -->
+							<!-- <li>Compatible with standard grep</li> -->
+        <!--       <li><b>Search speed is really impressive</b></li> -->
+        <!--       <li>Look also at fd, exa, lsd...</li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <img src="images/rip.png" alt="rip" width="28%"> -->
+				<!-- </section> -->
+
+
+				<!-- <section> -->
+					<!-- <h2>The million dollar Guides !</h2> -->
+					<!-- <div class="iwantitatleft"> -->
+						<!-- <ul> -->
+							<!-- <li><a href="http://tldp.org/LDP/abs/html">Advanced Bash-Scripting Guide</a></li> -->
+							<!-- <li><a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a></li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+        <!--     <img src="images/million_dollar.jpg" alt="million_dollar" width="85%"> -->
+				<!-- </section> -->
+
+
+				<section>
+					<h1>Thank you</h1>
+					<img src="images/thanks.gif" alt="flag" width="47%">
+            <h3>René Ribaud &lt;rene.ribaud@cgi.com&gt;</h3>
+            <!-- <h4>🎬 Source: https://github.com/uggla/presentation/tree/agile2019/strictbash</h4> -->
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				width: 960,
+				height: 700,
+
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
