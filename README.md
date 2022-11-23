@@ -30,7 +30,7 @@ Note: `staticjinja watch` can be run and it will rebuild the presentation as soo
 
 Change the presentation .html file.
 
-**Warning**, if staticjinja is used change the file into the templates directory not the one at the presentation root directory.
+**Warning**, if staticjinja is used change the file **into the templates directory** not the one at the presentation root directory.
 
 ## Serve presentations
 
