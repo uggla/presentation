@@ -83,7 +83,7 @@
               <ul>
                 <li>First name: Sylvain</li>
                 <li>Last name: Bauza</li>
-                <li>Age: xx</li>
+                <li>Age: 42</li>
               </ul>
             </ul>
 
@@ -91,11 +91,11 @@
               <li>Skills</li>
               <ul>
                 <li>Class: Software engineer</li>
-                <li>Subclass: PTL</li>
+                <li>Subclass: Upstream Nova PTL</li>
                 <li>Latest Guilde: Red Hat</li>
-                <li>Age of Experience: 8 years</li>
                 <li>Preferred weapon: Python</li>
                 <li>Artefact: Openstack Nova</li>
+                <li>Age of Experience: 9 years</li>
               </ul>
             </ul>
 
@@ -103,11 +103,13 @@
               <li>Optional traits</li>
               <ul>
                 <li>Like winter vegetables</li>
+				<li>Hardware wrangler</li>
+				<li>Community herder</li>
               </ul>
             </ul>
 					</div>
 					<div class="pic">
-						<img src="images/sylvain.jpg" alt="Sylvain" width="53%">
+						<img src="images/sylvain-2.jpg" alt="Sylvain" width="53%">
 					</div>
         </section>
 
@@ -170,6 +172,7 @@
 								<li>pytest</li>
 							</ul>
 							<li>Mainly focus on the mocking part</li>
+							<li>and covering both unit tests and integration tests</li>
 						</ul>
 					</div>
 					<!-- <div class="pic"> -->
@@ -212,17 +215,18 @@
 					<h2>Our toy application</h2>
 					<h3>📺 code review...</h3>
 						<img src="images/screenshot_01.png" alt="screenshot_01" width="60%">
-						<h4><a href="https://github.com/sbauza/pymeet_rolegame_with_tests">https://github.com/sbauza/pymeet_rolegame_with_tests</a></h4>
+						<h4><a href="https://github.com/sbauza/qttfo">https://github.com/sbauza/qttfo</a></h4>
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
 					<h2>Unittest framework</h2>
 					<div class="iwantitatleft">
 						<ul>
-							<li>Inspired by Java Junit</li>
+							<li>Coming straight from <a href=http://testingsoftware.blogspot.com/2007/08/smalltalk-testing-with-patterns.html>Smalltalk (and later Junit) testing patterns principles</a></li>
+							<li>Easy to read but API syntaxic</li>
 							<li>Builtin in python</li>
 							<li>Mock now included into the unittest framework, not a module anymore</li>
-							<li>Setup oriented</li>
+							<li>Scope and test hierarchies are the keys to success</li>
 						</ul>
 					</div>
 					<img src="images/python_logo.svg" alt="python" width="50%">
@@ -243,6 +247,19 @@
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
+					<h2>A classic sequence of testing</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>The test runner runs the sequence</li>
+							<li>Some grouping may happen within test suites</li>
+							<li>Fixtures are applied before the test</li>
+							<li>The unit of test is run</li>
+							<li>Some post-op and cleanup tasks are made</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="images/background.svg" data-background-size="cover">
 					<h2>Basic Unit Tests</h2>
 					<h3>📺 code review...</h3>
 					<div class="iwantitatleft">
@@ -252,6 +269,19 @@
 						</ul>
 					</div>
 					<img src="images/spider.webp" alt="spider" width="25%">
+				</section>
+
+				<section data-background="images/background.svg" data-background-size="cover">
+					<h2>Test doubles</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Dummies : do nothing</li>
+							<li>Stubs : return canned data</li>
+							<li>Mocks : record calls to the object</li>
+							<li>Fakes : simplifies the logic by faking it</li>
+							<li>Spies : record and delegate to the real object</li>
+						</ul>
+					</div>
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
@@ -279,7 +309,7 @@
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
-					<h2>Mocking stdout and more...</h2>
+					<h2>Mocking stdout and advanced usage of mock objects</h2>
 					<h3>📺 code review...</h3>
 					<div class="iwantitatleft">
 						<ul>
@@ -291,17 +321,7 @@
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
-					<h2>The D from SOLID principals</h2>
-					<div class="iwantitatleft">
-						<ul>
-							<li>Dependency Inversion Principle</li>
-							<li><a href="https://github.com/heykarimoff/solid.python/blob/master/5.dip.py">https://github.com/heykarimoff/solid.python/blob/master/5.dip.py</a></li>
-						</ul>
-					</div>
-				</section>
-
-				<section data-background="images/background.svg" data-background-size="cover">
-					<h2>Mocking to do an integration test</h2>
+					<h2>Eventually, mocking our controller</h2>
 					<h3>📺 code review...</h3>
 					<div class="iwantitatleft">
 						<ul>
@@ -310,6 +330,26 @@
 						</ul>
 					</div>
 					<img src="images/krampus.webp" alt="krampus" width="20%">
+				</section>
+
+				<section data-background="images/background.svg" data-background-size="cover">
+					<h2>Do you feel the danger zone of mocking ?</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Too many patches lead to false positives</li>
+							<li>Don't do state testing, prefer behavioural testing !</li>
+							<li>Tradeoffs have to be made :</li>
+							<ul>
+								<li>Rewrite your interfaces using <a href="https://github.com/heykarimoff/solid.python/">SOLID principles</a></li>
+								<li>Use some design patterns like Adapter or Facade for your interactions between classes</li>
+								<li>You could also do dependency injection</li>
+								<li>Use fakes for your unittests</li>
+								<li>Add integration tests</li>
+								<li>Add fakes for your integration tests...</li>
+							</ul>
+							<li>Always assume rewriting your code.</li>
+						</ul>
+					</div>
 				</section>
 
 				<section data-background="images/background.svg" data-background-size="cover">
@@ -329,6 +369,18 @@
 						<img src="images/pyramid.png" alt="pyramid" width="80%">
 					</div>
         </section>
+
+		<section data-background="images/background.svg" data-background-size="cover">
+			<h2>Using fakes for our integration tests</h2>
+			<h3>📺 code review...</h3>
+			<div class="iwantitatleft">
+				<ul>
+					<li>Only patch the connection to the external API</li>
+					<li>This requires a stateful fixture for faking it</li>
+				</ul>
+			</div>
+			<img src="images/Deerclops.webp" alt="krampus" width="20%">
+		</section>
 
 				<!---->
 				<!-- <section data-background="images/background.svg" data-background-size="cover"> -->
