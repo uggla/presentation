@@ -347,18 +347,23 @@
 					<h2>Do you feel the danger zone of mocking ?</h2>
 					<div class="iwantitatleft">
 						<ul>
-							<li>Too many patches lead to false positives</li>
+							<li>Too many stubs lead to false positives</li>
 							<li>Don't do state testing, prefer behavioural testing !</li>
-							<li>Tradeoffs have to be made :</li>
-							<ul>
-								<li>Rewrite your interfaces using <a href="https://github.com/heykarimoff/solid.python/">SOLID principles</a></li>
-								<li>Use some design patterns like Adapter or Facade for your interactions between classes</li>
-								<li>You could also do dependency injection</li>
-								<li>Use fakes for your unittests</li>
-								<li>Add integration tests</li>
-								<li>Add fakes for your integration tests...</li>
-							</ul>
-							<li>Always assume rewriting your code.</li>
+							<li>When you start piling the mocks for a single test, maybe this is a signal for a change...</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="images/background.svg" data-background-size="cover">
+					<h2>What we could do then ?</h2>
+					<div class="iwantitatleft">
+						<ul>
+							<li>Rewrite your interfaces using <a href="https://github.com/heykarimoff/solid.python/">SOLID principles</a>
+								by creating <a href="https://github.com/sbauza/python-patterns/blob/master/patterns/structural/adapter.py">Facades</a>
+								or <a href="https://github.com/sbauza/python-patterns/blob/master/patterns/structural/facade.py">Adapters</a></li>
+							<li>Try to follow <a href="https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell">Functional Core/Imperative Shell</a> as much as possible</li>
+							<li>Add integration tests</li>
+							<li>Use fakes for your unit and integration tests</li>
 						</ul>
 					</div>
 				</section>
