@@ -14,25 +14,23 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/white.css" id="theme">
-
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+	  <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../reveal.js/dist/theme/white.css" />
 
 		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+		<!-- <script> -->
+		<!-- 	var link = document.createElement( 'link' ); -->
+		<!-- 	link.rel = 'stylesheet'; -->
+		<!-- 	link.type = 'text/css'; -->
+		<!-- 	link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css'; -->
+		<!-- 	document.getElementsByTagName( 'head' )[0].appendChild( link ); -->
+		<!-- </script> -->
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-		
+
 		<style type="text/css">
 			@font-face {
    	   font-family: hpsimplified;
@@ -70,7 +68,7 @@
 					<h1>Redfish & Python Redfish</h1>
 					<h3>A standard way to manage servers</h3>
 				</section>
-				
+
 				<section>
 					<h2>Session Agenda</h2>
 					<div class="iwantitatleft">
@@ -114,37 +112,37 @@
 					<h3>How is this done ?</h3>
 					<img src="images/remote_mgmt_card.jpg" alt="redfish_logo" width="40%">
 				</section>
-				
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Main management possibilities</h3>
 					<img src="images/remote_mgmt_actions.jpg" alt="remote management actions" width="25%">
 				</section>
-				
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Example temperature monitoring</h3>
 					<img src="images/remote_mgmt_monitoring_temp.jpg" alt="monitoring temperature" width="100%">
-				</section>				
-				
+				</section>
+
 				<section>
 					<h2>Lights-out management</h2>
 					<h3>Proprietary solutions</h3>
 					<div class="left_pic">
 					<img src="images/proprietary.jpeg" alt="redfish_logo" width="80%">
 					</div>
-					<div class="right_text">					
+					<div class="right_text">
 					<ul>
 					<li>AMI MegaRAC</li></span>
 					<li>Cisco CIMC</li></span>
 					<li>Dell DRAC</li></span>
-					<li>HP ilo</li></span>					
-					<li>IBM Remote Supervisor Adapter</li></span>					
+					<li>HP ilo</li></span>
+					<li>IBM Remote Supervisor Adapter</li></span>
 					<li>Oracle ILOM</li></span>
 					</ul>
 					</div>
-				</section>				
-				
+				</section>
+
 				<section>
 					<h2><b>I</b>ntelligent <b>P</b>latform <b>M</b>anagement <b>I</b>nterface</h2>
 					<h3>A step to unify light out management</h3>
@@ -158,25 +156,25 @@
 					<h2><b>I</b>ntelligent <b>P</b>latform <b>M</b>anagement <b>I</b>nterface</h2>
 					<h3>But with some constraints</h3>
 					<ul>
-					<li>Low level specifications</li>	
+					<li>Low level specifications</li>
 					<li>Hard to use for end users</li>
 					<li>Not all light out features supported and hard to extend</li>
 					<li>Security concerns</li>
-					<li>Complex to manage on high integrated servers</li>					
+					<li>Complex to manage on high integrated servers</li>
 					</ul>
 				</section>
 
 
 				<section>
 					<h2>The need for automation / scalability</h2>
-					<img src="images/gears.jpeg" alt="gears" width="50%" width="100%">				
+					<img src="images/gears.jpeg" alt="gears" width="50%" width="100%">
 				</section>
 
 				<section>
 					<h2>The need for automation / scalability</h2>
 					<ul>
 					<li>Scale out servers architecture with commodity servers</li>
-					<li>Repetitive configuration</li>					
+					<li>Repetitive configuration</li>
 					<li>End user friendly</li>
 					<li>Available from anywhere, with any platform</li>
 					<li>Security</li>
@@ -184,10 +182,10 @@
 					</ul>
 				</section>
 
-				
+
 				<section>
 					<h2>Here comes Redfish !</h2>
-					<img src="images/dmtf-redfish-logo.png" alt="redfish logo">				
+					<img src="images/dmtf-redfish-logo.png" alt="redfish logo">
 				</section>
 
 				<section>
@@ -195,7 +193,7 @@
 					<h3>A powerful and user friendly IPMI alternative</h3>
 					<ul>
 					<li><b>Standard</b> proposed by the <b>D</b>istributed <b>M</b>anagement <b>T</b>ask <b>F</b>orce</li>
-					<li>Initially promoted by Dell, Emerson, HP and Intel</li>		
+					<li>Initially promoted by Dell, Emerson, HP and Intel</li>
 					</ul>
 				</section>
 
@@ -207,7 +205,7 @@
 					<li>Light out management using a Rest API specification</li>
 					<li>JSON / Odata based schemas to describe resources</li>
 					<li>A mockup</li>
-					<li>Documentation, white papers, FAQ</li>					
+					<li>Documentation, white papers, FAQ</li>
 					<li>Available online at <a href="https://www.dmtf.org/standards/redfish">https://www.dmtf.org/standards/redfish</a></li>
 					</ul>
 				</section>
@@ -217,16 +215,16 @@
 					<h2>Redfish real life examples</h2>
 					<ul>
 					<li>Using simple http get</li>
-					<ul>					
+					<ul>
 					<li>Grab Bios version</li>
 					<li>Get server model and cpu models</li>
 					</ul>
 					<li>Using simple http post</li>
-					<ul>					
+					<ul>
 					<li>Set a bios parameter using a simple http post</li>
 					<li>Reset server</li>
 					<li>Change next boot to the network</li>
-					</ul>					
+					</ul>
 					</ul>
 					<h3>all of this, whatever the platform</h3>
 				</section>
@@ -252,8 +250,8 @@
 					<li>Available at <a href="https://github.com/uggla/python-redfish" >https://github.com/uggla/python-redfish</a></li>
 					</ul>
 				</section>
-				
-				
+
+
 				<section>
 					<h2>Python Redfish</h2>
 					<h3>Initial goals</h3>
@@ -262,21 +260,21 @@
 					<li>Provide a Redfish client tool based on the library</li>
 					</ul>
 				</section>
-				
-				
+
+
 				<section>
 					<h2>Python Redfish</h2>
 					<h3>Ultimate goals</h3>
 					<ul>
 					<li>Integration into Openstack Ironic</li>
 					<li>Integration into CMDB tools (cf <a href="https://github.com/uggla/alexandria" >Alexandria</a> project)</li>
-					<li>World domination ! :)</li>					
+					<li>World domination ! :)</li>
 					</ul>
 					<br/>
 					<img src="images/day-of-the-tentacle.png" alt="world domination" width="25%"/>
 				</section>
 
-				
+
 				<section>
 					<h2>Python Redfish</h2>
 					<img src="images/under-construction.png" alt="under construction" width="30%"/>
@@ -320,11 +318,11 @@
 					</ul>
 				</section>
 
-				
+
 				<section>
 					<h2>Python Redfish</h2>
 					<h3>External dependencies</h3>
-					<img src="images/requests.png" alt="requests" height="200px"/>					
+					<img src="images/requests.png" alt="requests" height="200px"/>
 					<img src="images/tortilla.jpg" alt="tortilla" height="200px"/>
 					<br/>
 					<ul>
@@ -359,7 +357,7 @@
 
 				<section>
 				<h1>Thank you</h1>
-				<ul>				
+				<ul>
 				<li>René Ribaud &lt;rene.ribaud@hp.com&gt;</li>
 				</ul>
 				</section>
@@ -368,35 +366,21 @@
 
 		</div>
 
-		<script src="../reveal.js/lib/js/head.min.js"></script>
-		<script src="../reveal.js/js/reveal.js"></script>
+		<script type="module">
+ 			import Reveal from '../reveal.js/dist/reveal.esm.js';
+ 			import Markdown from '../reveal.js/plugin/markdown/markdown.esm.js';
 
-		<script>
-
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
+ 			let deck = new Reveal({
+ 				plugins: [Markdown],
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
-				width: 1024,    
+				width: 1024,
+				transition: 'convex',
+ 			});
 
-
-
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
-				
-				
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
-				]
-			});
+ 			deck.initialize();
 
 		</script>
 

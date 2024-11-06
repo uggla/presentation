@@ -14,24 +14,11 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../reveal.js/dist/theme/beige.css" />
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-
-		<!--[if lt IE 9]>
-			<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" />
 
 		<style type="text/css">
 		.reveal { font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif; }
@@ -431,42 +418,32 @@ roles/ntpclient
 
 		</div>
 
-		<script src="../reveal.js/lib/js/head.min.js"></script>
-		<script src="../reveal.js/js/reveal.js"></script>
+    <script type="module">
+      import Reveal from "../reveal.js/dist/reveal.esm.js";
+      import Markdown from "../reveal.js/plugin/markdown/markdown.esm.js";
+      import Highlight from "../reveal.js/plugin/highlight/highlight.esm.js";
 
-		<script>
+      let deck = new Reveal({
+        plugins: [Markdown, Highlight],
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        width: 960,
+        height: 700,
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: false,
-				width: 960,
-				height: 700,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
 
-				// Factor of the display size that should remain empty around the content
-				margin: 0.1,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 1.5,
 
-				// Bounds for smallest/largest possible scale to apply to content
-				minScale: 0.2,
-				maxScale: 1.5,
+        transition: "convex",
+      });
 
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
-				]
-			});
-
-		</script>
+      deck.initialize();
+    </script>
 
 	</body>
 </html>
