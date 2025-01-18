@@ -607,11 +607,11 @@
                 Benchmark 1: target/release/prime_not_par
                   Time (mean ± σ):     13.349 s ±  0.793 s    [User: 13.276 s, System: 0.014 s]
                   Range (min … max):   12.411 s … 14.910 s    10 runs
-                
+
                 Benchmark 2: target/release/prime
                   Time (mean ± σ):      3.523 s ±  0.279 s    [User: 24.565 s, System: 0.062 s]
                   Range (min … max):    3.284 s …  4.236 s    10 runs
-                
+
                 Summary
                   target/release/prime ran
                     3.79 ± 0.38 times faster than target/release/prime_not_par
@@ -622,21 +622,251 @@
 
         <section>
           <h2>Itertools</h2>
-          <img src="images/space_invaders.png" alt="ecs" width="75%" />
+          <img src="images/itertools.gif" alt="itertool" width="75%" />
+        </section>
+
+        <section>
+          <h3>Itertools 1/2</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Itertools is a powerful crate providing additional iterator
+                adaptors and utilities for Rust.
+              </li>
+              <li>
+                Extends the standard Iterator with a wide range of combinators
+                for advanced data processing.
+              </li>
+              <li>
+                Sort, join, cartesian product, permutations, combinations,
+                group_by, ...
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Itertools 2/2</h3>
+          <div class="lots_of_items">
+            <pre>
+                <code class="hljs rust" data-trim>
+                  #[derive(Debug,PartialEq)]
+                  use itertools::Itertools;
+
+                  fn main() {
+                      let nums = vec![3, 2, 1];
+
+                    // Sort and join elements into a string
+                      let joined = nums.iter().sorted().join(",");
+                      assert_eq!("1,2,3", joined);
+
+                      // Generate all combinations of size 2
+                      let combinations: Vec&ltVec&ltusize&gt&gt = nums.into_iter().combinations(2).collect();
+                      assert_eq!(vec![vec![3,2], vec![3,1],vec![2,1]], combinations);
+
+                  }
+                </code>
+              </pre>
+          </div>
         </section>
 
         <section>
           <h2>Minreq</h2>
-          <img src="images/space_invaders.png" alt="ecs" width="75%" />
+          <img src="images/minreq.gif" alt="minreq" width="75%" />
+        </section>
+
+        <section>
+          <h3>Minreq 1/2</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>Simple, minimal-dependency HTTP client.</li>
+              <li>Lightweight.</li>
+              <li>Only sync.</li>
+              <li>Serde integration.</li>
+              <li>TLS support.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Minreq 2/2</h3>
+          <div class="lots_of_items">
+            <pre>
+                <code class="hljs rust" data-trim>
+                  fn main() -> Result<(), minreq::Error> {
+                      let response = minreq::post("http://httpbin.org/anything")
+                          .with_body("Hello, world!")
+                          .send()?;
+
+                      // httpbin.org/anything returns the body in the json field "data":
+                      let json: serde_json::Value = response.json()?;
+                      assert_eq!("Hello, world!", json["data"]);
+
+                      Ok(())
+                  }
+                </code>
+              </pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>Ordered-float</h3>
+          <img src="images/ordered-float.gif" alt="ordered-float" width="75%" />
+        </section>
+
+        <section>
+          <h3>Ordered-float 1/2</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Floating-point numbers (<code>f32</code>, <code>f64</code>)
+                cannot be directly used as keys in structures like
+                <code>HashSet</code> or <code>HashMap</code>. This is because
+                they do not implement necessary traits (<code>Eq</code> and
+                <code>Hash</code>) due to special behaviors (e.g.,
+                <code>NaN</code>).
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                Ordered-float provides a wrapper around floating-point types,
+                making them orderable and usable in collections.
+              </li>
+              <ul>
+                <li>
+                  Ensures consistent comparisons, handling edge cases like
+                  <code>-0.0</code> and <code>0.0</code> as equal, and placing
+                  <code>NaN</code> consistently during sorting.
+                </li>
+                <li>
+                  Values are sorted consistently, even with edge cases like
+                  <code>-0.0</code> and <code>NaN</code>.
+                </li>
+                <li>
+                  <code>HashSet</code> ignores duplicates and treats
+                  <code>-0.0</code> and <code>0.0</code> as identical.
+                </li>
+              </ul>
+              <li>
+                Solves the problem where standard floating-point numbers cannot
+                be used in such structures.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Ordered-float 2/2</h3>
+          <div class="lots_of_items">
+            <pre>
+                <code class="hljs rust" data-trim>
+                  use ordered_float::OrderedFloat;
+                  use std::collections::HashSet;
+
+                  fn main() {
+                      // Exemple 1 : Tri de nombres flottants
+                      let mut floats = vec![3.2, 1.5, 2.8, 4.1, -0.0, 0.0, f64::NAN];
+                      //floats.sort_by(|a,b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+                      floats.sort_by_key(|&x| OrderedFloat(x)); // Tri avec OrderedFloat
+
+                      println!("Sorted floats: {:?}", floats);
+
+                      // Exemple 2 : Utilisation dans un HashSet
+                      let mut set: HashSet&ltOrderedFloat&ltf64&gt&gt = HashSet::new();
+                      set.insert(OrderedFloat(3.2));
+                      set.insert(OrderedFloat(1.5));
+                      set.insert(OrderedFloat(1.5)); // Duplicate, ne sera pas ajouté
+                      set.insert(OrderedFloat(-0.0)); // -0.0 et 0.0 sont considérés égaux
+                      set.insert(OrderedFloat(0.0));
+
+                      println!("HashSet contains: {:?}", set);
+                  }
+                </code>
+              </pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>Indicatif</h2>
+          <img src="images/indicatif.gif" alt="indicatif" width="50%" />
+        </section>
+
+        <section>
+          <h3>Indicatif 1/2</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Floating-point numbers (<code>f32</code>, <code>f64</code>)
+                cannot be directly used as keys in structures like
+                <code>HashSet</code> or <code>HashMap</code>. This is because
+                they do not implement necessary traits (<code>Eq</code> and
+                <code>Hash</code>) due to special behaviors (e.g.,
+                <code>NaN</code>).
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                Ordered-float provides a wrapper around floating-point types,
+                making them orderable and usable in collections.
+              </li>
+              <ul>
+                <li>
+                  Ensures consistent comparisons, handling edge cases like
+                  <code>-0.0</code> and <code>0.0</code> as equal, and placing
+                  <code>NaN</code> consistently during sorting.
+                </li>
+                <li>
+                  Values are sorted consistently, even with edge cases like
+                  <code>-0.0</code> and <code>NaN</code>.
+                </li>
+                <li>
+                  <code>HashSet</code> ignores duplicates and treats
+                  <code>-0.0</code> and <code>0.0</code> as identical.
+                </li>
+              </ul>
+              <li>
+                Solves the problem where standard floating-point numbers cannot
+                be used in such structures.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Indicatif 2/2</h3>
+          <div class="lots_of_items">
+            <pre>
+                <code class="hljs rust" data-trim>
+                  use ordered_float::OrderedFloat;
+                  use std::collections::HashSet;
+
+                  fn main() {
+                      // Exemple 1 : Tri de nombres flottants
+                      let mut floats = vec![3.2, 1.5, 2.8, 4.1, -0.0, 0.0, f64::NAN];
+                      //floats.sort_by(|a,b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+                      floats.sort_by_key(|&x| OrderedFloat(x)); // Tri avec OrderedFloat
+
+                      println!("Sorted floats: {:?}", floats);
+
+                      // Exemple 2 : Utilisation dans un HashSet
+                      let mut set: HashSet&ltOrderedFloat&ltf64&gt&gt = HashSet::new();
+                      set.insert(OrderedFloat(3.2));
+                      set.insert(OrderedFloat(1.5));
+                      set.insert(OrderedFloat(1.5)); // Duplicate, ne sera pas ajouté
+                      set.insert(OrderedFloat(-0.0)); // -0.0 et 0.0 sont considérés égaux
+                      set.insert(OrderedFloat(0.0));
+
+                      println!("HashSet contains: {:?}", set);
+                  }
+                </code>
+              </pre>
+          </div>
         </section>
 
         <section>
           <h2>Pyo3</h2>
-          <img src="images/space_invaders.png" alt="ecs" width="75%" />
-        </section>
-
-        <section>
-          <h2>Ordered-float</h2>
           <img src="images/space_invaders.png" alt="ecs" width="75%" />
         </section>
 
@@ -647,11 +877,6 @@
 
         <section>
           <h2>Tungstenite</h2>
-          <img src="images/space_invaders.png" alt="ecs" width="75%" />
-        </section>
-
-        <section>
-          <h2>Indicatif</h2>
           <img src="images/space_invaders.png" alt="ecs" width="75%" />
         </section>
 
