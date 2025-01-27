@@ -230,7 +230,7 @@
           <div class="pic">
             <img src="images/uggla.png" alt="uggla" width="100%" />
           </div>
-          <audio controls>
+          <audio controls autoplay>
             <source src="sounds/mgs.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
@@ -243,7 +243,7 @@
               <li>
                 Rust's deliberate choice to keep the standard library small:
                 <ul>
-                  <li>Ensures easier compatibility across platforms.</li>
+                  <li>Ensures easier compatibility across versions.</li>
                   <li>
                     Allows code to mature as external crates before potential
                     inclusion in the standard library.
@@ -343,6 +343,7 @@
                   </pre>
                 </ul>
               </li>
+              <li>Cargo will download and build the crate at compile time.</li>
             </ul>
           </div>
         </section>
@@ -588,7 +589,7 @@
           <div class="lots_of_items">
             <ul>
               <li>Already well covered in a previous meetup.</li>
-              <li>Parse CLI arguments an options.</li>
+              <li>Parse CLI arguments and options.</li>
               <li>
                 Derive feature allow to define arguments and options from a
                 struct.
