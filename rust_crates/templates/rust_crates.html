@@ -230,6 +230,36 @@
           <div class="pic">
             <img src="images/uggla.png" alt="uggla" width="100%" />
           </div>
+          <audio controls>
+            <source src="sounds/mgs.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <section>
+          <h3>A Quite Small Standard Library</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Rust's deliberate choice to keep the standard library small:
+                <ul>
+                  <li>Ensures easier compatibility across platforms.</li>
+                  <li>
+                    Allows code to mature as external crates before potential
+                    inclusion in the standard library.
+                  </li>
+                  <li>
+                    Promotes innovation by allowing multiple competing solutions
+                    in the ecosystem.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                As a result, you need to familiarize yourself with the Rust
+                ecosystem to find the right crates for your needs.
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section>
@@ -262,6 +292,213 @@
                 crates in the future.
               </li>
             </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>How to Use a Crate? 1/3</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Add the crate name to the dependencies section of your
+                <code>Cargo.toml</code>:
+                <pre>
+                  <code class="hljs toml" data-trim>
+                    ───────┬──────────────────────────────────────────────
+                           │ File: Cargo.toml
+                    ───────┼──────────────────────────────────────────────
+                       1   │ [package]
+                       2   │ name = "rand_example"
+                       3   │ version = "0.1.0"
+                       4   │ edition = "2021"
+                       5   │
+                       6   │ [dependencies]
+                       7   │ rand = "0.8.5"
+                    ───────┴──────────────────────────────────────────────
+                  </code>
+                </pre>
+              </li>
+              <li>
+                Add the namespace of the crate using the
+                <code>use</code> statement.
+              </li>
+              <li>
+                Depending on your crate:
+                <ul>
+                  <li>
+                    You might use a <strong>prelude</strong> to import common
+                    public items.
+                    <pre>
+                    <code class="hljs rust" data-trim>
+                      use bevy::prelude::*;
+                    </code>
+                  </pre>
+                  </li>
+                  <li>You can import specific items explicitly if needed:</li>
+                  <pre>
+                    <code class="hljs rust" data-trim>
+                      use rand::thread_rng;
+                      use rand::distributions::Uniform;
+                    </code>
+                  </pre>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>How to Use a Crate? 2/3</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                A crate might have features. This is useful for:
+                <ul>
+                  <li>
+                    Compatibility, e.g., targeting specific operating systems.
+                  </li>
+                  <li>
+                    Technology choice, e.g., selecting between OpenSSL and
+                    Rustls.
+                  </li>
+                  <li>
+                    Reducing compilation time by enabling only the necessary
+                    functionality.
+                  </li>
+                </ul>
+
+                <pre>
+                  <code class="hljs toml" data-trim>
+                    6   │ [dependencies]
+                    7   │ rand = { version = "0.8.5", features = ["simd_support"] }
+                  </code>
+                </pre>
+              </li>
+              <li>
+                A <code>Cargo.lock</code> is created to track dependencies.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>How to Use a Crate? 3/3</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Before Rust 1.62, a Cargo plugin could be used to manage
+                dependencies and features. This functionality is now part of
+                Cargo.
+              </li>
+              <li>
+                It can be installed with
+                <code>cargo install cargo-edit</code>.<br />
+                See
+                <a href="https://github.com/killercup/cargo-edit"
+                  >https://github.com/killercup/cargo-edit</a
+                >
+              </li>
+              <li>
+                Example:
+
+                <pre>
+                  <code class="hljs bash" data-trim>
+                   🦉 uggla   main  ~  workspace  rust  rand_example  1  cargo add rand -F simd_support
+                      Updating crates.io index
+                        Adding rand v0.8.5 to dependencies
+                              Features:
+                              + alloc
+                              + getrandom
+                              + libc
+                              + packed_simd
+                              + rand_chacha
+                              + simd_support
+                              + std
+                              + std_rng
+                              - log
+                              - min_const_gen
+                              ....
+                      Locking 2 packages to latest compatible versions
+                        Adding libm v0.1.4
+                        Adding packed_simd_2 v0.3.8
+                  </code>
+                </pre>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Rand</h2>
+          <img src="images/rand.gif" alt="magic" width="75%" />
+        </section>
+
+        <section>
+          <h3>Rand 1/3</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Rand is a powerful crate for generating random numbers and
+                performing random operations in Rust.
+              </li>
+              <li>
+                It supports:
+                <ul>
+                  <li>Pseudo-random number generation (PRNG).</li>
+                  <li>Cryptographically secure random number generation.</li>
+                  <li>Shuffling and sampling.</li>
+                </ul>
+              </li>
+              <li>
+                Simple to use with:
+                <ol>
+                  <li>Adding the crate to your <code>Cargo.toml</code>.</li>
+                  <li>Using the provided utilities in your code.</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>Rand 2/3</h3>
+          <div class="lots_of_items">
+            <pre>
+              <code class="hljs rust" data-trim>
+                use rand::Rng;
+
+                fn main() {
+                    let mut rng = rand::thread_rng();
+                    let x: u8 = rng.gen();
+                    println!("Random u8: {}", x);
+
+                    let y = rng.gen_range(1..101);
+                    println!("Random number between 1 and 100: {}", y);
+                }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>Rand 3/3</h3>
+          <div class="lots_of_items">
+            <pre>
+              <code class="hljs rust" data-trim>
+                use rand::seq::SliceRandom;
+
+                fn main() {
+                    let mut rng = rand::thread_rng();
+
+                    let mut numbers = vec![1, 2, 3, 4, 5];
+                    numbers.shuffle(&mut rng);
+                    println!("Shuffled numbers: {:?}", numbers);
+
+                    let choice = numbers.choose(&mut rng);
+                    println!("Random choice: {:?}", choice);
+                }
+              </code>
+            </pre>
           </div>
         </section>
 
@@ -717,7 +954,7 @@
         </section>
 
         <section>
-          <h3>Ordered-float</h3>
+          <h2>Ordered-float</h2>
           <img src="images/ordered-float.gif" alt="ordered-float" width="75%" />
         </section>
 
@@ -863,7 +1100,7 @@
         </section>
 
         <section>
-          <h3>Log / Simplelogger</h3>
+          <h2>Log / Simplelogger</h2>
           <img src="images/log.gif" alt="log" width="75%" />
         </section>
 
@@ -903,7 +1140,7 @@
         </section>
 
         <section>
-          <h3>Rstest</h3>
+          <h2>Rstest</h2>
           <img src="images/rstest.gif" alt="rstest" width="75%" />
         </section>
 
@@ -950,7 +1187,7 @@
         </section>
 
         <section>
-          <h3>Image</h3>
+          <h2>Image</h2>
           <img src="images/image.gif" alt="image" width="75%" />
         </section>
 
@@ -1014,7 +1251,7 @@
         </section>
 
         <section>
-          <h3>Raqote</h3>
+          <h2>Raqote</h2>
           <img src="images/raqote.gif" alt="raqote" width="75%" />
         </section>
 
@@ -1099,14 +1336,14 @@
         <!-- </section> -->
 
         <section>
-          <h3>Blessed</h3>
+          <h2>Blessed</h2>
           <a href="https://blessed.rs/crates"
             ><h3>https://blessed.rs/crates</h3></a
           >
         </section>
 
         <section>
-          <h3>What are you using ?</h3>
+          <h2>What are you using ?</h2>
           <img src="images/way.gif" alt="what_are_you_using" width="30%" />
         </section>
 
