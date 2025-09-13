@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Shaders pour jeux vidéo… et vos pages web</title>
+
+    <meta
+      name="description"
+      content="Shaders pour jeux vidéo… et vos pages web"
+    />
+    <meta name="author" content="René Ribaud" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../reveal.js/dist/theme/beige.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"> -->
+
+    <!-- Code syntax highlighting -->
+    <!-- <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" /> -->
+    <link rel="stylesheet" href="css/stackoverflow-light.css" />
+
+    <style type="text/css">
+      .iwantitatleft {
+        text-align: left;
+      }
+
+      .longtext {
+        text-align: left;
+        font-size: 0.6em;
+      }
+
+      /* Larger elements */
+      .lots_of_items2 ul {
+        font-size: 0.7em;
+        text-align: left;
+      }
+
+      /* Smaller elements */
+      .lots_of_items3 ul {
+        font-size: 0.55em;
+        text-align: left;
+      }
+
+      .lots_of_items3 ul ul {
+        font-size: 0.8em;
+        text-align: left;
+      }
+
+      .lots_of_items3 table {
+        font-size: 0.8em;
+        float: left;
+        margin-right: 1em;
+      }
+
+      /* Larger elements */
+      .lots_of_items4 ul {
+        font-size: 0.8em;
+        text-align: left;
+      }
+
+      /* Normal elements */
+      .lots_of_items ul {
+        font-size: 0.6em;
+        text-align: left;
+      }
+
+      .lots_of_items ul ul {
+        font-size: 0.8em;
+        text-align: left;
+      }
+
+      .lots_of_items h3 {
+        font-size: 0.7em;
+      }
+
+      .lots_of_items h4 {
+        font-size: 0.6em;
+      }
+
+      .lots_of_items code {
+        font-size: 0.7em;
+      }
+
+      .lots_of_items table {
+        float: left;
+        margin-right: 1em;
+      }
+
+      .clearfix {
+        clear: left;
+      }
+
+      .long_link a {
+        font-size: 0.8em;
+      }
+
+      .pic {
+        position: relative;
+        float: left;
+        width: 50%;
+        top: 0px;
+      }
+
+      /* Remove image margin use in conjuction with .pic */
+      .no_margin img {
+        margin: 0px;
+      }
+
+      .left_text {
+        position: relative;
+        float: left;
+        width: 50%;
+        text-align: left;
+      }
+
+      .left_text_bio {
+        position: relative;
+        float: left;
+        width: 50%;
+        font-size: 0.6em;
+        text-align: left;
+      }
+
+      .right_text {
+        width: 50%;
+        text-align: left;
+        float: right;
+        text-align: left;
+      }
+
+      .skill-list li {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+      }
+      /*
+            .reveal a { color: #007DBA; }
+            .reveal h2 b { color: #0096D6; }
+            .reveal h2 .day { font-size: 0.6em; position:relative; bottom: 20px; }
+            .reveal { font-family: "Source Code Pro", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans,sans-serif; font-size:40px; }
+            */
+      .reveal {
+        font-family:
+          "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+        font-size: 40px;
+      }
+
+      .reveal h2 {
+        margin-top: 35px;
+      }
+
+      .reveal ul {
+        margin: 0 0 0 0;
+      }
+
+      .reveal pre {
+        width: 100%;
+        font-size: 18px;
+      }
+
+      .reveal pre code {
+        max-height: 100%;
+      }
+
+      .reveal section img {
+        border: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0);
+      }
+
+      body {
+        line-height: 1.1;
+      }
+
+      .quadpic {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 colonnes */
+        grid-template-rows: 1fr 1fr; /* 2 lignes */
+        gap: 1rem; /* espace entre les images */
+        justify-items: center;
+        align-items: center;
+      }
+
+      .quadpic img {
+        max-width: 100%;
+        max-height: 300px; /* ajuste selon tes besoins */
+        object-fit: cover; /* recadre joliment */
+        border-radius: 8px; /* optionnel */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <!-- <section data-background="images/background.svg" data-background-size="cover"> -->
+        <!-- 0) Titre -->
+        <section data-auto-animate>
+          <h1>Shaders</h1>
+          <h2>pour jeux vidéo… et vos pages web</h2>
+          <p class="small">
+            10 minutes pour poser les bases, donner envie, et fournir des pistes
+            concrètes.
+          </p>
+          <aside class="notes">
+            Objectif : expliquer ce qu’est un shader, montrer un hello world,
+            décortiquer un mini shader, évoquer raymarching, montrer comment
+            intégrer dans Bevy/Three.js, et laisser des ressources. Dire
+            « Appuyez sur <b>S</b> pour voir les notes ».
+          </aside>
+        </section>
+
+        <!-- 1) Shaders partout (images jeux) -->
+        <section>
+          <h3>Les shaders, partout ✨</h3>
+          <div class="quadpic">
+            <div>
+              <img
+                src="images/hollow_knight.jpg"
+                alt="Hollow Knight — effets de lumière/particules"
+              />
+            </div>
+            <div>
+              <img
+                src="images/deadcells.jpg"
+                alt="Dead Cells — éclairages dynamiques"
+              />
+            </div>
+            <div>
+              <img src="images/nyancat.png" alt="Fractal land" />
+            </div>
+            <div>
+              <img src="images/cineshader.png" alt="Cineshader" />
+            </div>
+          </div>
+        </section>
+
+        <!-- 2) C’est quoi un shader -->
+        <section>
+          <h3>C’est quoi un shader ?</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                Petit <b>programme</b> exécuté sur le <b>GPU</b>
+                <br />(massivement parallèle)
+              </li>
+              <li>
+                ⚖️ <b>CPU vs GPU</b> : <br />CPU → quelques cœurs
+                <b>polyvalents</b>, rapides mais peu nombreux <br />GPU →
+                <b>centaines/milliers</b> de cœurs spécialisés, parfaits pour
+                traiter en parallèle <i>pixels</i>, <i>vertices</i>, etc.
+              </li>
+              <li>
+                Exemple concret :
+                <br /><b>Full HD @60 fps</b> = ~2 Mpx × 60 ≈
+                <b>124 millions de pixels/seconde</b>
+              </li>
+              <li><b>Compilé à l’exécution</b> par le driver GPU</li>
+              <li>
+                <b>Mise en cache</b> possible <br />(évite de recompiler à
+                chaque lancement)
+              </li>
+            </ul>
+            <aside class="notes">
+              ➡️ Insister sur le parallélisme : un fragment shader s’exécute
+              pour des milliers/millions de pixels en même temps. ➡️ Comparaison
+              d’architecture : CPU = ~8–32 cœurs, polyvalents. GPU =
+              centaines/milliers de cœurs, spécialisés pour exécuter la même
+              opération en masse. ➡️ Exemple qui frappe : en Full HD à 60 fps,
+              le GPU doit colorer environ 124 millions de pixels chaque seconde.
+              ➡️ Souligner que c’est impensable pour un CPU seul, mais parfait
+              pour l’architecture GPU.
+            </aside>
+          </div>
+        </section>
+
+        <!-- 3) Types -->
+        <section>
+          <h3>Les 3 types principaux</h3>
+          <div class="lots_of_items">
+            <ul>
+              <li>
+                <b>Vertex</b> ➡️ déforme ou place les <b>sommets</b> (vertices)
+                <span class="example">(ex : onduler un plan)</span>
+              </li>
+              <li>
+                <b>Fragment/Pixel</b> ➡️ calcule la couleur par pixel
+                <span class="example">(éclairage, post-FX)</span>
+              </li>
+              <li>
+                <b>Compute</b> ➡️ calcul général
+                <span class="example"
+                  >(blur, physique, IA, génération procédurale)</span
+                >
+              </li>
+              <p>Pipeline graphique:</p>
+              <svg width="800" height="220" style="max-width: 100%">
+                <!-- Vertex Shader -->
+                <rect
+                  x="20"
+                  y="70"
+                  width="160"
+                  height="60"
+                  rx="10"
+                  fill="#4CAF50"
+                />
+                <text
+                  x="100"
+                  y="105"
+                  font-size="16"
+                  text-anchor="middle"
+                  fill="white"
+                >
+                  Vertex Shader
+                </text>
+
+                <!-- Arrow 1 -->
+                <line
+                  x1="180"
+                  y1="100"
+                  x2="240"
+                  y2="100"
+                  stroke="black"
+                  stroke-width="2"
+                  marker-end="url(#arrow)"
+                />
+
+                <!-- Rasterization -->
+                <rect
+                  x="240"
+                  y="70"
+                  width="160"
+                  height="60"
+                  rx="10"
+                  fill="#2196F3"
+                />
+                <text
+                  x="320"
+                  y="95"
+                  font-size="16"
+                  text-anchor="middle"
+                  fill="white"
+                >
+                  Rasterization
+                </text>
+                <text
+                  x="320"
+                  y="115"
+                  font-size="12"
+                  text-anchor="middle"
+                  fill="white"
+                >
+                  3D → 2D fragments
+                </text>
+
+                <!-- Arrow 2 -->
+                <line
+                  x1="400"
+                  y1="100"
+                  x2="460"
+                  y2="100"
+                  stroke="black"
+                  stroke-width="2"
+                  marker-end="url(#arrow)"
+                />
+
+                <!-- Fragment Shader -->
+                <rect
+                  x="460"
+                  y="70"
+                  width="180"
+                  height="60"
+                  rx="10"
+                  fill="#f44336"
+                />
+                <text
+                  x="550"
+                  y="105"
+                  font-size="16"
+                  text-anchor="middle"
+                  fill="white"
+                >
+                  Fragment Shader
+                </text>
+
+                <!-- Arrow 3 -->
+                <line
+                  x1="640"
+                  y1="100"
+                  x2="700"
+                  y2="100"
+                  stroke="black"
+                  stroke-width="2"
+                  marker-end="url(#arrow)"
+                />
+
+                <!-- Output -->
+                <rect
+                  x="700"
+                  y="70"
+                  width="80"
+                  height="60"
+                  rx="10"
+                  fill="#9C27B0"
+                />
+                <text
+                  x="740"
+                  y="105"
+                  font-size="14"
+                  text-anchor="middle"
+                  fill="white"
+                >
+                  Pixels
+                </text>
+
+                <!-- Marker definition -->
+                <defs>
+                  <marker
+                    id="arrow"
+                    markerWidth="10"
+                    markerHeight="10"
+                    refX="6"
+                    refY="3"
+                    orient="auto"
+                    markerUnits="strokeWidth"
+                  >
+                    <path d="M0,0 L0,6 L9,3 z" fill="black" />
+                  </marker>
+                </defs>
+              </svg>
+            </ul>
+
+            <p class="small">
+              👉 Pour la suite, on va se <b>focaliser</b> sur le
+              <b>Fragment shader</b>.
+            </p>
+            <aside class="notes">
+              ➡️ Bien insister : Vertex shader → Rasterization → Fragment
+              shader. ➡️ La rasterization transforme la géométrie (triangles) en
+              fragments (pixels potentiels). ➡️ Le Compute shader est hors de ce
+              pipeline, utilisé pour des calculs génériques. ➡️ Une image du
+              pipeline graphique peut renforcer l’explication (Input Assembly →
+              Vertex → Rasterizer → Fragment → Output).
+            </aside>
+          </div>
+        </section>
+
+        <!-- 4) Formats & histoire -->
+        <section>
+          <h3>Formats & petite histoire</h3>
+          <div class="lots_of_items">
+            <div>
+              <h3>Hier</h3>
+              <ul>
+                <li>🎮 Années 90 : pipeline <b>fixe</b> (aucun shader)</li>
+                <li>🔧 Début 2000 : <b>assembleur GPU</b> (ARB/NV)</li>
+                <li>
+                  💡 Milieu 2000 : premiers langages haut-niveau →
+                  <b>GLSL</b> (OpenGL), <b>HLSL</b> (DirectX)
+                </li>
+              </ul>
+              <h3>Aujourd’hui</h3>
+              <ul>
+                <li><b>GLSL</b> (OpenGL/ES) • <b>HLSL</b> (DirectX)</li>
+                <li>
+                  <b>MSL</b> (Apple/Metal) • <b>WGSL</b> (WebGPU / wgpu / Bevy)
+                </li>
+                <li>Shaders partout : jeux, rendu 3D, compute, web</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Intermédiaires & toolchains</h3>
+              <ul>
+                <li><b>SPIR-V</b> (Vulkan, WebGPU) • <b>DXIL</b> (DirectX)</li>
+                <li>🌉 Conversion/transpilation fréquente entre formats</li>
+                <li>
+                  Idée clé : concepts communs, mais APIs/langages varient selon
+                  la plateforme
+                </li>
+                <li>
+                  Exemple : écrire en HLSL → compiler vers SPIR-V → exécuter sur
+                  Vulkan
+                </li>
+              </ul>
+            </div>
+            <aside class="notes">
+              ➡️ Expliquer l’évolution : pipeline fixe → assembleur GPU →
+              langages haut-niveau → formats portables. ➡️ Souligner que les
+              langages divergent (GLSL/HLSL/MSL/WGSL) mais les concepts de
+              shaders restent les mêmes. ➡️ SPIR-V et DXIL jouent le rôle d’IR
+              (Intermediate Representation), comme LLVM en compilation CPU. ➡️
+              Ne pas rentrer dans les détails des toolchains, juste donner la
+              big picture.
+            </aside>
+          </div>
+        </section>
+
+        <!-- 5) ShaderToy 30s -->
+        <section>
+          <h3>ShaderToy en 30 secondes</h3>
+          <ul>
+            <li>Un quad plein écran, <b>un fragment shader</b> à écrire</li>
+            <li>
+              Uniformes fournis : <code>iResolution</code>, <code>iTime</code>,
+              <code>iChannel0..3</code> (textures)
+            </li>
+            <li>
+              Idéal pour <b>tester/itérer</b> et partager des <b>liens</b>
+            </li>
+          </ul>
+          <aside class="notes">
+            Montrer l’UI : code, preview, channels pour charger des textures,
+            bouton Play.
+          </aside>
+        </section>
+
+        <!-- 6) Hello World + déf UV/Uniformes -->
+        <section>
+          <h2>Hello World (ShaderToy)</h2>
+          <pre><code class="language-glsl">void mainImage(out vec4 c, in vec2 p){
+  vec2 uv = p / iResolution.xy;                 // &lt;-- UV (0..1)
+  c = vec4(uv, 0.5 + 0.5*sin(iTime), 1.0);      // &lt;-- uniforms (temps, résolution)
+}
+</code></pre>
+          <div class="two-col small">
+            <div class="callout">
+              <b>UV</b> : coordonnées <b>normalisées</b> de texture ∈ [0,1]².
+              Servent à échantillonner des images, ou à se repérer sur l’écran.
+            </div>
+            <div class="callout">
+              <b>Uniformes</b> : valeurs <b>globales, lecture seule</b>,
+              identiques pour tous les pixels durant un draw (ex :
+              <code>iTime</code>, <code>iResolution</code>, textures,
+              matrices…).
+            </div>
+          </div>
+          <aside class="notes">
+            Dire que ShaderToy passe gl_FragCoord via p, mais expose directement
+            iTime/iResolution.
+          </aside>
+        </section>
+
+        <!-- 7) Décorticage express: Wave ou Tunnel -->
+        <section>
+          <h2>
+            Décorticage express : Wave
+            <span class="small">(image dans iChannel0)</span>
+          </h2>
+          <pre><code class="language-glsl">void mainImage(out vec4 c, in vec2 p){
+  vec2 uv = p / iResolution.xy;
+  float w = sin(uv.y*10.0 + iTime*2.0)*0.02; // période + vitesse + amplitude
+  vec3 col = texture(iChannel0, uv + vec2(w,0)).rgb; // déformation horizontale
+  c = vec4(col,1.0);
+}
+</code></pre>
+          <p class="small">
+            Variante « wow » : tunnel en 10 lignes (sin/cos + polar coords).
+          </p>
+          <aside class="notes">
+            Montrer comment toucher une seule ligne (uv.y) rend l’effet lisible
+            et pédagogique.
+          </aside>
+        </section>
+
+        <!-- 8) Raymarching intro -->
+        <section>
+          <h2>Raymarching : 3D sans maillage</h2>
+          <ul>
+            <li>
+              Pour chaque pixel : lancer un <b>rayon</b>, avancer par
+              <b>pas</b> jusqu’à toucher la scène
+            </li>
+            <li><b>SDF</b> : fonction distance → pas sûr (sphere tracing)</li>
+            <li>
+              <b>Heightfield</b> : carte de hauteur H(x,z) → pas adaptatif sur
+              pos.y − H
+            </li>
+            <li>
+              Arrêt : distance &lt; ε (hit) · trop loin (miss) · max steps
+            </li>
+          </ul>
+          <pre><code class="language-glsl">float sdSphere(vec3 p,float r){return length(p)-r;}
+float march(vec3 ro, vec3 rd){
+  float t=0.0; for(int i=0;i&lt;96;i++){
+    float d=sdSphere(ro+rd*t,1.0); if(d&lt;0.001) return t; t+=d; if(t&gt;20.0)break;}
+  return -1.0;
+}
+</code></pre>
+          <aside class="notes">
+            Résumer : SDF = rapide/stable ; heightfield = terrain. Parler de
+            normales via différences finies, shadows/AO.
+          </aside>
+        </section>
+
+        <!-- 9) Intégrer dans Bevy (WGSL) -->
+        <section>
+          <h2>Intégrer dans Bevy (WGSL)</h2>
+          <pre><code class="language-wgsl">@group(1) @binding(0) var tex: texture_2d&lt;f32&gt;;
+@group(1) @binding(1) var smp: sampler;
+struct U { time: f32, res: vec2&lt;f32&gt;; };
+@group(1) @binding(2) var&lt;uniform&gt; u: U;
+@fragment fn fs(@builtin(position) pos: vec4&lt;f32&gt;)->@location(0) vec4&lt;f32&gt;{
+  let uv = pos.xy / u.res; let w = sin(uv.y*10.0 + u.time*2.0)*0.02;
+  let col = textureSample(tex, smp, uv + vec2(w,0.0)); return vec4(col,1.0);
+}
+</code></pre>
+          <ul class="small">
+            <li>
+              Ajouter <code>Material2d</code> custom avec texture + uniformes
+              (temps, résolution…)
+            </li>
+            <li>
+              Concepts identiques à ShaderToy → portables vers
+              Unity/Unreal/Three.js
+            </li>
+          </ul>
+          <aside class="notes">
+            Invoquer l’analogie ShaderToy↔WGSL : mêmes briques, seuls les
+            bindings changent.
+          </aside>
+        </section>
+
+        <!-- 10) Démo Web Three.js -->
+        <section>
+          <h2>Démo Web (Three.js)</h2>
+          <pre><code class="language-javascript">const mat=new THREE.ShaderMaterial({
+  uniforms:{ iTime:{value:0}, iResolution:{value:new THREE.Vector3(w,h,1)},
+    iChannel0:{value:new THREE.TextureLoader().load('img.jpg')} },
+  fragmentShader:`
+    uniform float iTime; uniform vec3 iResolution; uniform sampler2D iChannel0;
+    void main(){ vec2 uv=gl_FragCoord.xy/iResolution.xy;
+      float w=sin(uv.y*10.0+iTime*2.0)*0.02;
+      vec3 col=texture2D(iChannel0, uv+vec2(w,0.)).rgb; gl_FragColor=vec4(col,1.0); }`
+});
+</code></pre>
+          <p class="small">
+            Même logique : uniforms + UV + échantillonnage → effet identique.
+          </p>
+          <aside class="notes">
+            Proposer un CodePen/StackBlitz pour la démo live si le temps le
+            permet.
+          </aside>
+        </section>
+
+        <!-- 11) Récap -->
+        <section>
+          <h2>Récap</h2>
+          <ul>
+            <li>Shaders = <b>boîte à outils visuelle</b> sur GPU</li>
+            <li>
+              Tester (ShaderToy) → Intégrer (Bevy/Three.js) → Approfondir (PBR,
+              post‑FX, compute)
+            </li>
+            <li>Raymarching = scènes procédurales sans maillage</li>
+          </ul>
+          <aside class="notes">
+            Rappeler « une poignée de lignes suffit pour un effet bluffant ».
+          </aside>
+        </section>
+
+        <!-- 12) Ressources -->
+        <section>
+          <h2>Ressources & liens</h2>
+          <ul>
+            <li><b>ShaderToy</b> — playground fragment shaders</li>
+            <li><b>The Book of Shaders</b> — intro GLSL/visuals</li>
+            <li>
+              <b>Bevy</b> (docs shaders/WGSL), <b>Three.js</b> (ShaderMaterial)
+            </li>
+            <li><i>(Tes liens ici : articles, presets, démos, repos)</i></li>
+          </ul>
+          <aside class="notes">
+            Me transmettre la liste finale → je remplis cette slide.
+          </aside>
+        </section>
+
+        <!-- Annexe : checklist démo -->
+        <section>
+          <h2>Checklist démo</h2>
+          <ul class="small">
+            <li>
+              2 images (Hollow Knight, Dead Cells) focalisées sur la lumière
+            </li>
+            <li>Une image pour <code>iChannel0</code> (demo wave)</li>
+            <li>ShaderToy ouvert (Hello World + Wave)</li>
+            <li>Projet Bevy minimal (matériau + WGSL)</li>
+            <li>Page Three.js (ShaderMaterial) prête</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Thanks</h2>
+          <img src="images/thanks.gif" alt="thank_you" width="50%" />
+          <ul>
+            <li>René Ribaud &lt;rene.ribaud@gmail.com&gt;</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script type="module">
+      import Reveal from "../reveal.js/dist/reveal.esm.js";
+      import Markdown from "../reveal.js/plugin/markdown/markdown.esm.js";
+      import Notes from "../reveal.js/plugin/notes/notes.esm.js";
+      import Highlight from "../reveal.js/plugin/highlight/highlight.esm.js";
+      import Zoom from "../reveal.js/plugin/zoom/zoom.esm.js";
+
+      let deck = new Reveal({
+        plugins: [Markdown, Notes, Highlight, Zoom],
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        width: 960,
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+        // Use this to print in pdf
+        // margin: 0.6,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 1.5,
+
+        transition: "convex",
+      });
+
+      deck.initialize();
+    </script>
+  </body>
+</html>
